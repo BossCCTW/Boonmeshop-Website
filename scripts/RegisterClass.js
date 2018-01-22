@@ -1,3 +1,5 @@
+"use strict";
+
 function Register(url,method){
     this.inputCheckboxAccept = document.getElementById('ipCheckboxAccept');
     this.inputUsername = document.getElementById('ipId');
@@ -136,5 +138,11 @@ Register.prototype = function(){
     }
 }();
 
+class User {
+    constructor(name,level){
+        this.username = name;
+        this.userlevel = level;
+    }
+}
 
 
