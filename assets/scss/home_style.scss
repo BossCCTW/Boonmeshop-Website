@@ -179,6 +179,7 @@ ul{
 }
 
 .navbar-link_register{
+  font-size:1em;
 	grid-column: 1/2;
 }
 .navbar-link_download{
@@ -210,17 +211,18 @@ ul{
 
 
   .modal-login_title{
-    font-size:1em;
+    font-size:1.3em;
     font-weight:bold;
     color:rgba(0,0,0,0.7);
 
   }
   .modal-login_sub_title{
-    font-size:0.8em;
+    font-size:1em;
     color:rgba(0,0,0,0.6);
-    margin:1em;
+    margin:0.5em;
   }
   form{
+    
     text-align: center;
     display: block;
 
@@ -232,7 +234,7 @@ ul{
     margin-bottom:0.6em;
     border: 1px solid rgba(0,0,0,0.2);
     border-radius:2px;
-    font-size:0.8em;
+    font-size:1em;
 		background-color:#f2f2f2;
 		width:100%;
   }
@@ -254,9 +256,13 @@ ul{
     border: 0;
     background-color:#3F51B5;
     color:#fff;
-    font-weight:bold;
-    box-shadow: 1px 1px 3px -1px rgba(0,0,0,0.5);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
 		transition: 0.3s;
+  }
+  input[type="button"]:active{
+    box-shadow: 0 0 0 rgba(0,0,0,0.3);
+    background-color:rgb(49, 63, 138);
+    color:rgb(228, 228, 228);
   }
   input[type="submit"]:hover{
     color:#fee;
@@ -265,7 +271,7 @@ ul{
     box-shadow: 1px 2px 6px -1px rgba(0,0,0,0.6);
   }
   .modal-login_link-edite{
-    font-size:0.7em;
+    font-size:0.8em;
 		color: rgba(0,0,0,0.5);
 		margin-bottom: 1em;
   }
@@ -291,7 +297,7 @@ ul{
 
 /* +++++++++++++++++ new +++++++++++++++++++  */
 .commentuser{
-  font-size:0.7em;
+  font-size:0.8em;
   display: block;
   color:rgba(255, 0, 0, 0.6);
   margin:0.5em;
