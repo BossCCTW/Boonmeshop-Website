@@ -1,0 +1,913 @@
+// ===================================================
+                    //**RESET**//
+//====================================================
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 0.5em 0;
+  padding: 0;
+}
+
+.lineemply{
+  display: block;
+  margin: 0.2em 0;
+  padding: 0;
+}
+
+
+
+
+
+/*==================TAG SETTINNG=================*/
+html{
+  height:100%;
+}
+body {
+  /*ตั้งค่าเป็น display flex
+  เพื่อให้เรียงลำดับ div ทั้งหมด จาก บนลงล่าง
+  แบบ column เอื้อกำนวยในการทำ footer แบบ sticky
+  footer จะคงอยู่ด้านลงเสมอ แม้ว่าเนื้อหาใน container body จะเยอะแค่ไหน
+  */
+
+  display: flex;
+  flex-direction:column;
+  height:100vh;
+  /*set space-around for footer at bottom*/
+  /*justify-content: space-around;*/
+ /* Avoid the IE 10-11 `min-height` bug. */
+  /**/
+  padding: 0;
+  margin: 0;
+  font-family: 'Kanit',Tahoma,sans-serif;
+  background: #ededed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+ul{
+  padding:0;
+  list-style:none;
+}
+
+
+
+
+/*==================CONTAINER=================*/
+.container {
+  /*old way to sticky footer*/
+  flex:1 0 auto;
+  max-width: 980px;
+  margin:0 auto;
+
+}
+
+
+
+
+
+
+/*==================NAVBAR=================*/
+.navbar {
+  width: 100%;
+  background-color:#fff;
+  box-shadow:0 1px 2px 1px rgba(0, 0, 0, 0.1),0 0 10px rgba(0, 0, 0, 0.1);
+	position: relative;
+  z-index: 2000;
+  
+}
+.navbar-container{
+  max-width: 980px;
+  margin: 0 auto;
+  // height: 60px;
+  display: grid;
+  // justify-content: space-between;
+	grid-template-columns: repeat(5,1fr);
+	grid-gap: 0.2em;
+
+	position:relative;
+
+}
+.navbar-webname{
+	margin: 0.3em 0;
+  border:1px solid rgba(0, 0, 0, 0.15);
+  padding: 0.1em 0.5em;
+	grid-column:1/2;
+}
+
+.navbar-webname-title {
+  font-weight: 900;
+  font-size: 3.5vmin;
+	.navbar-icon_title{
+		display: none;
+	}
+}
+
+.navbar-webname-subtitle {
+  padding-top: 0.5em;
+  font-size: 10px;
+	color:rgba(0,0,0,0.6);
+}
+.navbar-link{
+	grid-column: 2/6;
+	display:grid;
+	align-items: center;
+	grid-template-columns: repeat(4,1fr);
+	position:relative;
+	font-size:13px;
+  text-align:center;
+
+	li{
+	 position: relative;
+
+		a{
+			transition:color 0.2s;
+			text-decoration:none;
+			color:rgba(90, 97, 138, 0.7);
+		}
+	}
+}
+
+.navbar-link_register{
+	grid-column: 1/2;
+}
+.navbar-link_download{
+	grid-column: 2/3;
+}
+.navbar-link_search{
+	grid-column: 3/4;
+}
+.navbar-contacts_container{
+	grid-column: 4/5;
+}
+//Modal Login =================================================
+.modal-login{
+	position: absolute;
+  display:block;
+  text-align:center;
+  padding:0.6em;
+	background-color:#fff;
+  color:#fff;
+  border-radius: 1px;
+  box-shadow: 1px 2px 10px 2px rgba(0,0,0,0.3);
+  width:100%;
+
+	left:0;
+	top:-26em;
+	z-index: 1500;
+	transition: top 0.3s ease-in;
+	transition: box-shadow 0;
+
+
+  .modal-login_title{
+    font-size:1em;
+    font-weight:bold;
+    color:rgba(0,0,0,0.7);
+
+  }
+  .modal-login_sub_title{
+    font-size:0.8em;
+    color:rgba(0,0,0,0.6);
+    margin:1em;
+  }
+  form{
+    text-align: center;
+    display: block;
+
+  }
+  input{
+    display:block;
+    padding:0.7em;
+    margin: 0 auto;
+    margin-bottom:0.6em;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius:2px;
+    font-size:0.8em;
+		background-color:#f2f2f2;
+		width:100%;
+  }
+	input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: rgba(0,0,0,0.4);
+	}
+	input::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(0,0,0,0.4);
+	}
+	input:-ms-input-placeholder { /* IE 10+ */
+  color: rgba(0,0,0,0.4);
+	}
+	input:-moz-placeholder { /* Firefox 18- */
+  color: rgba(0,0,0,0.4);
+	}
+  input[type="button"]{
+    width:100%;
+    border-radius:2px;
+    border: 0;
+    background-color:#3F51B5;
+    color:#fff;
+    font-weight:bold;
+    box-shadow: 1px 1px 3px -1px rgba(0,0,0,0.5);
+		transition: 0.3s;
+  }
+  input[type="submit"]:hover{
+    color:#fee;
+    transition: 0.2s;
+    background-color:#5C6BC0;
+    box-shadow: 1px 2px 6px -1px rgba(0,0,0,0.6);
+  }
+  .modal-login_link-edite{
+    font-size:0.7em;
+		color: rgba(0,0,0,0.5);
+		margin-bottom: 1em;
+  }
+}
+.modal-login-frame:before{
+	content:"";
+	position:fixed;
+	display: none;
+	background-color: rgba(0, 0, 20, 0.4);
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+	z-index: 1400;
+}
+.modal-login-frame:target:before{
+	display: block;
+}
+.modal-login-frame:target .modal-login{
+	top:2.8em;
+	// box-shadow: 10px 10px 30px 2000px rgba(0, 0, 0, 0.6);
+}
+
+/* +++++++++++++++++ new +++++++++++++++++++  */
+.commentuser{
+  font-size:0.7em;
+  display: block;
+  color:rgba(255, 0, 0, 0.6);
+  margin:0.5em;
+}
+
+.modal-login-correct{
+  display: flex;
+  flex-direction:column;
+}
+
+.modal-login-correct img{
+  display: block;
+  margin: 0 auto;
+  width:55px;
+  height:55px;
+  
+  border-radius:50%;
+  overflow: hidden;
+}
+.modal-login-correct .modal-login-correct_title {
+  font-size: 1em;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.7);
+  margin-top:0.5em;
+}
+
+.modal-login-correct .modal-login-correct_sub_title {
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0.3em;
+}
+/* +++++++++++++++++ new +++++++++++++++++++  */
+
+/*==================Modal download=================*/
+.modal-download{
+
+}
+.modal-download:before{
+	content:"";
+	position:fixed;
+	display: none;
+	background-color: rgba(0, 0, 20, 0.4);
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+	z-index: 1400;
+}
+
+.modal-download:target .modal-download_container{
+ top:3.5em;
+}
+.modal-download:target:before{
+	display: block;
+}
+.modal-download_container{
+	position:absolute;
+  display:block;
+	text-align: center;
+	width: 100%;
+	z-index:1500;
+  padding:0.6em;
+  box-shadow: 1px 1px 20px 1px rgba(0,0,0,0.5);
+  background: linear-gradient(135deg,#283593,#3949ab,#2979ff,#40c4ff);
+	position: absolute;
+	left: 0;
+	top:-25em;
+	transition:top 0.3s ease-in;
+
+  button{
+    width: 100%;
+    background-color:#212121;
+    outline:none;
+    border:0;
+    border-radius:3px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.4);
+		margin:0.5em 0;
+		transition: 0.2s;
+		cursor: pointer;
+  }
+	button:hover{
+		  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.6);
+			background-color:#111111;
+	}
+  .bt-container{
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+    .download-icon{
+      max-width: 80px;
+      max-height:80px;
+
+      img{
+        width: 100%;
+      }
+    }
+  }
+
+
+  .download-icon{
+    flex:1;
+    margin-right: 1em;
+    display:flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .download-text{
+    flex:3;//แบ่งสัดส่วน
+    display: flex;
+    flex-direction: column; //ปรับให้เรียงแนวตั้ง
+    align-items: flex-start; //จัดข้อมูลแนวนอน
+    justify-content: center;//จัดข้อมูลแนวตั้งให้อยู่ตรงกลาง
+
+    font-weight:bold;
+		font-size: 0.7em;
+    .download-text_secondary{
+      color:rgba(255, 255,255,0.5);
+
+    }
+    .download-text_primary{
+      margin-top:0.3em;
+      color:rgba(255, 255, 255,0.9);
+    }
+  }
+
+}
+
+// ======================================================
+
+
+.t-close{
+	position:absolute;
+	display: block;
+
+	width:1px;
+	height:1px;
+
+	left: 0;
+  right:0;
+	margin: 0 auto;
+
+  bottom: 1.7em;
+	background-color:transparent;
+	border-top: 0px solid transparent;
+  border-left: 6px solid transparent;
+  border-bottom: 6px solid #bf4848;
+  border-right: 6px solid transparent;
+}
+.bt-closemodal{
+	margin: 0 auto;
+	text-align: center;
+	color:#bf4848;
+	padding-top:1em;
+	font-size:0.9em;
+}
+
+.ttt{
+	position:absolute;
+	display: block;
+
+	width:1em;
+	height:1em;
+
+	left:45%;
+  top:1em;
+	background-color:transparent;
+	border-top: 10px solid #607D8B;
+  border-left: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.navbar-link_search form input[type="search"]{
+	  position: relative;
+		width: 10em;
+		box-sizing: border-box;
+	  font-size:1em;
+		color:#111;
+		background: url(/assets/imgs/icon/ic_search_black_18dp_1x.png) no-repeat scroll 7px 7px;
+		background-color:rgba(240,240, 240, 0.9);
+		padding:0.5em 0;
+		padding-left:1.6em;
+    border:1px solid rgba(66, 76, 135, 0.7);
+		box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4) inset;
+		border-radius:30px;
+		outline:none;
+		transition: all 0.3s;
+
+}
+.navbar-link_search .form-search input[type="search"]:focus{
+	background: url(/assets/imgs/icon/ic_search_black_18dp_1x.png) no-repeat scroll -20px 7px;
+  padding-left:0.5em;
+	background-color:rgba(249,249, 249, 0.5);
+}
+
+.navbar-link_search .form-search input[type="search"]::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:rgba(0, 0, 0, 0.4);
+}
+.navbar-link .navbar-link_register a :hover{
+	color:rgba(66, 76, 135, 1);
+}
+
+.setfont-icon {
+	font-size: 1.5em;
+}
+.label-app{
+	position: relative;
+	top:-0.2em;
+}
+
+.navbar-contacts{
+	grid-column: 5/6;
+  display: flex;
+  align-items: center;
+	// align-content: space-between;
+ justify-content: space-between;
+ li.navbar-contact-child{
+	 padding: 0;
+ }
+}
+.navbar-contact-child{
+	padding: 0;
+}
+.navbar-contact-icon{
+	font-size: 1.3em;
+  width: 35px;
+  height: 35px;
+  border-radius:100%;
+  text-align: center;
+  line-height: 35px;
+  background-color:rgb(224, 227, 233);
+  color:rgba(0,0,0,0.7);
+}
+
+.navbar-contact-icon:hover{
+  background-color:rgb(230, 234, 245);
+  color:rgba(0,0,0,0.7);
+}
+
+
+/*============NAVBAR HAMBURGER=================*/
+.navbar-hamburger{
+  // หน้าจอใหญ่สุดจะไม่แสดงปุ่ม hamburger
+  display:none;
+  flex-direction: column;
+  justify-content:space-around;
+  overflow: hidden;
+
+  position: absolute;
+  right:0;
+  top:0;
+  bottom:0;
+
+  // background-color:#fff;
+  margin: 0.5em 0.1em;
+  padding: 0.2em 0.2em;
+  cursor:pointer;
+
+  border-radius:3px;
+  border:1px solid #aaa;
+
+  transition:0.3s;
+}
+
+.arrow-hamburger{
+  position:relative;
+
+  display: block;
+  width: 1px;
+  margin: 0 auto;
+  margin-bottom:0.2em;
+
+
+  border-top: 7px solid #283747;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 0 solid transparent;
+
+  border-radius:1px;
+
+  transition: 0.3s;
+}
+
+
+.button_hamburger{
+  position:relative;
+
+  width:1.7em;
+  height:4px;
+
+  background-color:#566573;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
+  border-radius:1px;
+
+  transition:0.3s;
+}
+
+// มีการใช้ javascript ร่วมด้วย
+// เมื่อมีการกดปุ่ม  .navbar-hamburger จาวาสคีปจะสั่งให้
+// toggleClass เพิ่ม class active เข้าไปในโค้ด html
+// ก็จะเข้าไปทำงาน css ด้านล่าง
+// .navbar-hamburger.active >> สั่งให้ .button_hamburger
+// มีการเปลี่ยนเแปลง animation
+//.navbar-hamburger.active หมายถึง ใน html มี 2 class นี้ต่อกัน
+// css จะทำงาน
+.navbar-hamburger.active .button_hamburger{
+  background-color:#878e96;
+  transform:translateY(2em);
+}
+// สั่งให้ลูกสรกลับหัวเมื่อมีการกดปุ่ม hamburger
+.navbar-hamburger.active .arrow-hamburger{
+  border-top: 0 solid transparent;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #283747;
+
+  // พยามจัดให้ลูกศรอยู่ตรงกลางปุ่มเมื่อ hamburger เลื่อนลง
+  margin: auto;
+  margin-top: 0.6em;
+  transition: 0.3s;
+}
+
+/*=========================================*/
+
+
+
+
+/*==================BANNER====================*/
+.banner {
+  border-radius: 1px;
+  position: relative;
+  margin:1em 0;
+  margin-right: 1px;
+}
+
+
+
+.banner-container-grid {
+  background-color:transparent;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-gap: 0.5em;
+  grid-auto-rows: minmax(200px, auto);
+  grid-auto-columns: minmax(100px, auto);
+  z-index: 1000;
+}
+
+.banner-menu {
+  font-family: 'Anton', sans-serif;
+  position: relative;
+  
+
+  grid-column:1/5;
+
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-template-rows: repeat(2,1fr);
+  grid-gap: 1px;
+}
+.banner-menu_item{
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
+  background: #ffffff;
+  display: flex;
+  opacity: 0.7;
+  transition: 0.2s;
+  cursor: pointer;
+  img{
+    display: block;
+    margin: auto;
+    width: 60%;
+    height:60%;
+  }
+}
+.banner-menu_item:hover{
+  opacity: 1;
+  background-color:#eee;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
+}
+
+
+.banner-slideshow{
+  background-image: url('/assets/imgs/background/bg-banner-top03.jpg');
+  background-repeat: round;
+  background-size: 100% 100%;
+  width: 100%;
+  height:100%;
+  grid-column:5/11;
+}
+
+
+
+
+/*=================MARKET HEADER====================*/
+.market{
+  color:#fff;
+
+}
+.market-body{
+  margin: 0.5em 0;
+}
+.market-header{
+  height:auto;
+  display:grid;
+  text-align: center;
+  background-color: #444;
+  box-shadow: 0 2px 3px rgba(0, 0, 0,0.5);
+  position: relative;
+  z-index: 100;
+  grid-template-columns: repeat(5,1fr);
+}
+.market-header-icon{
+  grid-column: 1/2;
+  grid-row:1/2;
+  margin: auto;
+  max-width: 70px;
+  max-height:70px;
+  overflow: hidden;
+  padding: 0.5em;
+}
+.market-header img{
+  width: 80%;
+  height:80%;
+}
+.market-header-title{
+  grid-column: 2/6;
+  margin: auto;
+  font-size:1.5em;
+}
+.market-filter{
+  background-color:#e8e8e8;
+  color:rgba(0, 0, 0, 0.4);
+  display: grid;
+  text-align: center;
+  grid-template-columns:repeat(5,1fr);
+  grid-gap:0.2em;
+}
+.market-filter-head{
+  grid-column:1/2;
+  font-size:1.5em;
+  border-radius: 2px;
+  padding: 1.2em 0;
+}
+.market-filter-list{
+  grid-column:2/6;
+  font-size:1.5em;
+  border-radius: 2px;
+  padding: 1.2em 0;
+}
+
+
+
+
+
+/*=================MARKET BODY (CARD)====================*/
+$color-text-primary:#212121;
+$color-text-primary-hover:#212121;
+$color-text-seconary:#424242;
+$duration-animation:0.2s;
+$bg-total:#5C6BC0;
+.market-item-container{
+  display: grid;
+  grid-template-columns:repeat(5,1fr);
+  grid-gap:0.6em;
+  margin-bottom:1em;
+}
+
+.card{
+	position: relative;
+	background-color:#fff;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  transition: $duration-animation;
+  top:0;
+
+  overflow: hidden; //ป้องกันการขนาดยึดตัวของ container เมื่อมี content กว้างกว่า width
+	a{
+		text-decoration: none;
+	}
+}
+.card:hover{
+  box-shadow: 0 6px 10px rgba(0,0,0,0.3);
+  top:-2px;
+}
+.card:hover .card-image img {
+	filter: brightness(120%);
+}
+
+.card-image{
+  height:200px;//ความสูงของรูปสินค้า
+	overflow: hidden;
+	transition: height $duration-animation;
+}
+.card-image img{
+	transition:filter $duration-animation,transform $duration-animation;
+	transform: scale(1);
+	filter: brightness(100%);
+	width:100%;
+  height: 100%;
+}
+.card:hover .card-image img{
+	transform: scale(1.2);
+}
+
+.card-total{
+ position:absolute;
+ top:0.5em;
+ right:0.5em;
+ padding :0.5em;
+ font-size: 0.7em;
+ border-radius: 50%;
+ background-color:$bg-total;
+ color:#fff;
+}
+
+.card-body{
+	position:relative;
+	background-color: #fff;
+  color:$color-text-primary;
+  transition:height $duration-animation,top $duration-animation;
+  padding: 0.5em;
+}
+
+.card:hover .card-body .card-body_name{
+	//เมื่อนำเมาส์ไปชี้ Card ชื่อของสินค้าจะเข้มขึ้น
+	color:rgba(58, 100, 240,1);
+}
+.card:hover .card-body_price .card-body_price__discounted{
+  color:rgba(250, 66, 62, 1);
+}
+
+.card-body .card-body_label{
+	//ป้าย sell ลดราคา
+	position:absolute;
+	left:0;
+	top:-25px;
+	padding:0.5em 0.5em;
+	color:#fff;
+	background-color:#EF5350;
+	font-size: 0.8em;
+	text-transform: uppercase;
+}
+
+.card-body .card-body_name{
+	//ชื่อสินค้า
+	color:rgba(58, 74, 240,0.7);
+	font-size:2.2vmin;
+  font-weight:bold;
+  
+  //จะทำให้ text ที่เกินจะกลายเป็น ...
+  //ส่วนที่เกินความกว้างจะถูกซ่อน
+		//css นี้หากใช้งานกับ div เพียงอย่างเดียวอาจจะไม่ได้ผลจะต้องให้
+    // content ด้านในห่อหุ้มด้วย text element เป็นต้น
+	//ทำให้ชื่อสินค้าไม่มีการตกบันทัดลงมาสองบันทัด เมื่อมีชื่อที่กว้างเกินกว่า card
+  //จะเป็น product name... แทน
+  h3{
+    overflow: hidden; //ส่วนที่เกินความกว้างจะถูกซ่อน
+     text-overflow: ellipsis; //จะทำให้ text ที่เกินจะกลายเป็น ...
+	   white-space: nowrap;//nowrap หมายถึงจะไม่มีการเคาะบันทัดลง หากข้อความยาว
+  }
+	 
+}
+.card-body .card-body_id{
+	font-size: 1.3vmin;
+	padding-bottom: 0.5em;
+	color: rgba(0,0,0,0.5);
+}
+.card-body_price{
+	font-size: 2.4vmin;
+	background-color:#fff;
+
+	.card-body_price__original{
+		color: rgba(0,0,0,0.6);
+		text-decoration: line-through;
+	}
+	.card-body_price__discounted{
+		color:rgba(250, 66, 62, 0.8);
+	}
+}
+
+
+
+
+/*==================FOOTER====================*/
+.footer-main{
+  /*this old way to sticky footer*/
+  flex-shrink: 0;
+  width: 100%;
+  background-color:#fffef9;
+  
+}
+.footer-container{
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0.6em 0;
+  color:rgba(0, 0, 0, 0.4);
+}
+.footer-grid{
+  display: grid;
+  grid-template-columns:repeat(5,1fr);
+
+}
+
+.footer-txt-head{
+  color:rgba(0, 0, 0, 0.7);
+
+}
+.footer-grid-nested{
+  grid-column: 1/5;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-gap:1em;
+  padding:1em;
+}
+.footer-grid-child{
+  grid-column: 5/6;
+  width: 100%;
+  padding: 1em;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}

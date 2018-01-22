@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="assets/css/register_pagestyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <script src="scripts/controllerRegister.js"></script>
+    <script src="scripts/RegisterClass.js"></script>
+   
+    <title>Register</title>
+</head>
+<body>
+    <div class="container">
+            <article class="register">
+                <section class="register-condition" id="formcondition">
+                        <header class="txt-primary">เงื่อนไขการสมัครสมาชิก</header>
+                        <textarea class="txt-secondary mh05" rows="25" disabled>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa esse debitis quod, est, ipsum ex ducimus eveniet omnis harum fugiat ipsam, illum eius et natus animi nulla consectetur odit ad delectus aperiam minima voluptas facilis adipisci. Deserunt asperiores impedit consequuntur similique perferendis error minima adipisci nemo dignissimos provident in vero consectetur, odio odit distinctio facilis eos alias voluptatibus sed debitis iste molestias illo nostrum deleniti placeat. Pariatur accusantium animi, dolores totam soluta hic! Tempora, dolorem. Ab rem recusandae sed ipsa dolorem nostrum temporibus natus inventore facilis tempore iure a veritatis, numquam libero, quo. A sapiente quasi, sequi ut nam atque quae. Qui dolores impedit reprehenderit nulla deserunt, ipsa temporibus beatae culpa veniam iure, id officiis! Nam, esse. Eius enim ipsam sapiente nostrum provident blanditiis, labore esse quae reprehenderit, laboriosam libero obcaecati asperiores officia placeat illum vitae. Fugiat aliquid quaerat asperiores dolorem pariatur assumenda recusandae, dignissimos libero eos rerum hic nesciunt laudantium nihil animi ab vitae voluptate totam, laboriosam fugit, laborum similique iure mollitia, incidunt quod. Beatae, dolores. Sint laboriosam dignissimos, itaque molestiae quisquam ut iusto possimus. Ex beatae minima nam delectus placeat amet, nemo cumque quia saepe pariatur minus necessitatibus voluptas, odio nostrum eius. Perspiciatis facere nobis illo error quas saepe, ducimus, suscipit dignissimos, tempore dicta asperiores. Laboriosam sint voluptatum, quam, officiis molestiae sed quod reprehenderit impedit modi distinctio enim odit voluptatibus natus pariatur dolorum repellat deserunt sequi doloribus nobis nisi saepe! In est aspernatur libero assumenda iste voluptate neque facere temporibus non ex explicabo, illo dignissimos unde atque ullam voluptatum, sequi officiis eligendi modi reprehenderit. Iusto voluptatibus molestias amet quasi, in deleniti laudantium doloribus beatae voluptatum similique neque, nihil, earum accusantium ut numquam! Quam voluptatum doloremque nihil numquam odio illum, earum, adipisci suscipit corporis soluta voluptates dolore asperiores nam ipsum perferendis! Deleniti consequuntur minima dolores ipsa, ducimus iusto reprehenderit assumenda. Repudiandae itaque alias quo minus odio est, officia deleniti excepturi obcaecati perspiciatis commodi dolorem rerum ratione nulla modi ullam dignissimos ad eaque nobis quidem, facere, sequi accusantium iusto. Aperiam animi pariatur voluptas natus ratione, labore, corrupti ullam, error velit facere itaque ipsa minus magnam iste atque aliquid a similique inventore voluptate dolore eveniet fugiat aliquam. Vel magnam obcaecati dicta explicabo praesentium labore id cum, possimus perferendis nihil soluta repudiandae vitae aperiam, porro temporibus quidem reprehenderit facere nobis, corporis delectus aliquid ducimus minus nulla laborum expedita. Amet deleniti similique consectetur modi eaque, eveniet quasi quae nulla vel nisi possimus ipsum.
+                        </textarea>
+                        <footer class="mh05 txt-center" id="footerAccept">
+                            <input type="checkbox" name="accept-register" id="ipCheckboxAccept"><label for="accept-register" class="txt-check">ยอมรับเงื่อนไข</label>
+                           
+                        </footer>
+                </section>
+                <div class="register-divider"></div>
+                <section class="register-form">
+                    <header class="txt-primary txt-bold">ฟอร์มสมัครสมาชิก</header>
+                    <p class="txt-secondary mh05">กรุณากรอกข้อมูลของท่านให้ครบถ้วน ทางเจ้าหน้าที่จะทำการติดต่อกลับภายใน 1 วันทำการ</p>
+                        <ul>
+                            <li class="mh03"><input type="text" placeholder="Username" id="ipId"></li>
+                            <li class="mh03"><input type="password" placeholder="Password" id="ipPwd"></li>
+                            <li class="mh03"><input type="text" placeholder="ชื่อ" id="ipFristName"></li>
+                            <li class="mh03"><input type="text" placeholder="นามสกุล" id="ipLastName"></li>
+                            <li class="mh03"><input type="tel" placeholder="เบอร์โทรศัพท์มือถือ" id="ipTel"></li>
+                            <li class="mh03"><input type="email" placeholder="อีเมล" id="ipEmail"></li>
+                            <li class="mh03">
+                                <select id="ipSelectCareer">
+                                    <option value="0" selected="selected">เลือกอาชีพ</option>
+                                    <option value="1">ข้าราชการ</option>
+                                    <option value="2">ธุรกิจส่วนตัว</option>                                   
+                                </select>
+                             </li>
+                            <li class="mh03">
+                                <fieldset id="radio-group_gender">
+                                    <legend class="txt-secondary txt-check ph02">เพศ</legend>                 
+                                        <input class="txt-secondary" type="radio" name="radio-group_gender" id="ipGenderMale"/>
+                                        <label class="txt-check" for="gender1">ชาย</label>    
+                                        <input class="txt-secondary" type="radio" name="radio-group_gender" id="ipGenderFemale"/>
+                                        <label class="txt-check" for="gender2">หญิง</label> 
+                                </fieldset>
+                            </li>
+                            <li class="mh03">
+                                <label class="" for="register-image"></label>
+                                <fieldset>
+                                    <legend class="txt-secondary txt-check ph02">เลือกภาพแสดงตัวตน</legend>
+                                        <input class="mh03 txt-secondary" type="file" name="register-image" id="ipFilePic">
+                                </fieldset>
+                            </li>   
+                        </ul>
+                      
+                       
+                            <p class="txt-secondary">หากข้อมูลในการสมัครถูกต้องครบถ้วนท่านจะได้รับ อีเมลเพื่อยืนยันการสมัคร</p>
+                            <button id="btSendRegis" class="mh05 btn-send_register" type="button">สมัคร</button>    
+                </section>
+                
+                
+            </article>
+    </div>
+    
+</body>
+</html>

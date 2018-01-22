@@ -1,0 +1,450 @@
+@media (max-width:860px) and (min-width:649px){
+  // NAVBAR =======================================================
+  .navbar{
+    padding: 0 0.1em;
+
+  }
+  .navbar-webname{
+    text-align:left;
+    .navbar-icon_title{
+      margin: 0.3em;
+      display: inline;
+      font-size: 0.8em;
+      position: relative;
+
+    }
+  }
+  .navbar-webname-subtitle span{
+    display:none;
+  }
+  .navbar-webname-subtitle:after{
+    font-size: 0.7em;
+    line-height: 2em;
+    content:'จำหน่ายอุปกรณ์โต๊ะทำงาน';
+  }
+  //LINK+++++++++++++++++++++++++++++
+  .navbar-link{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color:#fff;
+    box-shadow:0 1px 1px rgba(0, 0, 0, 0.15),0 1px 10px rgba(0, 0, 0, 0.1);
+    right:0;
+    margin: -0.1em;
+
+    top:-33em;//เลื่อนให้ ลิงค์ ไปอยู่ด้านบน ไม่ให้เห็นหากยังไม่มีการกดปุ่ม hamburger
+    opacity: 0;
+    transition: 0.4s;
+
+    li{
+      display: block;
+      width: 100%;
+      padding:0.5em 3em;
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
+
+    }
+    li:hover{
+      background-color:#dde;
+    }
+    .navbar-link_register{
+      padding:1.2em 1em;
+    }
+    .navbar-contacts_container ul li{
+      border-top: none;
+      margin: 0 0.3em;
+    }
+
+  }
+
+//MODAL++++++++++++++++++++++++++++
+  .modal-login{
+    input{
+      max-width: 100%;
+    }
+  }
+
+  .modal-download{
+    .modal-download_container{
+      display: block;
+
+      .download-text{
+        font-size: 0.8em;
+      }
+    }
+  }
+//BUTTON HAMBURGER+++++++++++++++++++++++++++++
+  .navbar-hamburger{
+    display:flex;//สั่งให้แสดงปุ่ม hamburger ขึ้นเมื่อมีหน้าจอที่กำหนด
+  }
+
+  //หากงง ให้กลับไปดูโค้ด js ด้านบน
+  //ใช้ javascript ช่วย เมื่อมีการกดปุ่ม hamburger
+  // .navbar-link จะถูกเพิ่ม class active เข้ามาใน html
+  // เมื่อ navbar-link active ==>css ด้านล่างจะทำงาน
+  // สั่งให้ navbar-link เลื่อนลงมาในตำแหน่งที่กำหนดและ opacity แสดง
+  .navbar-link.active{
+      opacity:1;
+      top:4em;
+  }
+
+
+
+
+
+  // BANNER =======================================================
+  .banner-container-grid{
+    grid-auto-rows: minmax(75px, auto);
+    grid-auto-columns: minmax(75px, auto);
+  }
+
+
+  // MARKET =======================================================
+  .market-header-title{
+    font-size:5vmin;
+  }
+
+  .market-item-container{
+    margin: 0 0.1em;
+    grid-template-columns:repeat(4,1fr);
+  }
+  
+
+  //FOOTER =======================================================
+.footer-container{
+  padding: 1em;
+  font-size: 2.5vmin;
+}
+  .footer-grid-nested{
+    grid-column: 1/6;
+   grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-grid-child{
+    grid-column: 1/6;
+  }
+
+}
+
+
+
+
+
+
+
+@media (max-width:650px) and (min-width:500px){
+// NAVBAR =======================================================
+.navbar{
+  padding: 0 0.1em;
+
+}
+.navbar-webname{
+  text-align:left;
+  .navbar-icon_title{
+    margin: 0.3em;
+    display: inline;
+    font-size: 0.8em;
+    position: relative;
+
+  }
+}
+.navbar-webname-subtitle span{
+  display:none;
+}
+.navbar-webname-subtitle:after{
+  font-size: 0.7em;
+  line-height: 2em;
+  content:'จำหน่ายอุปกรณ์โต๊ะทำงาน';
+}
+//LINK+++++++++++++++++++++++++++++
+.navbar-link{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color:#fff;
+  box-shadow:0 1px 1px rgba(0, 0, 0, 0.15),0 1px 10px rgba(0, 0, 0, 0.1);
+  right:0;
+  margin: -0.1em;
+
+  top:-33em;//เลื่อนให้ ลิงค์ ไปอยู่ด้านบน ไม่ให้เห็นหากยังไม่มีการกดปุ่ม hamburger
+  opacity: 0;
+  transition: 0.4s;
+
+  li{
+    display: block;
+    width: 100%;
+    padding:0.5em 3em;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+
+  }
+  li:hover{
+    background-color:#dde;
+  }
+  .navbar-link_register{
+    padding:1.2em 1em;
+  }
+  .navbar-contacts_container ul li{
+    border-top: none;
+    margin: 0 0.3em;
+  }
+
+}
+
+//MODAL++++++++++++++++++++++++++++
+.modal-login{
+  input{
+    max-width: 100%;
+  }
+}
+
+.modal-download{
+  .modal-download_container{
+    display: block;
+
+    .download-text{
+      font-size: 0.8em;
+    }
+  }
+}
+//BUTTON HAMBURGER+++++++++++++++++++++++++++++
+.navbar-hamburger{
+  display:flex;//สั่งให้แสดงปุ่ม hamburger ขึ้นเมื่อมีหน้าจอที่กำหนด
+}
+
+//หากงง ให้กลับไปดูโค้ด js ด้านบน
+//ใช้ javascript ช่วย เมื่อมีการกดปุ่ม hamburger
+// .navbar-link จะถูกเพิ่ม class active เข้ามาใน html
+// เมื่อ navbar-link active ==>css ด้านล่างจะทำงาน
+// สั่งให้ navbar-link เลื่อนลงมาในตำแหน่งที่กำหนดและ opacity แสดง
+.navbar-link.active{
+    opacity:1;
+    top:4em;
+}
+
+// BANNER =======================================================
+.banner-container-grid{
+  grid-auto-rows: minmax(75px, auto);
+  grid-auto-columns: minmax(75px, auto);
+}
+
+
+// MARKET =======================================================
+.market-header-title{
+  font-size:5vmin;
+}
+
+.market-item-container{
+  margin: 0 0.1em;
+  grid-template-columns:repeat(4,1fr);
+}
+
+
+.card-image{
+  height:130px;
+  overflow: hidden;
+  
+}
+
+//FOOTER =======================================================
+.footer-container{
+padding: 1em;
+font-size: 2.5vmin;
+}
+.footer-grid-nested{
+  grid-column: 1/6;
+ grid-template-columns:repeat(2,1fr);
+}
+
+.footer-grid-child{
+  grid-column: 1/6;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+@media (min-width:100px) and (max-width:499px){
+  // NAVBAR =======================================================
+  .navbar{
+    padding: 0 0.1em;
+    .navbar-container{
+      height:54px;
+    }
+  }
+  .navbar-webname{
+    grid-column: 1/3;
+    text-align:center;
+    .navbar-webname-title{
+      font-size: 5vmin;
+    }
+    .navbar-icon_title{
+      margin: 0.3em;
+      display: inline;
+      font-size: 0.8em;
+      position: relative;
+
+    }
+  }
+  .navbar-webname-subtitle span{
+    display: none;
+  }
+  .navbar-webname-subtitle:after{
+    font-size: 0.7em;
+    line-height: 2em;
+    content:'จำหน่ายอุปกรณ์สำหรับโต๊ะทำงาน';
+    font-size:2vmin;
+  }
+  //LINK+++++++++++++++++++++++++++++
+  .navbar-link{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color:#fff;
+    box-shadow:0 1px 1px rgba(0, 0, 0, 0.15),0 1px 10px rgba(0, 0, 0, 0.1);
+    right:0;
+    margin: -0.1em;
+
+    top:-33em;//เลื่อนให้ ลิงค์ ไปอยู่ด้านบน ไม่ให้เห็นหากยังไม่มีการกดปุ่ม hamburger
+    opacity: 0;
+    transition: 0.4s;
+
+    li{
+      display: block;
+      width: 100%;
+      padding:0.5em 3em;
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
+
+    }
+    li:hover{
+      background-color:#dde;
+    }
+    .navbar-link_register{
+      padding:1.2em 1em;
+    }
+    .navbar-contacts_container ul li{
+      border-top: none;
+      margin: 0 0.3em;
+    }
+
+  }
+
+//MODAL++++++++++++++++++++++++++++
+  .modal-login{
+    input{
+      max-width: 100%;
+    }
+  }
+
+  .modal-download{
+    .modal-download_container{
+      display: block;
+
+      .download-text{
+        font-size: 0.8em;
+      }
+    }
+  }
+//BUTTON HAMBURGER+++++++++++++++++++++++++++++
+  .navbar-hamburger{
+    display:flex;//สั่งให้แสดงปุ่ม hamburger ขึ้นเมื่อมีหน้าจอที่กำหนด
+  }
+
+  //หากงง ให้กลับไปดูโค้ด js ด้านบน
+  //ใช้ javascript ช่วย เมื่อมีการกดปุ่ม hamburger
+  // .navbar-link จะถูกเพิ่ม class active เข้ามาใน html
+  // เมื่อ navbar-link active ==>css ด้านล่างจะทำงาน
+  // สั่งให้ navbar-link เลื่อนลงมาในตำแหน่งที่กำหนดและ opacity แสดง
+  .navbar-link.active{
+      opacity:1;
+      top:4em;
+  }
+
+
+
+
+
+  // BANNER =======================================================
+  .banner-container-grid{
+    grid-auto-rows: minmax(40px, auto);
+    grid-auto-columns: minmax(40px, auto);
+  }
+
+
+  // MARKET =======================================================
+  $color-text-primary:#212121;
+  $color-text-primary-hover:#212121;
+  $color-text-seconary:#424242;
+  $duration-animation:0.3s;
+  $bg-total:#5C6BC0;
+
+  .market-header img{
+    margin: 0.5em;
+    max-width: 30px;
+    max-height:30px;
+  }
+  .market-header-title{
+    font-size:4vmin;
+  }
+
+  .market-filter{
+    display: none;
+  }
+
+  .market-item-container{
+    margin: 0 0.1em;
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .card-image{
+  	height:90px;
+  	overflow: hidden;
+  	
+  }
+  .card-body{
+    background-color: #fff;
+    display: flex;
+    flex-direction:column;
+    padding: 0.3em;
+    // height:60px;
+    .card-body_name{
+      font-size: 2.3vmin;
+      order: 1;
+    }
+    .card-body_id{
+      display: none;
+    }
+    .card-body_price{
+      order: 2;
+      font-size: 2.3vmin;
+    }
+  
+  }
+  .card-body .card-body_label{
+    font-size: 2.6vmin;
+    top:-1.9em;
+  }
+  
+
+  //FOOTER =======================================================
+
+  .footer-container{
+    padding: 1em;
+    font-size: 2.5vmin;
+  }
+    .footer-grid-nested{
+      grid-column: 1/6;
+     grid-template-columns:repeat(2,1fr);
+    }
+  
+    .footer-grid-child{
+      grid-column: 1/6;
+    }
+  
+  
+}
