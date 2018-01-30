@@ -139,6 +139,7 @@ Register.prototype = function(){
 }();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 var SomeThink = {
     id:'9101',
     alertUser : function(msg){
@@ -151,5 +152,26 @@ class User {
 >>>>>>> parent of ed9ae1b... test delete
     }
 }
+=======
+
+var obj1 = Object.create(null);
+var obj2 = Object.create(Register)
+console.log(obj2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> parent of df97933... Revert "delete class test"
 
 
