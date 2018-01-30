@@ -138,11 +138,24 @@ Register.prototype = function(){
     }
 }();
 
-class User {
-    constructor(name,level){
-        this.username = name;
-        this.userlevel = level;
-    }
-}
+
+var obj1 = Object.create(null);
+var obj2 = Object.create(Register)
+console.log(obj2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
