@@ -138,25 +138,6 @@ Register.prototype = function(){
     }
 }();
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-var SomeThink = {
-    id:'9101',
-    alertUser : function(msg){
-        return console.log('Hi'+msg);
-=======
-class User {
-    constructor(name,level){
-        this.username = name;
-        this.userlevel = level;
->>>>>>> parent of ed9ae1b... test delete
-    }
-}
-=======
-
-var obj1 = Object.create(null);
-var obj2 = Object.create(Register)
-console.log(obj2);
 
 
 
@@ -165,13 +146,5 @@ console.log(obj2);
 
 
 
-
-
-
-
-
-
-
->>>>>>> parent of df97933... Revert "delete class test"
 
 
