@@ -138,11 +138,6 @@ Register.prototype = function(){
     }
 }();
 
-class User {
-    constructor(name,level){
-        this.username = name;
-        this.userlevel = level;
-    }
-}
+
 
 
