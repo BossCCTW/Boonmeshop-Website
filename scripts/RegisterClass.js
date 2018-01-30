@@ -138,10 +138,17 @@ Register.prototype = function(){
     }
 }();
 
+<<<<<<< HEAD
 var SomeThink = {
     id:'9101',
     alertUser : function(msg){
         return console.log('Hi'+msg);
+=======
+class User {
+    constructor(name,level){
+        this.username = name;
+        this.userlevel = level;
+>>>>>>> parent of ed9ae1b... test delete
     }
 }
 
