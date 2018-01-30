@@ -138,6 +138,11 @@ Register.prototype = function(){
     }
 }();
 
-
+var SomeThink = {
+    id:'9101',
+    alertUser : function(msg){
+        return console.log('Hi'+msg);
+    }
+}
 
 
