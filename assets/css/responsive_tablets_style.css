@@ -1,0 +1,77 @@
+@charset "UTF-8";
+@media (max-width: 860px) and (min-width: 649px) {
+  .navbar {
+    padding: 0 0.1em; }
+  .navbar-webname {
+    text-align: left; }
+    .navbar-webname .navbar-icon_title {
+      margin: 0.3em;
+      display: inline;
+      font-size: 0.8em;
+      position: relative; }
+  .navbar-webname-subtitle span {
+    display: none; }
+  .navbar-webname-subtitle:after {
+    font-size: 0.7em;
+    line-height: 2em;
+    content: 'จำหน่ายอุปกรณ์โต๊ะทำงาน'; }
+  .navbar-link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: absolute;
+    background-color: #fff;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
+    right: 0;
+    margin: -0.1em;
+    top: -33em;
+    opacity: 0;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s; }
+    .navbar-link li {
+      display: block;
+      width: 100%;
+      padding: 0.5em 3em;
+      border-top: 1px solid rgba(0, 0, 0, 0.15); }
+    .navbar-link li:hover {
+      background-color: #dde; }
+    .navbar-link .navbar-link_register {
+      padding: 1.2em 1em; }
+    .navbar-link .navbar-contacts_container ul li {
+      border-top: none;
+      margin: 0 0.3em; }
+  .modal-login input {
+    max-width: 100%; }
+  .modal-download .modal-download_container {
+    display: block; }
+    .modal-download .modal-download_container .download-text {
+      font-size: 0.8em; }
+  .navbar-hamburger {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .navbar-link.active {
+    opacity: 1;
+    top: 4em; }
+  .banner-container-grid {
+    grid-auto-rows: minmax(160px, auto);
+    grid-auto-columns: minmax(auto, auto); }
+  .market-header-title {
+    font-size: 5vmin; }
+  .market-item-container {
+    margin: 0 0.1em;
+    grid-template-columns: repeat(4, 1fr); }
+  .footer-container {
+    padding: 1em;
+    font-size: 2.5vmin; }
+  .footer-grid-nested {
+    grid-column: 1/6;
+    grid-template-columns: repeat(2, 1fr); }
+  .footer-grid-child {
+    grid-column: 1/6; } }

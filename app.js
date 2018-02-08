@@ -1,7 +1,6 @@
 var express = require('express');
 var app = express();
-//set view engine ให้ใช้ ejs 
-app.set('view engine','ejs');
+
 //set ให้ express รู้จักไฟล์ต่างๆภายนอก เมื่อมีการลิงค์ไฟล์ css image icon
 app.use('/assets',express.static(__dirname+'/assets/'));
 app.use('/scripts',express.static(__dirname+'/scripts/'));

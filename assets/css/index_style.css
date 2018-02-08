@@ -103,22 +103,21 @@ ul {
 .navbar {
   width: 100%;
   background-color: #fff;
-  -webkit-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.1), 0 0 10px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.06);
   position: relative;
   z-index: 2000; }
 
 .navbar-container {
   max-width: 980px;
-  margin: 0 auto;
+  margin: 0.2em auto;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 0.2em;
   position: relative; }
 
 .navbar-webname {
-  margin: 0.3em 0;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  margin: 0.2em 0;
   padding: 0.1em 0.5em;
   grid-column: 1/2; }
 
@@ -593,8 +592,8 @@ ul {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-gap: 0.5em;
-  grid-auto-rows: minmax(200px, auto);
-  grid-auto-columns: minmax(100px, auto);
+  grid-auto-rows: minmax(220px, auto);
+  grid-auto-columns: minmax(auto, auto);
   z-index: 1000; }
 
 .banner-menu {
@@ -613,7 +612,7 @@ ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  opacity: 0.7;
+  opacity: 0.85;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
@@ -622,13 +621,20 @@ ul {
     display: block;
     margin: auto;
     width: 60%;
-    height: 60%; }
+    height: 60%;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); }
 
 .banner-menu_item:hover {
-  opacity: 1;
+  opacity: 0.6;
   background-color: #eee;
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.35); }
+  .banner-menu_item:hover img {
+    -webkit-transform: scale(0.97);
+    -ms-transform: scale(0.97);
+    transform: scale(0.97); }
 
 .banner-slideshow {
   background-image: url("/assets/imgs/background/bg-banner-top03.jpg");
@@ -715,9 +721,9 @@ ul {
     text-decoration: none; }
 
 .card:hover {
-  -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
-  top: -2px; }
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.17), 0 6px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.17), 0 6px 12px rgba(0, 0, 0, 0.3);
+  top: -1px; }
 
 .card:hover .card-image img {
   -webkit-filter: brightness(120%);
@@ -745,9 +751,9 @@ ul {
   height: 100%; }
 
 .card:hover .card-image img {
-  -webkit-transform: scale(1.2);
-  -ms-transform: scale(1.2);
-  transform: scale(1.2); }
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1); }
 
 .card-total {
   position: absolute;
