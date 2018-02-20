@@ -159,7 +159,8 @@ ul {
   grid-column: 2/3; }
 
 .navbar-link_search {
-  grid-column: 3/4; }
+  grid-column: 3/4;
+  display: none; }
 
 .navbar-contacts_container {
   grid-column: 4/5; }
@@ -583,8 +584,7 @@ ul {
 .banner {
   border-radius: 1px;
   position: relative;
-  margin: 1em 0;
-  margin-right: 1px; }
+  margin: 1em 0; }
 
 .banner-container-grid {
   background-color: transparent;
@@ -592,8 +592,6 @@ ul {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   grid-gap: 0.5em;
-  grid-auto-rows: minmax(220px, auto);
-  grid-auto-columns: minmax(auto, auto);
   z-index: 1000; }
 
 .banner-menu {
@@ -606,6 +604,7 @@ ul {
   grid-gap: 1px; }
 
 .banner-menu_item {
+  min-height: 100px;
   -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.45);
   background: #ffffff;
@@ -637,6 +636,8 @@ ul {
     transform: scale(0.97); }
 
 .banner-slideshow {
+  min-height: 200px;
+  max-height: 300px;
   background-image: url("/assets/imgs/background/bg-banner-top03.jpg");
   background-repeat: round;
   background-size: 100% 100%;
@@ -648,16 +649,13 @@ ul {
 .market {
   color: #fff; }
 
-.market-body {
-  margin: 0.5em 0; }
-
 .market-header {
   height: auto;
   display: grid;
   text-align: center;
-  background-color: #444;
-  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+  background-color: #37474f;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.363);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.363);
   position: relative;
   z-index: 100;
   grid-template-columns: repeat(5, 1fr); }
@@ -681,24 +679,68 @@ ul {
   font-size: 1.5em; }
 
 .market-filter {
-  background-color: #e8e8e8;
-  color: rgba(0, 0, 0, 0.4);
+  background-color: #f4f8fc;
+  color: rgba(0, 0, 0, 0.5);
   display: grid;
-  text-align: center;
   grid-template-columns: repeat(5, 1fr);
-  grid-gap: 0.2em; }
-
-.market-filter-head {
-  grid-column: 1/2;
-  font-size: 1.5em;
-  border-radius: 2px;
-  padding: 1.2em 0; }
-
-.market-filter-list {
-  grid-column: 2/6;
-  font-size: 1.5em;
-  border-radius: 2px;
-  padding: 1.2em 0; }
+  grid-gap: 0.6em;
+  -webkit-box-shadow: 0 1px 6px -2px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1px 6px -2px rgba(0, 0, 0, 0.45);
+  margin-bottom: 1em;
+  padding: 0.5em 0.2em; }
+  .market-filter section {
+    padding: 0.5em;
+    border-radius: 0.2em;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    overflow: hidden; }
+    .market-filter section header {
+      font-size: 1em;
+      font-weight: 450;
+      color: rgba(0, 0, 0, 0.7);
+      margin-bottom: 0.4em; }
+    .market-filter section article {
+      font-size: 0.9em; }
+      .market-filter section article input[type=text], .market-filter section article input[type=number] {
+        width: 100%;
+        margin-bottom: 0.3em;
+        padding: 0.3em;
+        font-family: inherit; }
+    .market-filter section select {
+      width: 100%;
+      font-family: inherit;
+      margin-bottom: 0.4em;
+      padding: 0.3em 0; }
+  .market-filter section:hover {
+    background-color: #546e7a;
+    color: #fff; }
+    .market-filter section:hover header {
+      color: #fff; }
+  .market-filter section.market-filter_range {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; }
+    .market-filter section.market-filter_range div {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      /* For Firefox */ }
+      .market-filter section.market-filter_range div input {
+        width: 4em; }
+      .market-filter section.market-filter_range div input[type='number'] {
+        -moz-appearance: textfield; }
+      .market-filter section.market-filter_range div input[type=number]::-webkit-inner-spin-button,
+      .market-filter section.market-filter_range div input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0; }
 
 /*=================MARKET BODY (CARD)====================*/
 .market-item-container {

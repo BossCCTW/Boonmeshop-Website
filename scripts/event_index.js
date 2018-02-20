@@ -1,6 +1,7 @@
 "use strict";
   $(document).ready(function(){
     setEventBtHamburger();
+    setEventMaketFilter();
     //set การกดปุ่ม hamburger ให้สลับการใช้งาน class Active เพื่อแดวง Navbar
     function setEventBtHamburger(){
       $('.navbar-hamburger').click(function(){
@@ -8,9 +9,12 @@
           $('.navbar-link').toggleClass('active');
       });
     }
-    $('#btExpandMenu').click(function(){
-      
-    });
+    function setEventMaketFilter(){
+   
+    }
+
+  
+   
   });
 
 

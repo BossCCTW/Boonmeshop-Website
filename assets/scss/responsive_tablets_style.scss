@@ -92,10 +92,21 @@
   
   
     // BANNER =======================================================
-    .banner-container-grid{
-      grid-auto-rows: minmax(160px, auto);
-      grid-auto-columns: minmax(auto, auto);
+    .banner{
+      margin: 0.2em auto;
+  }
+    .banner-menu_item{
+      min-height: 70px;
+
     }
+    
+    
+    
+    .banner-slideshow{
+      min-height: 140px;
+      max-height: 210px;
+    }
+    
   
   
     // MARKET =======================================================

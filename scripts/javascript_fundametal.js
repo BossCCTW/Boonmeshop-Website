@@ -1,4 +1,4 @@
-
+"use strict";
 // var obj ={
 //     name:'chanin',
 //     jobs:'Programer',
@@ -100,6 +100,12 @@
 // var honda = extend(Car);
 
 // console.log(Car);
+
+let name = 'Chanin'
+let lastname = 'sitthibunrueang';
+let now = `Name: ${name} \nLastName: ${lastname}`;
+console.log(now);
+
 
 
 

@@ -13,10 +13,12 @@
   <link rel="stylesheet" href="assets/css/index_style.css">
   <link rel="stylesheet" href="assets/css/responsive_tablets_style.css">
   <link rel="stylesheet" href="assets/css/responsive_mobile_style.css">
+  <link rel="stylesheet" href="assets/css/buttons_style.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  <script src="scripts/manageEvent_index.js" type="text/javascript"></script>
+  <script src="scripts/event_index.js" type="text/javascript"></script>
   <script src="scripts/javascript_fundametal.js" type="text/javascript"></script>
 
   <title>Boonme Home</title>
@@ -173,13 +175,13 @@
           <section class="banner-menu_item" id="btExpandMenu">
               <img src="http://www.pvhc.net/img26/deywiovgstscbpwrnwli.png" alt="">
           </section>
-          
-        
+
+  
         </div>
        
         <div class="banner-slideshow">
         </div>
-       
+        
   
       </div> <!-- banner-container-grid -->
      
@@ -197,14 +199,76 @@
         </div>
       </div>
       <div class="market-body">
-        <div class="market-filter">
-          <div class="market-filter-head">
-            market-group-head
-          </div>
-          <div class="market-filter-list">
-            market-group-list
-          </div>
-        </div>
+        <form class="market-filter">
+          <section class="market-filter_range">
+              <header>
+                  ช่วงราคา           
+              </header>
+              
+              <article>
+                  <div>
+                      <div>Min</div>
+                      <div>Max</div>
+                    </div>  
+                    <div>
+                        <input type="number" min="1" placeholder="ต่ำสุด">
+                        -
+                        <input type="number" min="1" placeholder="สูงสุด">
+                    </div>                  
+              </article>            
+          </section>
+
+          <section class="market-filter_type">
+            <header>ชนิดวัสดุ</header>
+            <article>
+                  <label for="wood"> <input type="checkbox" name="" id="wood" value="">ไม้</label><br>
+                  <label for="iron"> <input type="checkbox" name="" id="iron" value="">เหล็ก</label><br>
+                  <label for="cement"> <input type="checkbox" name="" id="cement" value="">ปูน</label> <br>
+                  <label for="plastic"><input type="checkbox" name="" id="plastic" value="">พลาสติก</label>       
+            </article>
+           
+          
+          </section>
+          <section class="market-filter_payment">
+            <header>รูปแบบการชำระเงิน</header>
+                <select name="" id="">
+                    <option value="">ทั้งหมด</option>
+                    <option value="">โอนเงินพร้อมสั่งสินค้า</option>
+                    <option value="">ชำระเงินปลายทาง</option>
+                  </select>
+            
+            <header>จัดส่งจาก</header> 
+                <select name="" id="select-transpot">
+                    <option value="">ทั้งหมด</option>
+                    <option value="">ส่งจากในประเทศ</option>
+                    <option value="">ส่งจากต่างประเทศ</option>
+                    
+                  </select>         
+          </section>
+          <section class="market-filter_searchname">
+              <header>ค้นจากอื่นๆ</header>
+              <article>
+                  <input type="text" placeholder="ค้นจากชื่อสินค้า">
+                  <input type="text" placeholder="ค้นจากรหัสสินค้า">
+              </article>
+             
+          </section>
+          <section class="market-filter_submit">
+            <header>
+              ยืนยันการกรองข้อมูล
+            </header>
+            <article>
+              <div class="button_primary">
+                ยืนยัน
+              </div>
+               <div class="between-button"></div>
+              <div class="button_reset">
+                  ล้างข้อมูล
+              </div>
+            </article>
+          </section>
+         
+        </form>
 
 
         <!-- Body Market --------------- -->

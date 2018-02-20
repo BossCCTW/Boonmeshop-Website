@@ -75,6 +75,12 @@
     //BUTTON HAMBURGER+++++++++++++++++++++++++++++
     .navbar-hamburger{
       display:flex;//สั่งให้แสดงปุ่ม hamburger ขึ้นเมื่อมีหน้าจอที่กำหนด
+      margin: 4px;
+    }
+     
+
+    .button_hamburger{
+      height:2px;   
     }
     
     //หากงง ให้กลับไปดูโค้ด js ด้านบน
@@ -88,26 +94,21 @@
     }
     
     // BANNER =======================================================
-    .banner{
+      .banner{
         margin: 0.2em auto;
-    }
-    .banner-container-grid{
-        display: grid;
-        grid-template-rows: 60px 150px;
-        
       }
-
+    
       .banner-menu{
         grid-column:1/11;
         grid-template-columns: repeat(8,1fr);
-        grid-template-rows: auto;
-        .banner-menu_item{
-            align-self: stretch;
-        }
+        grid-template-rows:auto;
       }
-
+      .banner-menu_item{
+        min-height: 60px;     
+      }
       .banner-slideshow{
         grid-column:1/11;
+        max-height:180px;
       }
     
     
@@ -156,12 +157,13 @@
       .navbar{
         padding: 0 0.1em;
         .navbar-container{
-          height:54px;
+          height:46px;
         }
       }
       .navbar-webname{
         grid-column: 1/3;
         text-align:center;
+      
         .navbar-webname-title{
           font-size: 5vmin;
         }
@@ -216,6 +218,15 @@
     
       }
     
+      .navbar-hamburger{
+        margin: 4px;
+      }
+      .button_hamburger{
+        height:2px;  
+       
+      }
+      
+    
     //MODAL++++++++++++++++++++++++++++
       .modal-login{
         input{
@@ -255,23 +266,20 @@
       .banner{
           margin: 0.2em auto;
       }
-      .banner-container-grid{
-       
-        grid-template-rows: 40px 110px;
-      }
-
-      .banner-menu{
+       .banner-menu{
         grid-column:1/11;
         grid-template-columns: repeat(8,1fr);
         grid-template-rows: auto;
         .banner-menu_item{
-            align-self: stretch;
+            min-height: 50px;
         }
 
       }
 
     .banner-slideshow{
         grid-column:1/11;
+        
+        min-height: 130px;
         }
     
       // MARKET =======================================================
