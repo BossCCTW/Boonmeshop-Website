@@ -649,11 +649,14 @@ ul {
 .market {
   color: #fff; }
 
+.market-body {
+  position: relative; }
+
 .market-header {
   height: auto;
   display: grid;
   text-align: center;
-  background-color: #37474f;
+  background-color: #3b6082;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.363);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.363);
   position: relative;
@@ -679,7 +682,7 @@ ul {
   font-size: 1.5em; }
 
 .market-filter {
-  background-color: #f4f8fc;
+  background-color: white;
   color: rgba(0, 0, 0, 0.5);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -694,7 +697,19 @@ ul {
     -webkit-transition: 0.3s;
     -o-transition: 0.3s;
     transition: 0.3s;
-    overflow: hidden; }
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch; }
     .market-filter section header {
       font-size: 1em;
       font-weight: 450;
@@ -713,7 +728,7 @@ ul {
       margin-bottom: 0.4em;
       padding: 0.3em 0; }
   .market-filter section:hover {
-    background-color: #546e7a;
+    background-color: #90A9BF;
     color: #fff; }
     .market-filter section:hover header {
       color: #fff; }
@@ -741,6 +756,13 @@ ul {
       .market-filter section.market-filter_range div input[type=number]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0; }
+  .market-filter section.market-filter_submit:hover {
+    background-color: #fff; }
+    .market-filter section.market-filter_submit:hover header {
+      font-size: 1em;
+      font-weight: 450;
+      color: rgba(0, 0, 0, 0.7);
+      margin-bottom: 0.4em; }
 
 /*=================MARKET BODY (CARD)====================*/
 .market-item-container {
@@ -817,7 +839,7 @@ ul {
   padding: 0.5em; }
 
 .card:hover .card-body .card-body_name {
-  color: #3a64f0; }
+  color: #213a70; }
 
 .card:hover .card-body_price .card-body_price__discounted {
   color: #fa423e; }
@@ -833,7 +855,7 @@ ul {
   text-transform: uppercase; }
 
 .card-body .card-body_name {
-  color: rgba(58, 74, 240, 0.7);
+  color: #455199;
   font-size: 2.2vmin;
   font-weight: bold; }
   .card-body .card-body_name h3 {
@@ -851,7 +873,9 @@ ul {
   font-size: 2.4vmin;
   background-color: #fff; }
   .card-body_price .card-body_price__original {
-    color: rgba(0, 0, 0, 0.6);
+    color: rgba(250, 66, 62, 0.8); }
+  .card-body_price .card-body_price__pre-discount {
+    color: rgba(82, 82, 82, 0.8);
     text-decoration: line-through; }
   .card-body_price .card-body_price__discounted {
     color: rgba(250, 66, 62, 0.8); }

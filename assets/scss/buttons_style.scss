@@ -2,35 +2,35 @@
     margin-bottom:0.3em;
     padding:0.6em;
     text-align: center;
-    background-color:#82b3c9;
-    color:#fff;
+    background-color:#ec407a;
+    color:rgba(255, 255, 255, 0.83);
     border-radius:2px;
-    box-shadow: 0.5px 2px  3px rgba(0, 0, 0, 0.4), -0.5px 1px  1px rgba(0, 0, 0, 0.45);
-    border: 1px solid transparent;
+    box-shadow: 0.5px 1px  3px rgba(0, 0, 0, 0.2), -0.5px 1px  1px rgba(0, 0, 0, 0.25);
+    border: 0.5px solid transparent;
     cursor: pointer;
     transition:0.3s;
    
 }
 .button_primary:hover{
-    color: #000;
-    background-color:#e3f2fd;
-    box-shadow: 0.5px 2px  3px rgba(0, 0, 0, 0.1), -0.5px 1px  1px rgba(0, 0, 0, 0.15);
+    color: rgba(255, 255, 255, 0.78);
+    background-color:#b4004e;
+    box-shadow: 0.5px 1px  3px rgba(0, 0, 0, 0.1), -0.5px 1px  1px rgba(0, 0, 0, 0.15);
 }
 .button_reset{
     margin-bottom:0.3em;
     padding:0.6em;
     text-align: center;
-    background-color:#b0bec5;
-    color:#fff;
+    background-color:#cfd8dc;
+    color:rgba(0, 0,0, 0.44);
     border-radius:2px;
-    box-shadow: 0.5px 2px  3px rgba(0, 0, 0, 0.4), -0.5px 1px  1px rgba(0, 0, 0, 0.45);
+    box-shadow: 0.5px 1px  3px rgba(0, 0, 0, 0.2), -0.5px 1px  1px rgba(0, 0, 0, 0.25);
     border: 1px solid transparent;
     cursor: pointer;
     transition:0.3s;
 }
 .button_reset:hover{
-    color: #000;
-    background-color:#c1cfd8;
+    color: rgba(0, 0,0, 0.64);
+    background-color:#9ea7aa;
     box-shadow: 0.5px 2px  3px rgba(0, 0, 0, 0.1), -0.5px 1px  1px rgba(0, 0, 0, 0.15);
 }
 .between-button{
