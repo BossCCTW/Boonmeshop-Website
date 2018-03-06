@@ -7,19 +7,14 @@
 
   <link href="https://fonts.googleapis.com/css?family=Anton|Kanit" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Bungee" rel="stylesheet">
 
+  <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="assets/css/index_style.css">
   <link rel="stylesheet" href="assets/css/responsive_tablets_style.css">
   <link rel="stylesheet" href="assets/css/responsive_mobile_style.css">
   <link rel="stylesheet" href="assets/css/buttons_style.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-  <script src="scripts/event_index.js" type="text/javascript"></script>
-  <script src="scripts/javascript_fundametal.js" type="text/javascript"></script>
 
   <title>Boonme Home</title>
 
@@ -30,50 +25,50 @@
     <div class="navbar-container">
       <div class="navbar-webname">
         <div class="navbar-webname-title">
-          <span class="navbar-icon_title fa fa-desktop" aria-hidden="true"></span>บุญมี
+          <span class="navbar-icon_title fa fa-desktop" aria-hidden="true"></span>BoonMee
         </div>
         <div class="navbar-webname-subtitle">
-          <span>จำหน่ายอุปกรณ์สำหรับโต๊ะทำงาน</span>
+          <span>DESK TOOLS</span>
         </div>
       </div>
       <ul class="navbar-link">
-        <li class="navbar-link_register"><a href="#modallogin">เข้าสู่ระบบ</a>
-          <div class="modal-login-frame" id="modallogin">
+        <li class="navbar-link_register">
+          <a>เข้าสู่ระบบ</a>
             <article class="modal-login">
-               
-              <div class="modal-login_inner">
-                  <h3 class="modal-login_title">USER LOGIN</h3>
-                  <p class="modal-login_sub_title">กรอกข้อมูลผู้ใช้</p>
-                  <p><form class="" action="/userlogin"  method="get">
+              <div class="modal-login_content">
+                <div class="modal-close-container"> <span></span> <span class="modal-btn-close">&times;</span></div>          
+                <h3 class="modal-login_title">USER LOGIN</h3>
+                <p class="modal-login_sub_title">กรอกข้อมูลผู้ใช้</p>
+                  <form class="" action="/userlogin" method="get">
                     <input id="ip-username" type="text" name="username" value="" placeholder="Username or Email" required/>
                     <input id="ip-password" type="password" name="password" value="" placeholder="Password" autocomplete="new-password" required/>
                     <span class="commentuser"></span>
-                    <input type="button" name="" value="LOGIN" onclick="getDataLogin()">
-                  </form></p>
-    
-                  <p><small class="modal-login_link-edite"><a href="/register" target="_blank">สมัครสมาชิก</a></small> | <small class="modal-login_link-edite">ลืมรหัสผ่าน</small></p>
-                  
-              </div>
-              <div class="bt-closemodal">
-                  <a style="color:#bf4848;" href="#"><div class="t-close"></div>close</a>
+                  </form>
+                  <button  name="">LOGIN</button>
+                <div class="modal-login_footer" >
+                  <small class="modal-login_link-edite">
+                    <a href="/register" target="_blank">สมัครสมาชิก</a>
+                  </small> |
+                  <small class="modal-login_link-edite">ลืมรหัสผ่าน</small>         
                 </div>
+              </div>  
             </article>
-           
-          </div>
 
-       </li>
+        </li>
         <li class="navbar-link_download">
-          <a href="#modaldownload">
-          <p>ดาวน์โหลด</p>
-          <i class="fa fa-mobile setfont-icon" aria-hidden="true"></i> <span class="label-app" for="">Mobile-Application</span>
+          <a>
+            <p>ดาวน์โหลด</p>
+            <i class="fa fa-mobile setfont-icon" aria-hidden="true"></i>
+            <span class="label-app" for="">Mobile-Application</span>
           </a>
 
-          <div class="modal-download" id="modaldownload">
-            <article class="modal-download_container">
+          <article class="modal-download">
+            <div class="modal-download_content">
+              <div class="modal-close-container"> <span></span> <span class="modal-btn-close">&times;</span></div>  
               <button class="bt-appstore" type="button" name="button">
-                <div class="bt-container">
+                <div class="bt-download-container">
                   <div class="download-icon">
-                      <img src="assets/imgs/icon/icon_App_Store.png" alt="app store icon">
+                    <img src="assets/imgs/icon/icon_App_Store.png" alt="app store icon">
                   </div>
                   <div class="download-text">
                     <P class="download-text_secondary">DOWNLOAD FORM</P>
@@ -83,29 +78,26 @@
 
               </button>
               <button class="bt-playstore" type="button" name="button">
-                <div class="bt-container">
+                <div class="bt-download-container">
                   <div class="download-icon">
-                      <img src="assets/imgs/icon/icon_google_play.png" alt="play store icon">
+                    <img src="assets/imgs/icon/icon_google_play.png" alt="play store icon">
                   </div>
                   <div class="download-text">
                     <P class="download-text_secondary">DOWNLOAD FORM</P>
                     <P class="download-text_primary">GOOGLE PLAY STORE</P>
                   </div>
                 </div>
-
               </button>
-
-              <div class="" style="padding-top:1em;">
-                <a href="#" style="color:#fff; font-size:0.9em;"><div class="t-close"></div>close</a>
-              </div>
-              </article>
             </div>
+          </article>
 
         </li>
+
         <li class="navbar-link_search">
           <form class="form-search" action="https://google.com/search">
 
-            <input class="material" id="inq" type="search" name="q" title="ค้นหาจากรหัสสินค้า หรือชื่อสินค้า" placeholder=" ค้นหาสินค้า..." required/>
+            <input class="material" id="inq" type="search" name="q" title="ค้นหาจากรหัสสินค้า หรือชื่อสินค้า" placeholder=" ค้นหาสินค้า..."
+              required/>
           </form>
           <!-- <input id="input-search" type="search" name="" value="" placeholder="ค้นหาสินค้า.." title="search from id product and name product" required> -->
         </li>
@@ -114,16 +106,24 @@
             <ul class="navbar-contacts">
 
               <li class="navbar-contact-child">
-                <a href="#"><i class="fa fa-facebook navbar-contact-icon ic-fb" aria-hidden="true"></i></a>
+                <a href="#">
+                  <i class="fa fa-facebook navbar-contact-icon ic-fb" aria-hidden="true"></i>
+                </a>
               </li>
               <li class="navbar-contact-child">
-                <a href="#"><i class="fa fa-instagram navbar-contact-icon ic-ig" aria-hidden="true"></i></a>
+                <a href="#">
+                  <i class="fa fa-instagram navbar-contact-icon ic-ig" aria-hidden="true"></i>
+                </a>
               </li>
               <li class="navbar-contact-child">
-                <a href="#"><i class="fa fa-youtube-play navbar-contact-icon ic-yt" aria-hidden="true"></i></a>
+                <a href="#">
+                  <i class="fa fa-youtube-play navbar-contact-icon ic-yt" aria-hidden="true"></i>
+                </a>
               </li>
               <li class="navbar-contact-child">
-                <a href="#"><i class="fa fa-phone navbar-contact-icon" aria-hidden="true"></i></a>
+                <a href="#">
+                  <i class="fa fa-phone navbar-contact-icon" aria-hidden="true"></i>
+                </a>
               </li>
             </ul>
           </div>
@@ -131,65 +131,70 @@
         </li>
       </ul>
       <div class="navbar-hamburger">
-
         <div class="arrow-hamburger">
         </div>
-          <div class="button_hamburger">
-          </div>
-          <div class="button_hamburger">
-          </div>
-          <div class="button_hamburger">
-          </div>
+        <div class="button_hamburger">
+        </div>
+        <div class="button_hamburger">
+        </div>
+        <div class="button_hamburger">
+        </div>
       </div>
     </div>
-
-
   </div>
-  <div class="container">
 
+  <div class="container">
     <div class="banner">
       <div class="banner-container-grid">
-        
         <div class="banner-menu">
-          <section class="banner-menu_item" id="menulamp">
-              <img src="http://downloadicons.net/sites/default/files/table-lamp-icon-65059.png" alt="" title="Lamp">
+          <section class="banner-menu_item" >
+            <img src="http://downloadicons.net/sites/default/files/table-lamp-icon-65059.png" alt="" title="Lamp">
           </section>
           <section class="banner-menu_item">
-              <img src="http://freevector.co/wp-content/uploads/2011/08/71192-plant-pot.png" alt="">
+            <img src="http://freevector.co/wp-content/uploads/2011/08/71192-plant-pot.png" alt="">
           </section>
           <section class="banner-menu_item">
-              <img src="https://cdn.iconscout.com/public/images/icon/premium/png-512/coffee-cups-drink-cup-cafe-hot-glass-tea-3bbafc1cae509d8e-512x512.png" alt="">
+            <img src="https://cdn.iconscout.com/public/images/icon/premium/png-512/coffee-cups-drink-cup-cafe-hot-glass-tea-3bbafc1cae509d8e-512x512.png"
+              alt="">
           </section>
           <section class="banner-menu_item">
-              <img src="https://cdn3.iconfinder.com/data/icons/automobile-icons/428/Screwdriver_And_Wrench-512.png" alt="">
+            <img src="https://cdn3.iconfinder.com/data/icons/automobile-icons/428/Screwdriver_And_Wrench-512.png" alt="">
           </section>
           <section class="banner-menu_item">
-              <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/120701-200.png" alt=""title="led">
+            <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/120701-200.png" alt="" title="led">
           </section>
           <section class="banner-menu_item">
-              <img src="https://cdn4.iconfinder.com/data/icons/shop-delivery-1/800/storage-512.png" alt="">
-         </section>
+            <img src="https://cdn4.iconfinder.com/data/icons/shop-delivery-1/800/storage-512.png" alt="">
+          </section>
           <section class="banner-menu_item">
-              <img src="http://outsourceworkers.com.au/wp-content/uploads/2014/04/icon_3369-1024x1024-300x300.png" alt="">
+            <img src="http://outsourceworkers.com.au/wp-content/uploads/2014/04/icon_3369-1024x1024-300x300.png" alt="">
           </section>
-          <section class="banner-menu_item" id="btExpandMenu">
-              <img src="http://www.pvhc.net/img26/deywiovgstscbpwrnwli.png" alt="">
+          <section class="banner-menu_item">
+            <img src="http://www.pvhc.net/img26/deywiovgstscbpwrnwli.png" alt="">
           </section>
+        </div>
 
-  
+        <div class="banner-slideshow">    
+          <img src="" alt="ss06">
+          <button class="slideshow-btn" id="slideShowBtnBack">&#9664</button>
+          <button class="slideshow-btn" id="slideShowBtnNext">&#9654</button>
+          <div class="slideshow-selector">
+            
+          </div>
         </div>
-       
-        <div class="banner-slideshow">
-        </div>
-        
-  
-      </div> <!-- banner-container-grid -->
-     
-      
-    </div> <!-- banner-->
-     
+      </div><!-- banner-container-grid -->
+    </div><!-- banner-->
+
 
     <div class="market">
+      <!-- <div class="progress-container">
+        <div class="progress-bar-border">
+            <div class="progress-bar">
+              </div>
+              <div class="progress-bar_button-close"><p> x </p>
+              </div>
+        </div>
+      </div> -->
       <div class="market-header">
         <div class="market-header-icon">
           <img class="market-header-ic-img" src="assets/imgs/icon/market-lamp-ic-white.png" alt="icon-head-market">
@@ -201,59 +206,69 @@
       <div class="market-body">
         <form class="market-filter">
           <section class="market-filter_range">
-              <header>
-                  ช่วงราคา           
-              </header>
-              
-              <article>
-                  <div>
-                      <div>Min</div>
-                      <div>Max</div>
-                    </div>  
-                    <div>
-                        <input type="number" min="1" placeholder="ต่ำสุด">
-                        -
-                        <input type="number" min="1" placeholder="สูงสุด">
-                    </div>                  
-              </article>            
+            <header>
+              ช่วงราคา
+            </header>
+
+            <article>
+              <div>
+                <div>Min</div>
+                <div>Max</div>
+              </div>
+              <div>
+                <input type="number" min="1" placeholder="ต่ำสุด"> -
+                <input type="number" min="1" placeholder="สูงสุด">
+              </div>
+            </article>
           </section>
 
           <section class="market-filter_type">
             <header>ชนิดวัสดุ</header>
             <article>
-                  <label for="wood"> <input type="checkbox" name="" id="wood" value="">ไม้</label><br>
-                  <label for="iron"> <input type="checkbox" name="" id="iron" value="">เหล็ก</label><br>
-                  <label for="cement"> <input type="checkbox" name="" id="cement" value="">ปูน</label> <br>
-                  <label for="plastic"><input type="checkbox" name="" id="plastic" value="">พลาสติก</label>       
+              <label for="wood">
+                <input type="checkbox" name="" id="wood" value="">ไม้</label>
+              <br>
+              <label for="iron">
+                <input type="checkbox" name="" id="iron" value="">เหล็ก</label>
+              <br>
+              <label for="cement">
+                <input type="checkbox" name="" id="cement" value="">ปูน</label>
+              <br>
+              <label for="plastic">
+                <input type="checkbox" name="" id="plastic" value="">พลาสติก</label>
             </article>
-           
-          
+
+
           </section>
           <section class="market-filter_payment">
             <header>รูปแบบการชำระเงิน</header>
-                <select name="" id="">
-                    <option value="">ทั้งหมด</option>
-                    <option value="">โอนเงินพร้อมสั่งสินค้า</option>
-                    <option value="">ชำระเงินปลายทาง</option>
-                  </select>
-            
-            <header>จัดส่งจาก</header> 
-                <select name="" id="select-transpot">
-                    <option value="">ทั้งหมด</option>
-                    <option value="">ส่งจากในประเทศ</option>
-                    <option value="">ส่งจากต่างประเทศ</option>
-                    
-                  </select>         
+            <select name="" id="">
+              <option value="">ทั้งหมด</option>
+              <option value="">โอนเงินพร้อมสั่งสินค้า</option>
+              <option value="">ชำระเงินปลายทาง</option>
+            </select>
+
+            <header>จัดส่งจาก</header>
+            <select name="" id="select-transpot">
+              <option value="">ทั้งหมด</option>
+              <option value="">ส่งจากในประเทศ</option>
+              <option value="">ส่งจากต่างประเทศ</option>
+
+            </select>
           </section>
           <section class="market-filter_searchname">
-              <header>ค้นจากอื่นๆ</header>
-              <article>
-                  <input type="text" placeholder="ค้นจากชื่อสินค้า">
-                  <input type="text" placeholder="ค้นจากรหัสสินค้า">
-                  <label for=""> <input type="checkbox" name="" id="" value="">สินค้าขายดี</label><br>
-                  <label for="wood"> <input type="checkbox" name="" id="wood" value="">สินค้าลดราคา</label><br>
-              </article>
-             
+            <header>ค้นจากอื่นๆ</header>
+            <article>
+              <input type="text" placeholder="ค้นจากชื่อสินค้า">
+              <input type="text" placeholder="ค้นจากรหัสสินค้า">
+              <label for="132">
+                <input type="checkbox" name="" id="123" value="">สินค้าขายดี</label>
+              <br>
+              <label for="133">
+                <input type="checkbox" name="" id="133" value="">สินค้าลดราคา</label>
+              <br>
+            </article>
+
           </section>
           <section class="market-filter_submit">
             <header>
@@ -263,13 +278,13 @@
               <div class="button_primary">
                 ยืนยัน
               </div>
-               <div class="between-button"></div>
+              <div class="between-button"></div>
               <div class="button_reset">
-                  ล้างข้อมูล
+                ล้างข้อมูล
               </div>
             </article>
           </section>
-         
+
         </form>
 
 
@@ -292,24 +307,25 @@
                 </div>
                 <div class="card-body_name">
                   <h3>
-                      Name Product detail dsadasdasdasdas
+                    Name Product detail dsadasdasdasdas
                   </h3>
-                  
-                 
+
+
                 </div>
                 <div class="card-body_id">
                   #0001
                 </div>
                 <div class="card-body_price">
-                    
-                    <span class="card-body_price__original">฿599.</span>
-                    <span class="card-body_price__pre-discount">฿599.</span><span class="card-body_price__discounted"> ฿399.-</span>
-                </div>   
+
+                  <span class="card-body_price__original">฿599.</span>
+                  <span class="card-body_price__pre-discount">฿599.</span>
+                  <span class="card-body_price__discounted"> ฿399.-</span>
+                </div>
               </div>
             </a>
           </div>
 
-          
+
           <div class="card">
             <a class="card-link" href="#">
               <div class="card-image">
@@ -330,13 +346,14 @@
                   #0001
                 </div>
                 <div class="card-body_price">
-                  <span class="card-body_price__original">฿599.</span> <span class="card-body_price__discounted"> ฿399.-</span>
-                </div>   
+                  <span class="card-body_price__original">฿599.</span>
+                  <span class="card-body_price__discounted"> ฿399.-</span>
+                </div>
               </div>
             </a>
           </div>
 
-          
+
           <div class="card">
             <a class="card-link" href="#">
               <div class="card-image">
@@ -357,13 +374,14 @@
                   #0001
                 </div>
                 <div class="card-body_price">
-                  <span class="card-body_price__original">฿599.</span> <span class="card-body_price__discounted"> ฿399.-</span>
-                </div>   
+                  <span class="card-body_price__original">฿599.</span>
+                  <span class="card-body_price__discounted"> ฿399.-</span>
+                </div>
               </div>
             </a>
           </div>
 
-          
+
           <div class="card">
             <a class="card-link" href="#">
               <div class="card-image">
@@ -384,13 +402,14 @@
                   #0001
                 </div>
                 <div class="card-body_price">
-                  <span class="card-body_price__original">฿599.</span> <span class="card-body_price__discounted"> ฿399.-</span>
-                </div>   
+                  <span class="card-body_price__original">฿599.</span>
+                  <span class="card-body_price__discounted"> ฿399.-</span>
+                </div>
               </div>
             </a>
           </div>
 
-          
+
           <div class="card">
             <a class="card-link" href="#">
               <div class="card-image">
@@ -411,16 +430,23 @@
                   #0001
                 </div>
                 <div class="card-body_price">
-                  <span class="card-body_price__original">฿599.</span> <span class="card-body_price__discounted"> ฿399.-</span>
-                </div>   
+                  <span class="card-body_price__original">฿599.</span>
+                  <span class="card-body_price__discounted"> ฿399.-</span>
+                </div>
               </div>
             </a>
           </div>
 
-        </div> <!-- market-item-container -->
-      </div> <!-- market-body -->  
-    </div>  <!-- market -->
+        </div>
+        <!-- market-item-container -->
+      </div>
+      <!-- market-body -->
+    </div>
+    <!-- market -->
+
   </div>
+  <!-- container -->
+
 
 
 
@@ -431,17 +457,21 @@
       <div class="footer-grid">
         <div class="footer-grid-nested">
           <div>
-            - Atom text-editor <span class="lineemply"></span> - Font-awesome
+            - Atom text-editor
+            <span class="lineemply"></span> - Font-awesome
           </div>
           <div>
-            - Jquery <span class="lineemply"></span> - NodeJS
+            - Jquery
+            <span class="lineemply"></span> - NodeJS
           </div>
           <div>
-            - Express <span class="lineemply"></span> - MongoDB
+            - Express
+            <span class="lineemply"></span> - MongoDB
           </div>
           <div>
             - Angular
-            <span class="lineemply"></span> - <span class="fa fa-code footer-txt-head" aria-hidden="true">
+            <span class="lineemply"></span> -
+            <span class="fa fa-code footer-txt-head" aria-hidden="true">
             </span>
             <span class="fa fa-css3 footer-txt-head" aria-hidden="true">
             </span>
@@ -452,21 +482,23 @@
         <div class="footer-grid-child">
           <strong>
             <span class="fa fa-envelope footer-txt-head" aria-hidden="true">
-              </span> chsi.12j@gmail.com<br>
-              <span class="lineemply"></span>
-              <span class="fa fa-phone-square footer-txt-head" aria-hidden="true">
-              </span> 088-2222222
+            </span> chsi.12j@gmail.com
+            <br>
+            <span class="lineemply"></span>
+            <span class="fa fa-phone-square footer-txt-head" aria-hidden="true">
+            </span> 088-2222222
           </strong>
-
-
-
-
         </div>
       </div>
     </div>
   </div>
 
 
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="scripts/event_index.js" type="text/javascript"></script>
+  <script src="scripts/javascript_fundametal.js" type="text/javascript"></script>
 
 </body>
 

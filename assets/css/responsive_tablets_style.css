@@ -1,18 +1,19 @@
 @charset "UTF-8";
 @media (max-width: 860px) and (min-width: 649px) {
-  .navbar {
-    padding: 0 0.1em; }
+  .navbar .navbar-container {
+    margin: 0;
+    padding: 0; }
   .navbar-webname {
     text-align: left; }
     .navbar-webname .navbar-icon_title {
-      margin: 0.3em;
+      margin: 0 0.3em;
       display: inline;
       font-size: 0.8em;
       position: relative; }
   .navbar-webname-subtitle span {
     display: none; }
   .navbar-webname-subtitle:after {
-    font-size: 0.7em;
+    font-size: 1em;
     line-height: 2em;
     content: 'จำหน่ายอุปกรณ์โต๊ะทำงาน'; }
   .navbar-link {
@@ -28,12 +29,11 @@
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
     right: 0;
-    margin: -0.1em;
-    top: -33em;
+    top: -100%;
     opacity: 0;
-    -webkit-transition: 0.4s;
-    -o-transition: 0.4s;
-    transition: 0.4s; }
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s; }
     .navbar-link li {
       display: block;
       width: 100%;
@@ -43,22 +43,25 @@
       background-color: #dde; }
     .navbar-link .navbar-link_register {
       padding: 1.2em 1em; }
+    .navbar-link .navbar-link_search {
+      display: none; }
     .navbar-link .navbar-contacts_container ul li {
       border-top: none;
       margin: 0 0.3em; }
-  .modal-login input {
-    max-width: 100%; }
-  .modal-download .modal-download_container {
-    display: block; }
-    .modal-download .modal-download_container .download-text {
-      font-size: 0.8em; }
   .navbar-hamburger {
+    margin: 0.7em 0.1em;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
   .navbar-link.active {
     opacity: 1;
-    top: 4em; }
+    top: 100%; }
+  .modal-login .modal-login_content {
+    margin: 10% auto;
+    width: 30%; }
+  .modal-download .modal-download_content {
+    margin: 10% auto;
+    width: 40%; }
   .banner {
     margin: 0.2em auto; }
   .banner-menu_item {
@@ -67,7 +70,7 @@
     min-height: 140px;
     max-height: 210px; }
   .market-header-title {
-    font-size: 5vmin; }
+    font-size: 1.3em; }
   .market-item-container {
     margin: 0 0.1em;
     grid-template-columns: repeat(4, 1fr); }

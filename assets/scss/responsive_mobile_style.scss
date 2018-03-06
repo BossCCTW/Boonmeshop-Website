@@ -58,18 +58,16 @@
     
     //MODAL++++++++++++++++++++++++++++
     .modal-login{
-      input{
-        max-width: 100%;
+      .modal-login_content{
+        margin: 15% auto;
+        width:60%;
       }
     }
     
     .modal-download{
-      .modal-download_container{
-        display: block;
-    
-        .download-text{
-          font-size: 0.8em;
-        }
+      .modal-download_content{
+        margin: 15% auto;
+        width:60%;
       }
     }
     //BUTTON HAMBURGER+++++++++++++++++++++++++++++
@@ -115,7 +113,7 @@
     
     // MARKET =======================================================
     .market-header-title{
-      font-size:5vmin;
+      font-size:1.2em;
     }
     
     .market-item-container{
@@ -228,19 +226,17 @@
       
     
     //MODAL++++++++++++++++++++++++++++
-      .modal-login{
-        input{
-          max-width: 100%;
-        }
+    .modal-login{
+      .modal-login_content{
+        margin: 15% auto;
+        width:90%;
       }
-    
+    }
       .modal-download{
-        .modal-download_container{
-          display: block;
+        .modal-download_content{
+          margin: 15% auto;
+          width:90%;
     
-          .download-text{
-            font-size: 0.8em;
-          }
         }
       }
     //BUTTON HAMBURGER+++++++++++++++++++++++++++++

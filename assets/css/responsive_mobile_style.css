@@ -46,12 +46,12 @@
     .navbar-link .navbar-contacts_container ul li {
       border-top: none;
       margin: 0 0.3em; }
-  .modal-login input {
-    max-width: 100%; }
-  .modal-download .modal-download_container {
-    display: block; }
-    .modal-download .modal-download_container .download-text {
-      font-size: 0.8em; }
+  .modal-login .modal-login_content {
+    margin: 15% auto;
+    width: 60%; }
+  .modal-download .modal-download_content {
+    margin: 15% auto;
+    width: 60%; }
   .navbar-hamburger {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -74,7 +74,7 @@
     grid-column: 1/11;
     max-height: 180px; }
   .market-header-title {
-    font-size: 5vmin; }
+    font-size: 1.2em; }
   .market-item-container {
     margin: 0 0.1em;
     grid-template-columns: repeat(4, 1fr); }
@@ -147,12 +147,12 @@
     margin: 4px; }
   .button_hamburger {
     height: 2px; }
-  .modal-login input {
-    max-width: 100%; }
-  .modal-download .modal-download_container {
-    display: block; }
-    .modal-download .modal-download_container .download-text {
-      font-size: 0.8em; }
+  .modal-login .modal-login_content {
+    margin: 15% auto;
+    width: 90%; }
+  .modal-download .modal-download_content {
+    margin: 15% auto;
+    width: 90%; }
   .navbar-hamburger {
     display: -webkit-box;
     display: -ms-flexbox;

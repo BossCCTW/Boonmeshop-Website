@@ -1,0 +1,28 @@
+body {
+  background-color: grey;
+  text-align: center; }
+
+h1 {
+  color: #fff; }
+
+ul {
+  background-color: #5fc2c2;
+  list-style-type: none; }
+  ul li {
+    background: #fff;
+    color: blue;
+    margin: 0.5em; }
+    ul li i {
+      background-color: #eee;
+      padding: 0.5em;
+      color: red;
+      cursor: pointer; }
+
+.state_container {
+  background: #eee;
+  padding: 1em; }
+  .state_container h1 {
+    color: #342; }
+
+.click_container {
+  background-color: #74b67f; }
