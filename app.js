@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+const fileSystem = require('fs');
+const pathSlideShow = __dirname+'/assets/imgs/slideshow';
+
 //set ให้ express รู้จักไฟล์ต่างๆภายนอก เมื่อมีการลิงค์ไฟล์ css image icon
 app.use('/assets', express.static(__dirname + '/assets/'));
 app.use('/scripts', express.static(__dirname + '/scripts/'));
@@ -15,14 +18,35 @@ app.get('/register', function (req, res) {
     res.sendFile(__dirname + '/register.html');
 });
 
+//send file html ADMIN
+app.get('/admin',(req,res)=>{
+    res.sendFile(__dirname+'/admin.html');
+});
+
+
+
 app.get('/person', function (req, res) {
     res.sendFile(__dirname + '/person.html');
+});
+
+
+
+
+app.get('/slideShow',(req,res)=>{
+    fileSystem.readdir(pathSlideShow,(err,files)=>{
+        // files.forEach(file =>{  
+        // });
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify(files));
+    });
 });
 
 
 app.listen(2000, function () {
     console.log("Boonme Web Server is running...");
 });
+
+
 
 
 

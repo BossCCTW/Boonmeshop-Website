@@ -101,11 +101,6 @@
 
 // console.log(Car);
 
-let name = 'Chanin'
-let lastname = 'sitthibunrueang';
-let now = `Name: ${name} \nLastName: ${lastname}`;
-console.log(now);
-
 
 
 

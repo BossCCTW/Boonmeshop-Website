@@ -1,0 +1,22 @@
+.navbar-shadow{
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,0.3);
+}
+.bg-blue-grey50{
+    background-color:#ECEFF1;
+}
+
+.menu-product_body{
+    .menu-item{
+        .menu-item-toolbar{
+            background-color:#FF9800;
+            opacity: 0.3;
+            .menu-item-toolbar-icon{
+                cursor: pointer;
+               font-size: 0.7em;
+            }
+        }
+        .menu-item-toolbar:hover{
+            opacity:0.8;
+        }
+    }
+}

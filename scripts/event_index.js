@@ -1,4 +1,5 @@
 "use strict";
+
 let Navbar = (function(){
     //Navbar DOM
     let $navbar = $('.navbar').find('.navbar-container');
@@ -71,16 +72,17 @@ let Navbar = (function(){
 })();
 
 let Menu = (function(){
-
 })();
 
-let Slideshow = (function(){
+let Slideshow = (function(){ 
     let index = 0;
     let nowIndex = 0;
+    let imagesList = [];
+    
     const time = 2000;
     const pathImage ='assets/imgs/slideshow/';
-    let imagesName = ['ss01.jpg','ss02.jpg','ss03.jpg','ss04.jpg','ss05.jpg','ss06.jpg'];
-
+    const url = 'http://localhost:2000/slideShow';
+    
     //Catch DOM
     let $slideShowContainer = $('.container').find('.banner-slideshow');
     let $slideShow = $slideShowContainer.find('img');
@@ -94,14 +96,24 @@ let Slideshow = (function(){
     $selectorContainer.on('click','span',setImageSelector);
    
     //set default html
-    setAmountSelector(imagesName.length);
-    setSlideLoop();
+      getImages(ResImgsList =>{
+        imagesList = ResImgsList;
+        setAmountSelector(imagesList.length);
+        setSlideLoop();
+      });
+     
+
+    function getImages(callback){
+      fetchHttp(url,'GET','',callback);
+    }
+   
+
 
     function setSlideLoop(){
-      $slideShow.attr('src',pathImage+imagesName[index]);
+      $slideShow.attr('src',pathImage+imagesList[index]);
       nowIndex = index; //backup Real index before index++ 
       setPositionSelector(index);
-      if(index <imagesName.length-1){
+      if(index <imagesList.length-1){
         index++;
       }else{
         index = 0;
@@ -109,20 +121,21 @@ let Slideshow = (function(){
       setTimeout(setSlideLoop,time);
     }
 
-    function setAmountSelector(count){
+    function setAmountSelector(count){   
       for(let i = 0; i<count; i++){
         $selectorContainer.append(`<span>&bull;</span>`);
       }
     }
 
     function setImageSelector(event){
+   
       if(event.data){
           if(event.data.slide == 'next'){   
               if(index>nowIndex){
                 index = nowIndex;
               }
                 index = index+1;                                     
-              if(index == imagesName.length){
+              if(index == imagesList.length){
                   index = 0;
               }
           }else{
@@ -132,7 +145,7 @@ let Slideshow = (function(){
               }
               index = index-1;       
               if(isNaN(index) ||index < 0){
-                  index = imagesName.length-1; 
+                  index = imagesList.length-1; 
               }
           }
         
@@ -141,12 +154,12 @@ let Slideshow = (function(){
           index = target;
       }
      
-      $slideShow.attr('src',pathImage+imagesName[index]);
+      $slideShow.attr('src',pathImage+imagesList[index]);
       setPositionSelector(index);
       nowIndex = index;
     }
     function setPositionSelector(indexTarget){
-      for(let i = 0; i < imagesName.length; i++){
+      for(let i = 0; i < imagesList.length; i++){
         if(i == indexTarget){
           $selectorContainer.children().eq(indexTarget).css('color','#fff');
         }else{
@@ -154,8 +167,35 @@ let Slideshow = (function(){
         }
       }
     }
+  
+})();
+
+let Admind =(function(){
+  let $linkToAdminPage = $('.footer-grid').find('.footer-grid-child');
+  $linkToAdminPage.on('click',()=>{
+    window.open('/admin');
+  });
     
 })();
+
+
+
+
+function fetchHttp(url,method,data ='',callbackFunc){ 
+   let xhr = new XMLHttpRequest();
+   let urlServ = url+data;
+   xhr.open(method,urlServ,true);
+   xhr.setRequestHeader('Content-type','text/plain');
+   xhr.onreadystatechange = resFromServ;
+   xhr.send();
+
+  function resFromServ(){
+      if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200) {
+        let dataRespond = JSON.parse(xhr.responseText);
+        callbackFunc(dataRespond);
+      }
+  }
+}
 
 
 
