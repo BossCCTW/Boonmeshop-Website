@@ -602,11 +602,11 @@ input:-moz-placeholder {
     text-align: center;
     padding: 0.2em;
     color: black;
-    background: -webkit-gradient(linear, left top, right top, from(#ffffff), to(#bedcff));
-    background: -webkit-linear-gradient(left, #ffffff, #bedcff);
-    background: -o-linear-gradient(left, #ffffff, #bedcff);
-    background: linear-gradient(to right, #ffffff, #bedcff);
-    opacity: 0.7;
+    background: -webkit-gradient(linear, left top, right top, from(#fda8a8), to(#f06f6f));
+    background: -webkit-linear-gradient(left, #fda8a8, #f06f6f);
+    background: -o-linear-gradient(left, #fda8a8, #f06f6f);
+    background: linear-gradient(to right, #fda8a8, #f06f6f);
+    opacity: 0.8;
     width: 100%;
     position: absolute;
     top: 0; }
