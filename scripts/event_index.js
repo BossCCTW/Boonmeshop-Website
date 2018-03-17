@@ -170,6 +170,13 @@ let Slideshow = (function(){
   
 })();
 
+let Promotion = (function(){
+    let $promotionContainer = $('.container').find('.banner .banner-container-grid .banner-menu .banner-slideshow_hotproduct');
+    $promotionContainer.on('click',()=>{
+      alert('1');
+    })
+})();
+
 let Admind =(function(){
   let $linkToAdminPage = $('.footer-grid').find('.footer-grid-child');
   $linkToAdminPage.on('click',()=>{
