@@ -171,10 +171,32 @@ let Slideshow = (function(){
 })();
 
 let Promotion = (function(){
-    let $promotionContainer = $('.container').find('.banner .banner-container-grid .banner-menu .banner-slideshow_hotproduct');
-    $promotionContainer.on('click',()=>{
-      alert('1');
-    })
+    
+    //Catch DOM
+    let $promotionContainer = $('.container').find('.banner .banner-container-grid .banner-menu .banner-slideshow_promotion');
+    let $slideShowImagesContainer = $promotionContainer.find('.slideshow_imgs_container');
+    let $btnBack = $promotionContainer.children('#btnBack');
+    let $btnNext = $promotionContainer.children('#btnNext');
+
+    let lengthDiv = $slideShowImagesContainer.find('>*').length;
+    let count = 0;
+
+    //Bind event
+    $btnBack.on('click',scrollBack);
+    $btnNext.on('click',scrollNext);
+    
+
+    function scrollBack(){
+    }
+    function scrollNext(){
+      $slideShowImagesContainer.scrollLeft += 50;
+      console.log($slideShowImagesContainer.scrollLeft);
+      
+      
+      // $slideShowImagesContainer.animate({
+      //   scrollLeft: 20
+      // });
+    }
 })();
 
 let Admind =(function(){
