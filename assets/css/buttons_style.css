@@ -1,44 +1,38 @@
 .button_primary {
-  margin-bottom: 0.3em;
-  padding: 0.6em;
+  padding: 1em;
   text-align: center;
-  background-color: #ec407a;
+  background-color: #5266bb;
   color: rgba(255, 255, 255, 0.83);
   border-radius: 2px;
-  -webkit-box-shadow: 0.5px 1px 3px rgba(0, 0, 0, 0.2), -0.5px 1px 1px rgba(0, 0, 0, 0.25);
-  box-shadow: 0.5px 1px 3px rgba(0, 0, 0, 0.2), -0.5px 1px 1px rgba(0, 0, 0, 0.25);
-  border: 0.5px solid transparent;
-  cursor: pointer;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.35), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.35), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s; }
-
-.button_primary:hover {
-  color: rgba(255, 255, 255, 0.78);
-  background-color: #b4004e;
-  -webkit-box-shadow: 0.5px 1px 3px rgba(0, 0, 0, 0.1), -0.5px 1px 1px rgba(0, 0, 0, 0.15);
-  box-shadow: 0.5px 1px 3px rgba(0, 0, 0, 0.1), -0.5px 1px 1px rgba(0, 0, 0, 0.15); }
+  .button_primary:hover, .button_primary:active {
+    cursor: pointer;
+    color: #fff;
+    background-color: #758cf5;
+    -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.45), 0px 5px 15px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.45), 0px 5px 15px 0px rgba(0, 0, 0, 0.12); }
 
 .button_reset {
-  margin-bottom: 0.3em;
-  padding: 0.6em;
+  padding: 1em;
   text-align: center;
-  background-color: #cfd8dc;
-  color: rgba(0, 0, 0, 0.44);
+  background-color: #7e7e7e;
+  color: #fff;
   border-radius: 2px;
-  -webkit-box-shadow: 0.5px 1px 3px rgba(0, 0, 0, 0.2), -0.5px 1px 1px rgba(0, 0, 0, 0.25);
-  box-shadow: 0.5px 1px 3px rgba(0, 0, 0, 0.2), -0.5px 1px 1px rgba(0, 0, 0, 0.25);
-  border: 1px solid transparent;
-  cursor: pointer;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.35), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.35), 0px 2px 10px 0px rgba(0, 0, 0, 0.15);
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s; }
-
-.button_reset:hover {
-  color: rgba(0, 0, 0, 0.64);
-  background-color: #9ea7aa;
-  -webkit-box-shadow: 0.5px 2px 3px rgba(0, 0, 0, 0.1), -0.5px 1px 1px rgba(0, 0, 0, 0.15);
-  box-shadow: 0.5px 2px 3px rgba(0, 0, 0, 0.1), -0.5px 1px 1px rgba(0, 0, 0, 0.15); }
+  .button_reset:hover, .button_reset:active {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.64);
+    background-color: #dddddd;
+    -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.45), 0px 5px 15px 0px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.45), 0px 5px 15px 0px rgba(0, 0, 0, 0.12); }
 
 .between-button {
   padding: 0.5em 0; }

@@ -58,19 +58,36 @@
     top: 100%; }
   .modal-login .modal-login_content {
     margin: 10% auto;
-    width: 30%; }
+    width: 40%; }
   .modal-download .modal-download_content {
     margin: 10% auto;
     width: 40%; }
   .banner {
-    margin: 0.2em auto; }
+    margin: 0.5em; }
   .banner-menu_item {
     min-height: 70px; }
-  .banner-slideshow {
-    min-height: 140px;
-    max-height: 210px; }
-  .market-header-title {
-    font-size: 1.3em; }
+  .menu {
+    margin-bottom: 0.5em; }
+    .menu .menu-products {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
+      .menu .menu-products section {
+        margin: 0.1em;
+        width: 15%; }
+  .market-header {
+    margin: 0.5em; }
+  .market-header_titlebar-title {
+    font-size: 1.4em; }
+  .market-body {
+    margin: 0.5em; }
   .market-item-container {
     margin: 0 0.1em;
     grid-template-columns: repeat(4, 1fr); }

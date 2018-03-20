@@ -1,150 +1,127 @@
-@media (max-width:860px) and (min-width:649px){
-    // NAVBAR =======================================================
-    .navbar{
-      
-      .navbar-container{
-        margin: 0;
-        padding: 0;
-        
-      }
+@media (max-width:860px) and (min-width:649px) {
+  // NAVBAR =======================================================
+  .navbar {
+    .navbar-container {
+      margin: 0;
+      padding: 0;
     }
-    .navbar-webname{
-      text-align:left;
-      .navbar-icon_title{
-        margin: 0 0.3em;
-        display: inline;
-        font-size: 0.8em;
-        position: relative;
-  
-      }
-    }
-    .navbar-webname-subtitle span{
-      display:none;
-    }
-    .navbar-webname-subtitle:after{
-      font-size: 1em;
-      line-height: 2em;
-      content:'จำหน่ายอุปกรณ์โต๊ะทำงาน';
-    }
-    //LINK+++++++++++++++++++++++++++++
-    .navbar-link{
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      background-color:#fff;
-      box-shadow:0 1px 1px rgba(0, 0, 0, 0.15),0 1px 10px rgba(0, 0, 0, 0.1);
-      right:0;
-      
-  
-      top:-100%;//เลื่อนให้ ลิงค์ ไปอยู่ด้านบน ไม่ให้เห็นหากยังไม่มีการกดปุ่ม hamburger
-      opacity: 0;
-      transition: 0.3s;
-  
-      li{
-        display: block;
-        width: 100%;
-        padding:0.5em 3em;
-        border-top: 1px solid rgba(0, 0, 0, 0.15);
-  
-      }
-      li:hover{
-        background-color:#dde;
-      }
-      .navbar-link_register{
-        padding:1.2em 1em;
-      }
-      .navbar-link_search{
-        display:none;
-        // background: blue;
-      }
-      .navbar-contacts_container ul li{
-        border-top: none;
-        margin: 0 0.3em;
-      }
-  
-    }
-
-     //BUTTON HAMBURGER+++++++++++++++++++++++++++++
-     .navbar-hamburger{
-       margin:0.7em 0.1em;
-      display:flex;//สั่งให้แสดงปุ่ม hamburger ขึ้นเมื่อมีหน้าจอที่กำหนด
-      
-    }
-  
-    //หากงง ให้กลับไปดูโค้ด js ด้านบน
-    //ใช้ javascript ช่วย เมื่อมีการกดปุ่ม hamburger
-    // .navbar-link จะถูกเพิ่ม class active เข้ามาใน html
-    // เมื่อ navbar-link active ==>css ด้านล่างจะทำงาน
-    // สั่งให้ navbar-link เลื่อนลงมาในตำแหน่งที่กำหนดและ opacity แสดง
-    .navbar-link.active{
-        opacity:1;
-        top:100%;
-    }
-  
-  //MODAL++++++++++++++++++++++++++++
-    .modal-login{
-      .modal-login_content{
-        margin: 10% auto;      
-        width:30%;
-      }
-    }
-  
-    .modal-download{
-      .modal-download_content{
-        margin: 10% auto;
-        width: 40%;
-       
-      }
-    }
- 
-  
-  
-  
-  
-  
-    // BANNER =======================================================
-    .banner{
-      margin: 0.2em auto;
   }
-    .banner-menu_item{
-      min-height: 70px;
+  .navbar-webname {
+    text-align: left;
+    .navbar-icon_title {
+      margin: 0 0.3em;
+      display: inline;
+      font-size: 0.8em;
+      position: relative;
+    }
+  }
+  .navbar-webname-subtitle span {
+    display: none;
+  }
+  .navbar-webname-subtitle:after {
+    font-size: 1em;
+    line-height: 2em;
+    content: 'จำหน่ายอุปกรณ์โต๊ะทำงาน';
+  } //LINK+++++++++++++++++++++++++++++
+  .navbar-link {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
+    right: 0;
+    top: -100%; //เลื่อนให้ ลิงค์ ไปอยู่ด้านบน ไม่ให้เห็นหากยังไม่มีการกดปุ่ม hamburger
+    opacity: 0;
+    transition: 0.3s;
+    li {
+      display: block;
+      width: 100%;
+      padding: 0.5em 3em;
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    li:hover {
+      background-color: #dde;
+    }
+    .navbar-link_register {
+      padding: 1.2em 1em;
+    }
+    .navbar-link_search {
+      display: none; // background: blue;
+    }
+    .navbar-contacts_container ul li {
+      border-top: none;
+      margin: 0 0.3em;
+    }
+  } //BUTTON HAMBURGER+++++++++++++++++++++++++++++
+  .navbar-hamburger {
+    margin: 0.7em 0.1em;
+    display: flex; //สั่งให้แสดงปุ่ม hamburger ขึ้นเมื่อมีหน้าจอที่กำหนด
+  } //หากงง ให้กลับไปดูโค้ด js ด้านบน
+  //ใช้ javascript ช่วย เมื่อมีการกดปุ่ม hamburger
+  // .navbar-link จะถูกเพิ่ม class active เข้ามาใน html
+  // เมื่อ navbar-link active ==>css ด้านล่างจะทำงาน
+  // สั่งให้ navbar-link เลื่อนลงมาในตำแหน่งที่กำหนดและ opacity แสดง
+  .navbar-link.active {
+    opacity: 1;
+    top: 100%;
+  } //MODAL++++++++++++++++++++++++++++
+  .modal-login {
+    .modal-login_content {
+      margin: 10% auto;
+      width: 40%;
+    }
+  }
+  .modal-download {
+    .modal-download_content {
+      margin: 10% auto;
+      width: 40%;
+    }
+  } 
+  // BANNER =======================================================
+  .banner {
+    margin: 0.5em;
+  }
+  .banner-menu_item {
+    min-height: 70px;
+  } 
+  .menu{
+    margin-bottom:0.5em;
+    .menu-products{
+      display:flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      section{
+        margin: 0.1em;
+        width:15%;
+      }
+    }
+  }
+  // MARKET =======================================================
+  .market-header{
+    margin: 0.5em;
+  }
 
-    }
-    
-    
-    
-    .banner-slideshow{
-      min-height: 140px;
-      max-height: 210px;
-    }
-    
+  .market-header_titlebar-title{
+    font-size:1.4em;
+  }
+  .market-body{
+    margin: 0.5em;
+  }
+  .market-item-container {
+    margin: 0 0.1em;
+    grid-template-columns: repeat(4, 1fr);
+  } 
   
-  
-    // MARKET =======================================================
-    .market-header-title{
-      font-size:1.3em;
-    }
-  
-    .market-item-container{
-      margin: 0 0.1em;
-      grid-template-columns:repeat(4,1fr);
-    }
-    
-  
-    //FOOTER =======================================================
-  .footer-container{
+  //FOOTER =======================================================
+  .footer-container {
     padding: 1em;
     font-size: 2.5vmin;
   }
-    .footer-grid-nested{
-      grid-column: 1/6;
-     grid-template-columns:repeat(2,1fr);
-    }
-  
-    .footer-grid-child{
-      grid-column: 1/6;
-    }
-  
+  .footer-grid-nested {
+    grid-column: 1/6;
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  
+  .footer-grid-child {
+    grid-column: 1/6;
+  }
+}

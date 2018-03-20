@@ -1,20 +1,18 @@
 @charset "UTF-8";
 @media (max-width: 650px) and (min-width: 500px) {
   .navbar {
-    padding: 0 0.1em; }
+    padding: 0 0.5em; }
+    .navbar div {
+      height: 40px; }
   .navbar-webname {
     text-align: left; }
     .navbar-webname .navbar-icon_title {
       margin: 0.3em;
       display: inline;
-      font-size: 0.8em;
+      font-size: 1em;
       position: relative; }
   .navbar-webname-subtitle span {
     display: none; }
-  .navbar-webname-subtitle:after {
-    font-size: 0.7em;
-    line-height: 2em;
-    content: 'จำหน่ายอุปกรณ์โต๊ะทำงาน'; }
   .navbar-link {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -56,25 +54,79 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin: 4px; }
-  .button_hamburger {
-    height: 2px; }
+    margin: 0; }
+    .navbar-hamburger div {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1; }
+    .navbar-hamburger .button_hamburger {
+      height: 1px; }
   .navbar-link.active {
     opacity: 1;
-    top: 4em; }
+    top: 120%; }
   .banner {
-    margin: 0.2em auto; }
-  .banner-menu {
-    grid-column: 1/11;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: auto; }
-  .banner-menu_item {
-    min-height: 60px; }
-  .banner-slideshow {
-    grid-column: 1/11;
-    max-height: 180px; }
-  .market-header-title {
-    font-size: 1.2em; }
+    margin: 0.5em; }
+    .banner .banner-container-grid {
+      grid-template-rows: 1fr 1fr; }
+      .banner .banner-container-grid .banner-slideshow_promotion {
+        grid-column: 1/13; }
+        .banner .banner-container-grid .banner-slideshow_promotion .slideshow_promotion-title {
+          padding: 0.8em; }
+        .banner .banner-container-grid .banner-slideshow_promotion .promotion-container {
+          max-height: 250px; }
+        .banner .banner-container-grid .banner-slideshow_promotion .slideshow_promotion-btn {
+          padding: 0.5em; }
+      .banner .banner-container-grid .banner-slideshow {
+        grid-column: 1/13;
+        padding: 0 15%;
+        background-color: #424242; }
+        .banner .banner-container-grid .banner-slideshow .slideshow-btn {
+          padding: 0.5em; }
+        .banner .banner-container-grid .banner-slideshow .slideshow-selector {
+          left: 0; }
+  .menu {
+    margin-bottom: 0.5em; }
+    .menu .menu-products {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
+      .menu .menu-products section {
+        margin: 0.1em;
+        width: 15%; }
+        .menu .menu-products section img {
+          width: 60%;
+          height: 60%; }
+  .market-header {
+    margin: 0.5em; }
+    .market-header .market-header_titlebar .market-header_titlebar-title {
+      font-size: 1.6em; }
+    .market-header .market-header_titlebar .market-header_titlebar-button {
+      display: block;
+      padding: 12%; }
+    .market-header .market-filterbar {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      display: none;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      width: 50%;
+      height: 100%;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
+  .market-body {
+    margin: 0.5em; }
   .market-item-container {
     margin: 0 0.1em;
     grid-template-columns: repeat(4, 1fr); }
@@ -161,24 +213,71 @@
     opacity: 1;
     top: 4em; }
   .banner {
-    margin: 0.2em auto; }
-  .banner-menu {
-    grid-column: 1/11;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: auto; }
-    .banner-menu .banner-menu_item {
-      min-height: 50px; }
-  .banner-slideshow {
-    grid-column: 1/11;
-    min-height: 130px; }
-  .market-header img {
-    margin: 0.5em;
-    max-width: 30px;
-    max-height: 30px; }
-  .market-header-title {
-    font-size: 4vmin; }
-  .market-filter {
-    display: none; }
+    margin: 0.5em; }
+    .banner .banner-container-grid {
+      grid-template-rows: 1fr 1fr; }
+      .banner .banner-container-grid .banner-slideshow_promotion {
+        grid-column: 1/13; }
+        .banner .banner-container-grid .banner-slideshow_promotion .slideshow_promotion-title {
+          padding: 0.8em; }
+        .banner .banner-container-grid .banner-slideshow_promotion .promotion-container {
+          max-height: 250px; }
+        .banner .banner-container-grid .banner-slideshow_promotion .slideshow_promotion-btn {
+          padding: 0.5em; }
+      .banner .banner-container-grid .banner-slideshow {
+        grid-column: 1/13;
+        padding: 0 15%;
+        background-color: #424242; }
+        .banner .banner-container-grid .banner-slideshow .slideshow-btn {
+          padding: 0.5em; }
+        .banner .banner-container-grid .banner-slideshow .slideshow-selector {
+          left: 0; }
+  .menu {
+    margin-bottom: 0.5em; }
+    .menu .menu-products {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
+      .menu .menu-products section.menu-item {
+        margin: 0.1em;
+        padding: 0.2em !important;
+        width: 20%; }
+        .menu .menu-products section.menu-item img {
+          width: 60% !important;
+          height: 60% !important; }
+  .market-header {
+    margin: 0.5em; }
+    .market-header .market-header_titlebar .market-header_titlebar-title {
+      font-size: 1.6em; }
+    .market-header .market-header_titlebar .market-header_titlebar-button {
+      display: block;
+      padding: 10%;
+      width: 50px;
+      height: 50px; }
+    .market-header .market-filterbar {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      display: none;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      width: 70%;
+      height: 100%;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center; }
+  .market-body {
+    margin: 0.5em; }
   .market-item-container {
     margin: 0 0.1em;
     grid-template-columns: repeat(4, 1fr); }

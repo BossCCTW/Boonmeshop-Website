@@ -194,7 +194,7 @@ let Promotion = (function () {
 
   //Catch DOM
   let $promotionContainer = $('.container').find('.banner .banner-container-grid .banner-slideshow_promotion');
-  let $slideShowImagesContainer = $promotionContainer.find('.slideshow_promotion_container');
+  let $slideShowImagesContainer = $promotionContainer.find('.promotion-container');
   let $slideItem = $slideShowImagesContainer.children('.promotion-item');
   let $btnBack = $promotionContainer.children('#btnBack');
   let $btnNext = $promotionContainer.children('#btnNext');
@@ -212,6 +212,8 @@ let Promotion = (function () {
 
   function scrollBack() {
     // $slideShowImagesContainer.scrollLeft(setScaleScroll(--count))
+    console.log('back scroll');
+    
     $slideShowImagesContainer.animate({
       scrollLeft: setScaleScroll(--count)
     });
@@ -219,6 +221,8 @@ let Promotion = (function () {
 
   function scrollNext() {
     // $slideShowImagesContainer.scrollLeft(setScaleScroll(++count)); 
+    console.log('next scroll');
+    
     $slideShowImagesContainer.animate({
       scrollLeft: setScaleScroll(++count)
     });
