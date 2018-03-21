@@ -795,9 +795,9 @@ input:-moz-placeholder {
   background: linear-gradient(to right, #636681, #292c4c);
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
-  z-index: 100;
-  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.35), 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.35), 0px 5px 15px 0px rgba(0, 0, 0, 0.15); }
+  z-index: 1;
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.35), 0px 5px 20px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.35), 0px 5px 20px 0px rgba(0, 0, 0, 0.15); }
 
 .market-header_titlebar-button {
   display: none;
@@ -847,17 +847,36 @@ input:-moz-placeholder {
   display: -ms-flexbox;
   display: flex; }
 
+@-webkit-keyframes fadeToRight {
+  from {
+    opacity: 0;
+    left: -50%; }
+  to {
+    opacity: 1;
+    left: 0%; } }
+
+@keyframes fadeToRight {
+  from {
+    opacity: 0;
+    left: -50%; }
+  to {
+    opacity: 1;
+    left: 0%; } }
+
 .market-filterbar {
-  display: grid;
-  grid-column: 1/6;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 0.6em;
-  background-color: white;
-  color: rgba(0, 0, 0, 0.5);
-  padding: 1em;
-  text-align: left;
-  -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25), 1px 3px 5px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25), 1px 3px 5px 0px rgba(0, 0, 0, 0.1); }
+  grid-column: 1/6; }
+  .market-filterbar .filterbar-content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0.6em;
+    background-color: white;
+    color: rgba(0, 0, 0, 0.5);
+    padding: 1em;
+    text-align: left;
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25), 1px 3px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25), 1px 3px 5px 0px rgba(0, 0, 0, 0.1);
+    -webkit-animation: fadeToRight 0.3s;
+    animation: fadeToRight 0.3s; }
   .market-filterbar div {
     grid-column: 1/6;
     text-align: center; }
@@ -904,7 +923,7 @@ input:-moz-placeholder {
     color: #fff; }
     .market-filterbar section:hover header {
       color: #fff; }
-  .market-filterbar section.market-filterbar_range {
+  .market-filterbar section.filterbar_range {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -912,7 +931,7 @@ input:-moz-placeholder {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column; }
-    .market-filterbar section.market-filterbar_range div {
+    .market-filterbar section.filterbar_range div {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
@@ -920,15 +939,15 @@ input:-moz-placeholder {
       -ms-flex-pack: justify;
       justify-content: space-between;
       /* For Firefox */ }
-      .market-filterbar section.market-filterbar_range div input {
+      .market-filterbar section.filterbar_range div input {
         width: 4em; }
-      .market-filterbar section.market-filterbar_range div input[type='number'] {
+      .market-filterbar section.filterbar_range div input[type='number'] {
         -moz-appearance: textfield; }
-      .market-filterbar section.market-filterbar_range div input[type=number]::-webkit-inner-spin-button,
-      .market-filterbar section.market-filterbar_range div input[type=number]::-webkit-outer-spin-button {
+      .market-filterbar section.filterbar_range div input[type=number]::-webkit-inner-spin-button,
+      .market-filterbar section.filterbar_range div input[type=number]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0; }
-  .market-filterbar section.market-filterbar_submit article {
+  .market-filterbar section.filterbar_submit article {
     height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -939,9 +958,9 @@ input:-moz-placeholder {
     flex-direction: column;
     -ms-flex-pack: distribute;
     justify-content: space-around; }
-  .market-filterbar section.market-filterbar_submit:hover {
+  .market-filterbar section.filterbar_submit:hover {
     background-color: #fff; }
-    .market-filterbar section.market-filterbar_submit:hover header {
+    .market-filterbar section.filterbar_submit:hover header {
       font-size: 1em;
       font-weight: 450;
       color: rgba(0, 0, 0, 0.7);

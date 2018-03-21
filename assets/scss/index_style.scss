@@ -788,8 +788,8 @@ input:-moz-placeholder {
   background: linear-gradient(to right, #636681, #292c4c);
   border-top-left-radius: 1em;
   border-top-right-radius: 1em;
-  z-index: 100;
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.35), 0px 5px 15px 0px rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.35), 0px 5px 20px 0px rgba(0, 0, 0, 0.15);
 }
 
 .market-header_titlebar-button {
@@ -828,25 +828,36 @@ input:-moz-placeholder {
   display: flex;
 }
 
+@keyframes fadeToRight{
+  from{
+    opacity:0;
+    left: -50%;
+  }
+  to{
+    opacity:1;
+    left:0%;
+  }
+}
 .market-filterbar {
-  display: grid;
   grid-column: 1/6;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 0.6em;
-
-
-
-  background-color: rgb(255, 255, 255);
-  color: rgba(0, 0, 0, 0.5);
-  padding: 1em; // position: absolute;
-  text-align: left; // 
-  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25), 1px 3px 5px 0px rgba(0, 0, 0, 0.1);
+ 
   // position: absolute;
   // transform: translateY(0);
+  .filterbar-content{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 0.6em;
+
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.5);
+    padding: 1em; // position: absolute;
+    text-align: left; // 
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.25), 1px 3px 5px 0px rgba(0, 0, 0, 0.1);
+    animation: fadeToRight 0.3s;
+  }
   div{
     grid-column: 1/6;
     text-align: center;
-   
   }
   section {
     padding: 0.5em;
@@ -887,7 +898,7 @@ input:-moz-placeholder {
       color: #fff;
     }
   }
-  section.market-filterbar_range {
+  section.filterbar_range {
     display: flex;
     flex-direction: column;
     div {
@@ -907,7 +918,7 @@ input:-moz-placeholder {
       }
     }
   }
-  section.market-filterbar_submit{
+  section.filterbar_submit{
     article{
       height: 100%;
       display:flex;
@@ -915,7 +926,7 @@ input:-moz-placeholder {
       justify-content: space-around;
     }
   }
-  section.market-filterbar_submit:hover {
+  section.filterbar_submit:hover {
     background-color: #fff;
     header {
       font-size: 1em;

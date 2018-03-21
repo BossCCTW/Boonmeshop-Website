@@ -78,9 +78,10 @@
       flex-flow: row wrap;
       -webkit-box-pack: center;
       -ms-flex-pack: center;
-      justify-content: center; }
+      justify-content: center;
+      margin: 0 2em; }
       .menu .menu-products section {
-        margin: 0.1em;
+        margin: 0.2em;
         width: 15%; }
   .market-header {
     margin: 0.5em; }

@@ -1,5 +1,4 @@
 "use strict";
-
 let Navbar = (function () {
   //Navbar DOM
   let $navbar = $('.navbar').find('.navbar-container');
@@ -84,7 +83,9 @@ let Navbar = (function () {
     $link.toggleClass('active'); //สั่งให้ navbar ใช้คลาส active เพื่อสไลด์ลงมา
   }
 
-
+  return {
+    stopCallParent: stopCallParent
+  }
 })();
 
 let Menu = (function () {})();
@@ -239,6 +240,31 @@ let Promotion = (function () {
     return widthItem * c;
   }
 })();
+
+let Filter = (function(){
+    let $HeaderContainer = $('.market').children('.market-header');
+    let $titleHeader  = $HeaderContainer.find('.market-header_titlebar-title');
+    let $buttonFilter  = $HeaderContainer.find('.market-header_titlebar-button');
+    let $filterContainer = $HeaderContainer.find('.market-filterbar');
+    let $filterContent = $filterContainer.find('.filterbar-content');
+    
+    
+    
+    $buttonFilter.on('click',showFilter);
+    $filterContainer.on('click',closeFilter);
+    $filterContent.on('click',Navbar.stopCallParent);
+
+    function showFilter(event){
+      $filterContainer.css('display','block');
+    }
+    function closeFilter(event){
+      
+      $filterContainer.css('display','none');
+    }
+})();
+
+
+
 
 let Admin = (function () {
   let $linkToAdminPage = $('.footer-grid').find('.footer-grid-child');
