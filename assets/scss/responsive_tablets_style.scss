@@ -111,6 +111,13 @@
   .market-item-container {
     margin: 0 0.1em;
     grid-template-columns: repeat(4, 1fr);
+    .card{
+      .card-link{
+        .card-image{
+          
+        }
+      }
+    }
   } 
   
   //FOOTER =======================================================

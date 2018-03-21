@@ -58,10 +58,10 @@
   } //BUTTON HAMBURGER+++++++++++++++++++++++++++++
   .navbar-hamburger {
     display: flex; //สั่งให้แสดงปุ่ม hamburger ขึ้นเมื่อมีหน้าจอที่กำหนด
-    margin: 1px 0;
+    margin: 0.2em 0;
     
     .button_hamburger {
-      height: 2px;
+      height: 3px;
     }
   } //หากงง ให้กลับไปดูโค้ด js ด้านบน
   //ใช้ javascript ช่วย เมื่อมีการกดปุ่ม hamburger
