@@ -85,13 +85,16 @@
         width: 15%; }
   .market-header {
     margin: 0.5em; }
+  .market-filterbar .filterbar-content section.filterbar_type article div {
+    text-align: left; }
   .market-header_titlebar-title {
     font-size: 1.4em; }
   .market-body {
     margin: 0.5em; }
   .market-item-container {
-    margin: 0 0.1em;
-    grid-template-columns: repeat(4, 1fr); }
+    grid-template-columns: repeat(5, 1fr); }
+    .market-item-container .card .card-image {
+      height: 150px; }
   .footer-container {
     padding: 1em;
     font-size: 2.5vmin; }

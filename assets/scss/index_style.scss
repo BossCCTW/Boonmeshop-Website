@@ -883,6 +883,7 @@ input:-moz-placeholder {
         padding: 0.3em;
         font-family: inherit;
       }
+      
     }
     select {
       width: 100%;
@@ -896,6 +897,13 @@ input:-moz-placeholder {
     color: #fff;
     header {
       color: #fff;
+    }
+  }
+  section.filterbar_type{
+    article{
+      div{
+        text-align:left;
+      }
     }
   }
   section.filterbar_range {
@@ -947,8 +955,11 @@ $duration-animation:0.2s;
 $bg-total:#5C6BC0;
 .market-item-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 0.6em;
+  grid-template-columns: repeat(6, 1fr);
+  // grid-template-rows: minmax(100px,auto);
+  grid-row-gap: 1em;
+  grid-column-gap:0.2em;
+
   margin-bottom: 1em;
 }
 
@@ -957,117 +968,120 @@ $bg-total:#5C6BC0;
   background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   transition: $duration-animation;
-  top: 0;
-  overflow: hidden; //ป้องกันการขนาดยึดตัวของ container เมื่อมี content กว้างกว่า width
-  a {
-    text-decoration: none;
-  }
-}
-
-.card:hover {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.17), 0 6px 12px rgba(0, 0, 0, 0.3);
-  top: -1px;
-}
-
-.card:hover .card-image img {
-  filter: brightness(120%);
-}
-
-.card-image {
-  height: 200px; //ความสูงของรูปสินค้า
   overflow: hidden;
-  transition: height $duration-animation;
-}
+  color:initial;
+  border-radius:3px;
+  display:flex;
+  flex-direction:column;
+  
+  &:hover ,&:active{
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.17), 0 6px 12px rgba(0, 0, 0, 0.3);
+    top: -1px;
+    cursor: pointer;
+  }
+  &:hover .card-image img{
+    filter: brightness(120%);
+  }
+  .card-image{
+      display:flex;
+      height:180px;
+      overflow: hidden;
+    img{
+      width:auto;
+      height:100%;
 
-.card-image img {
-  transition: filter $duration-animation, transform $duration-animation;
-  transform: scale(1);
-  filter: brightness(100%);
-  width: 100%;
-  height: 100%;
-}
+    }
+  }
+  .card-label{
+    position:absolute;
+    display:flex;
+    width:100%;
+    justify-content:space-between;
+    z-index: 1;
+    font-size:2.2vmin;
+    .label-status{
+      background:#F44336;
+      padding: 0.5em;
+      align-self: center;
+      color:#fff;
+    }
+    .label-total{
+      padding: 0.5em;
+      margin: 0.5em;
+      background: #3F51B5;
+      color:#fff;
+      border-radius: 50%;
+    }
+  }
+  .card-body{ 
+    padding:0.5em;
+    .id{
+      opacity: 0.6;
+      font-size:0.6rem;
+    }
+    .name{
+      h3{
+        color:#2a39b1;
+        white-space:no-wrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        font-size:1rem;
+      }
+      margin-bottom:0.5em;
+    }
 
-.card:hover .card-image img {
-  transform: scale(1.1);
-}
+    .price{
+      
+      .price_original{
+        color:rgb(38, 0, 126);
+      }
+      .price_prediscount{
+        text-decoration-line: line-through;
+        color:rgb(70, 70, 70);
+      }
+      .price_discounted{
+        color:rgb(219, 69, 69);
+      }
 
-.card-total {
-  position: absolute;
-  top: 0.5em;
-  right: 0.5em;
-  padding: 0.5em;
-  font-size: 0.7em;
-  border-radius: 50%;
-  background-color: $bg-total;
-  color: #fff;
-}
-
-.card-body {
-  position: relative;
-  background-color: #fff;
-  color: $color-text-primary;
-  transition: height $duration-animation, top $duration-animation;
-  padding: 0.5em;
-}
-
-.card:hover .card-body .card-body_name {
-  //เมื่อนำเมาส์ไปชี้ Card ชื่อของสินค้าจะเข้มขึ้น
-  color: #213a70;
-}
-
-.card:hover .card-body_price .card-body_price__discounted {
-  color: rgba(250, 66, 62, 1);
-}
-
-.card-body .card-body_label {
-  //ป้าย sell ลดราคา
-  position: absolute;
-  left: 0;
-  top: -25px;
-  padding: 0.5em 0.5em;
-  color: #fff;
-  background-color: #EF5350;
-  font-size: 0.8em;
-  text-transform: uppercase;
-}
-
-.card-body .card-body_name {
-  //ชื่อสินค้า
-  color: #455199;
-  font-size: 2.2vmin;
-  font-weight: bold; //จะทำให้ text ที่เกินจะกลายเป็น ...
-  //ส่วนที่เกินความกว้างจะถูกซ่อน
-  //css นี้หากใช้งานกับ div เพียงอย่างเดียวอาจจะไม่ได้ผลจะต้องให้
-  // content ด้านในห่อหุ้มด้วย text element เป็นต้น
-  //ทำให้ชื่อสินค้าไม่มีการตกบันทัดลงมาสองบันทัด เมื่อมีชื่อที่กว้างเกินกว่า card
-  //จะเป็น product name... แทน
-  h3 {
-    overflow: hidden; //ส่วนที่เกินความกว้างจะถูกซ่อน
-    text-overflow: ellipsis; //จะทำให้ text ที่เกินจะกลายเป็น ...
-    white-space: nowrap; //nowrap หมายถึงจะไม่มีการเคาะบันทัดลง หากข้อความยาว
+    }
+   
   }
 }
 
-.card-body .card-body_id {
-  font-size: 1.3vmin;
-  padding-bottom: 0.5em;
-  color: rgba(0, 0, 0, 0.5);
+
+
+
+// ===============DETAIL==========================//
+.market{
+  .detail-container{
+    width:100%;
+    height:100%;
+    position:fixed;
+    top:0;
+    left:0;
+    background-color:rgba(0, 0, 0, 0.6);
+    
+    z-index:2;
+    .detail-content{
+      width:90%;
+      height:85%;
+      margin:0 auto;
+      background-color:#fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6), 0 6px 20px rgba(0, 0, 0, 0.3);
+      position:relative;
+      top:10%;
+
+      .detail-close{
+        display:flex;
+        justify-content: end;
+      }
+    }
+  }
 }
 
-.card-body_price {
-  font-size: 2.4vmin;
-  background-color: #fff;
-  .card-body_price__original {
-    color: rgba(250, 66, 62, 0.8);
-  }
-  .card-body_price__pre-discount {
-    color: rgba(82, 82, 82, 0.8);
-    text-decoration: line-through;
-  }
-  .card-body_price__discounted {
-    color: rgba(250, 66, 62, 0.8);
-  }
-}
+
+
+
 
 /*==================FOOTER====================*/
 
