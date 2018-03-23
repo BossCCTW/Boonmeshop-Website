@@ -932,6 +932,10 @@ input:-moz-placeholder {
       display:flex;
       flex-direction:column;
       justify-content: space-around;
+      div:nth-child(1){
+        margin-bottom: 0.5em;
+       
+      }
     }
   }
   section.filterbar_submit:hover {
@@ -998,8 +1002,11 @@ $bg-total:#5C6BC0;
     width:100%;
     justify-content:space-between;
     z-index: 1;
-    font-size:2.2vmin;
+    // font-size:2.2vmin;
+    font-size:0.9em;
     .label-status{
+      font-family: 'Roboto', sans-serif;
+     
       background:#F44336;
       padding: 0.5em;
       align-self: center;

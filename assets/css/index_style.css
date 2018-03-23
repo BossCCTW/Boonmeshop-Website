@@ -960,6 +960,8 @@ input:-moz-placeholder {
     flex-direction: column;
     -ms-flex-pack: distribute;
     justify-content: space-around; }
+    .market-filterbar section.filterbar_submit article div:nth-child(1) {
+      margin-bottom: 0.5em; }
   .market-filterbar section.filterbar_submit:hover {
     background-color: #fff; }
     .market-filterbar section.filterbar_submit:hover header {
@@ -1021,8 +1023,9 @@ input:-moz-placeholder {
     -ms-flex-pack: justify;
     justify-content: space-between;
     z-index: 1;
-    font-size: 2.2vmin; }
+    font-size: 0.9em; }
     .card .card-label .label-status {
+      font-family: 'Roboto', sans-serif;
       background: #F44336;
       padding: 0.5em;
       -ms-flex-item-align: center;

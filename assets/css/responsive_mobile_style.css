@@ -290,16 +290,23 @@
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column;
+        position: relative;
         top: 0;
         left: 0;
         bottom: 0;
         width: 80%;
-        height: auto;
+        height: 100%;
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
         overflow-y: scroll;
-        overflow-x: hidden; }
+        padding-top: 4em;
+        padding-bottom: 2em; }
+        .market-header .market-filterbar .filterbar-content div:first-child {
+          margin-bottom: 0.5em; }
+        .market-header .market-filterbar .filterbar-content section {
+          -ms-flex-negative: 0;
+          flex-shrink: 0; }
         .market-header .market-filterbar .filterbar-content section.filterbar_type article {
           display: -webkit-box;
           display: -ms-flexbox;
