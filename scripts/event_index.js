@@ -248,19 +248,19 @@ let Filter = (function(){
     let $filterContainer = $HeaderContainer.find('.market-filterbar');
     let $filterContent = $filterContainer.find('.filterbar-content');
     
-    
-    
     $buttonFilter.on('click',showFilter);
     $filterContainer.on('click',closeFilter);
     $filterContent.on('click',Navbar.stopCallParent);
 
     function showFilter(event){
       $filterContainer.css('display','block');
+      // $('body').css('overflow','hidden');
     }
     function closeFilter(event){
-      
       $filterContainer.css('display','none');
+      // $('body').css('overflow','initial');
     }
+  
 })();
 
 
