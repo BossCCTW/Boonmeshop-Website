@@ -1115,7 +1115,7 @@ $bg-total:#5C6BC0;
         }
         .img-group {
           flex: 2;
-          background: rgb(240, 240, 240);
+          background: rgb(196, 196, 196);
           display: flex;
           align-items: stretch;
           justify-content: space-between;
@@ -1146,6 +1146,7 @@ $bg-total:#5C6BC0;
               background-color: #585858;
               margin: 0.5em;
               filter:brightness(90%);
+              
               transition: 0.2s ease-in;
               img {
                 width: 100%;
