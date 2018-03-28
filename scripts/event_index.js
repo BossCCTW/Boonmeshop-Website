@@ -1,5 +1,5 @@
 "use strict";
-let Navbar = (function () {
+let Navbar = (() => {
   //Navbar DOM
   let $navbar = $('.navbar').find('.navbar-container');
   let $link = $navbar.find('.navbar-link');
@@ -88,9 +88,9 @@ let Navbar = (function () {
   }
 })();
 
-let Menu = (function () {})();
+let Menu = (() => {})();
 
-let Slideshow = (function () {
+let Slideshow = (() => {
   let index = 0;
   let nowIndex = 0;
   let imagesList = [];
@@ -191,7 +191,7 @@ let Slideshow = (function () {
 
 })();
 
-let Promotion = (function () {
+let Promotion = (() => {
 
   //Catch DOM
   let $promotionContainer = $('.container').find('.banner .banner-container-grid .banner-slideshow_promotion');
@@ -214,7 +214,7 @@ let Promotion = (function () {
   function scrollBack() {
     // $slideShowImagesContainer.scrollLeft(setScaleScroll(--count))
     console.log('back scroll');
-    
+
     $slideShowImagesContainer.animate({
       scrollLeft: setScaleScroll(--count)
     });
@@ -223,7 +223,7 @@ let Promotion = (function () {
   function scrollNext() {
     // $slideShowImagesContainer.scrollLeft(setScaleScroll(++count)); 
     console.log('next scroll');
-    
+
     $slideShowImagesContainer.animate({
       scrollLeft: setScaleScroll(++count)
     });
@@ -241,28 +241,129 @@ let Promotion = (function () {
   }
 })();
 
-let Filter = (function(){
-    let $HeaderContainer = $('.market').children('.market-header');
-    let $titleHeader  = $HeaderContainer.find('.market-header_titlebar-title');
-    let $buttonFilter  = $HeaderContainer.find('.market-header_titlebar-button');
-    let $filterContainer = $HeaderContainer.find('.market-filterbar');
-    let $filterContent = $filterContainer.find('.filterbar-content');
-    
-    $buttonFilter.on('click',showFilter);
-    $filterContainer.on('click',closeFilter);
-    $filterContent.on('click',Navbar.stopCallParent);
+let Filter = (() => {
+  let $HeaderContainer = $('.market').children('.market-header');
+  let $titleHeader = $HeaderContainer.find('.market-header_titlebar-title');
+  let $buttonFilter = $HeaderContainer.find('.market-header_titlebar-button');
+  let $filterContainer = $HeaderContainer.find('.market-filterbar');
+  let $filterContent = $filterContainer.find('.filterbar-content');
 
-    function showFilter(event){
-      $filterContainer.css('display','block');
-      // $('body').css('overflow','hidden');
-    }
-    function closeFilter(event){
-      $filterContainer.css('display','none');
-      // $('body').css('overflow','initial');
-    }
-  
+  $buttonFilter.on('click', showFilter);
+  $filterContainer.on('click', closeFilter);
+  $filterContent.on('click', Navbar.stopCallParent);
+
+  function showFilter(event) {
+    $filterContainer.css('display', 'block');
+
+  }
+
+  function closeFilter(event) {
+    $filterContainer.css('display', 'none');
+
+  }
+
 })();
 
+let Market = (() => {
+  let percentProgress = 0;
+  let timeline;
+
+  let $marketContainer = $('.market').find('.market-body>.market-item-container');
+  let $cardProduct = $marketContainer.children('.card');
+
+  let $progressBarContainer = $('.market').children('.progress-container');
+  let $progressBarLoader = $progressBarContainer.find('.progress-bar');
+  let $progressBarBtnClose = $progressBarContainer.find('.progress-bar_button-close');
+
+  let $productDetailContainer = $('.product-detail');
+  let $btnCloseDetail = $productDetailContainer.find('.detail-content>.close-btn');
+  let $btnTabContentDetail = $productDetailContainer.find('.tabbar-content');
+  let $btnTabRatingDetail = $productDetailContainer.find('.tabbar-rating');
+  let $tabContent = $productDetailContainer.find('.content');
+  let $tabRating = $productDetailContainer.find('.rating');
+
+
+  //CARD PRODUCT MARKET
+  $cardProduct.on('click', fetchDataDetail);
+
+  //PROGRESSBAR
+  $progressBarBtnClose.on('click',cancelProgressBar);
+
+  //DETAIL PRODUCT
+  $btnCloseDetail.on('click',closeProductDetail);
+  $btnTabContentDetail.on('click',{target:'content'},showTabTarget);
+  $btnTabRatingDetail.on('click',{target:'rating'},showTabTarget);
+  
+  function fetchDataDetail(event) {
+    let idProduct = event.currentTarget.getAttribute('data-id');
+    
+    showProgressbar();
+  }
+    
+
+  function showProgressbar(){
+    if ($progressBarContainer.css('display') == 'none') {
+      $progressBarContainer.css('display', 'flex');
+    }
+
+    if (percentProgress < 100) {
+      percentProgress += 1;
+      $progressBarLoader.css('width', percentProgress + '%');
+      console.log(percentProgress);
+      timeline = setTimeout(showProgressbar,3);
+    } else {
+      $progressBarContainer.css('display', 'none');
+      percentProgress = 0;
+      showProductDetail(); 
+    }
+  }
+
+  function cancelProgressBar(event){
+     
+      clearTimeout(timeline);
+      $progressBarContainer.css('display', 'none'); 
+      percentProgress = 0;
+  }
+
+  function showProductDetail(){
+    $productDetailContainer.css('display','flex');
+  }
+  function closeProductDetail(){
+    console.log('d');
+    
+    $productDetailContainer.css('display','none');
+  }
+
+  function showTabTarget(event){
+    console.log(event.data.target);
+    if(event.data.target == 'rating'){
+      if($btnTabContentDetail.hasClass('active')){
+        $btnTabRatingDetail.toggleClass('active');
+        $btnTabContentDetail.removeClass('active');
+      } 
+      if($tabRating.css('transform')=='none'){
+        $tabRating.css('transform','translateX(-100%)');
+      }
+      
+      
+    }else{
+      if($btnTabRatingDetail.hasClass('active')){
+        $btnTabContentDetail.toggleClass('active');
+        $btnTabRatingDetail.removeClass('active');
+        $tabRating.css('transform','none');
+      }
+      // if($tabRating.css('transform')=='translateX(-100%)'){
+      //   
+      // }
+      console.log($tabRating.css('transform'));
+      
+    }
+
+    // $btnTabContentDetail.toggleClass('active');
+    // 
+  }
+
+})();
 
 
 

@@ -130,6 +130,7 @@
         left: 0;
         width: 70%;
         height: 100%;
+        padding-top: 3em;
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
@@ -300,7 +301,7 @@
         -ms-flex-pack: center;
         justify-content: center;
         overflow-y: scroll;
-        padding-top: 4em;
+        padding-top: 8em;
         padding-bottom: 2em; }
         .market-header .market-filterbar .filterbar-content div:first-child {
           margin-bottom: 0.5em; }
