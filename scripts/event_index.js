@@ -281,7 +281,8 @@ let Market = (() => {
   let $btnTabRatingDetail = $productDetailContainer.find('.tabbar-rating');
   let $tabContent = $productDetailContainer.find('.content');
   let $tabRating = $productDetailContainer.find('.rating');
-
+  let $btnBuyProduct = $productDetailContainer.find('.button-confirmbuy');
+  
 
   //CARD PRODUCT MARKET
   $cardProduct.on('click', fetchDataDetail);
@@ -293,6 +294,7 @@ let Market = (() => {
   $btnCloseDetail.on('click',closeProductDetail);
   $btnTabContentDetail.on('click',{target:'content'},showTabTarget);
   $btnTabRatingDetail.on('click',{target:'rating'},showTabTarget);
+  $btnBuyProduct.on('click',buyProduct);
   
   function fetchDataDetail(event) {
     let idProduct = event.currentTarget.getAttribute('data-id');
@@ -351,18 +353,13 @@ let Market = (() => {
         $btnTabContentDetail.toggleClass('active');
         $btnTabRatingDetail.removeClass('active');
         $tabRating.css('transform','none');
-      }
-      // if($tabRating.css('transform')=='translateX(-100%)'){
-      //   
-      // }
-      console.log($tabRating.css('transform'));
-      
-    }
-
-    // $btnTabContentDetail.toggleClass('active');
-    // 
+      } 
+    }  
   }
 
+  function buyProduct(){
+    alert('Buy it ?');
+  }
 })();
 
 

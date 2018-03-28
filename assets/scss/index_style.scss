@@ -1350,8 +1350,9 @@ $bg-total:#5C6BC0;
             position: relative;
             display: flex;
             // overflow: auto;
+            
             overflow-x: hidden;
-            overflow-y: auto;
+            overflow-y: scroll;
             div.content,
             div.rating {
               position: relative;
@@ -1361,6 +1362,8 @@ $bg-total:#5C6BC0;
               flex-shrink: 0;
               z-index: 1;
               background-color: #fff;
+              overflow-x: hidden;
+              overflow-y: auto;
               .content-type>div {
                 display: flex;
                 flex-wrap: wrap;

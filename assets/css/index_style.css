@@ -1406,7 +1406,7 @@ input:-moz-placeholder {
           display: -ms-flexbox;
           display: flex;
           overflow-x: hidden;
-          overflow-y: auto; }
+          overflow-y: scroll; }
           .product-detail .detail-content section.detail-data .detail-body .body-container div.content,
           .product-detail .detail-content section.detail-data .detail-body .body-container div.rating {
             position: relative;
@@ -1416,7 +1416,9 @@ input:-moz-placeholder {
             -ms-flex-negative: 0;
             flex-shrink: 0;
             z-index: 1;
-            background-color: #fff; }
+            background-color: #fff;
+            overflow-x: hidden;
+            overflow-y: auto; }
             .product-detail .detail-content section.detail-data .detail-body .body-container div.content .content-type > div,
             .product-detail .detail-content section.detail-data .detail-body .body-container div.rating .content-type > div {
               display: -webkit-box;
