@@ -266,7 +266,8 @@ let Filter = (() => {
 
 let Market = (() => {
   let percentProgress = 0;
-  let timeline;
+  let loopTimoutProgress;
+  
 
   let $marketContainer = $('.market').find('.market-body>.market-item-container');
   let $cardProduct = $marketContainer.children('.card');
@@ -282,8 +283,24 @@ let Market = (() => {
   let $tabContent = $productDetailContainer.find('.content');
   let $tabRating = $productDetailContainer.find('.rating');
   let $btnBuyProduct = $productDetailContainer.find('.button-confirmbuy');
+  let $bodyTabContainer = $productDetailContainer
+
+
+  let imgSelected = 0;
+  let imgOrigin = '';
+  let $imgShowBackground = $productDetailContainer.find('.img-show');
+  let $imgShow = $imgShowBackground.find('img');
+  let $imgSlideContainer = $productDetailContainer.find('.img-slider');
+  let $imgItem = $imgSlideContainer.children('div');
+
   
 
+  //set default Image Frist function
+  setDefaultImageShow($imgSlideContainer.find('div:nth-child(1) img').attr('src'));
+
+  // SLIDESHOW IMG 
+  $imgItem.on('click',setImageShowOnClick);
+  
   //CARD PRODUCT MARKET
   $cardProduct.on('click', fetchDataDetail);
 
@@ -311,8 +328,8 @@ let Market = (() => {
     if (percentProgress < 100) {
       percentProgress += 1;
       $progressBarLoader.css('width', percentProgress + '%');
-      console.log(percentProgress);
-      timeline = setTimeout(showProgressbar,3);
+      // console.log(percentProgress);
+      loopTimoutProgress = setTimeout(showProgressbar,3);
     } else {
       $progressBarContainer.css('display', 'none');
       percentProgress = 0;
@@ -321,8 +338,7 @@ let Market = (() => {
   }
 
   function cancelProgressBar(event){
-     
-      clearTimeout(timeline);
+      clearTimeout(loopTimoutProgress);
       $progressBarContainer.css('display', 'none'); 
       percentProgress = 0;
   }
@@ -345,6 +361,7 @@ let Market = (() => {
       } 
       if($tabRating.css('transform')=='none'){
         $tabRating.css('transform','translateX(-100%)');
+        $tabContent.css('transform','translateX(-100%)');
       }
       
       
@@ -353,12 +370,58 @@ let Market = (() => {
         $btnTabContentDetail.toggleClass('active');
         $btnTabRatingDetail.removeClass('active');
         $tabRating.css('transform','none');
+        $tabContent.css('transform','none');
       } 
     }  
   }
 
   function buyProduct(){
     alert('Buy it ?');
+  }
+  function setDefaultImageShow(imgUrl=null){
+    imgOrigin = imgUrl;
+    
+   
+    if(imgUrl){
+      let urlImageFirst = imgUrl;
+     
+      $imgShowBackground.css('background-image',`url(${urlImageFirst})`);
+      $imgShow.attr('src',urlImageFirst);
+      $imgSlideContainer.children('div').eq(imgSelected).addClass('active');
+      console.log('set default'+imgOrigin);
+    }
+    console.log(imgSelected);
+    
+  }
+ 
+  function setImageShowOnClick(event=null){
+    if(event){
+       
+        
+      //ตรวจสอบว่า รูปที่กดไม่ซ้ำกับรูปเดิม จะได้ไม่ต้อง เซ็ตรูปใหม่
+      if(imgOrigin != event.target.getAttribute('src')){
+        $imgShow.attr('src',event.target.getAttribute('src'));
+        $imgShowBackground.css('background-image',`url(${event.target.getAttribute('src')})`);
+        imgOrigin = event.target.getAttribute('src');
+
+        //ตรวจสอบตำแหน่งที่คลิกว่าเป็น div ใด
+        let target = $(event.target).closest('div');
+        // หา index ที่คลิก
+        let newItem = $imgSlideContainer.find('div').index(target); 
+        //เพิ่ม Class active 
+        $imgSlideContainer.children('div').eq(newItem).toggleClass('active');
+        //ลบ Active จาก div เดิมออก
+        $imgSlideContainer.children('div').eq(imgSelected).toggleClass('active');
+        //เก็บตำแหน่งใหม่ไว้
+        imgSelected = newItem;
+
+        console.log('set');
+        
+      }
+     
+    }
+    
+    
   }
 })();
 

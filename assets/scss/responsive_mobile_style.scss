@@ -1,4 +1,4 @@
-@media (max-width:650px) and (min-width:500px) {
+@media only screen and (max-width:650px){
   // NAVBAR =======================================================
   .navbar {
     padding: 0 0.5em;
@@ -13,8 +13,14 @@
       position: relative;
     }
   }
+  .navbar-webname-subtitle{
+    &::after{
+      display: none;
+    }
+  }
   .navbar-webname-subtitle span {
     display: block;
+
   } //LINK+++++++++++++++++++++++++++++
   .navbar-link {
     display: flex;
@@ -27,6 +33,16 @@
     top: -33em; //เลื่อนให้ ลิงค์ ไปอยู่ด้านบน ไม่ให้เห็นหากยังไม่มีการกดปุ่ม hamburger
     opacity: 0;
     transition: 0.4s;
+
+    //หากงง ให้กลับไปดูโค้ด js ด้านบน
+    //ใช้ javascript ช่วย เมื่อมีการกดปุ่ม hamburger
+    // .navbar-link จะถูกเพิ่ม class active เข้ามาใน html
+    // เมื่อ navbar-link active ==>css ด้านล่างจะทำงาน
+    // สั่งให้ navbar-link เลื่อนลงมาในตำแหน่งที่กำหนดและ opacity แสดง
+    &.active {
+      opacity: 1;
+      top: 105%;
+    }
     li {
       display: block;
       width: 100%;
@@ -63,15 +79,7 @@
     .button_hamburger {
       height: 3px;
     }
-  } //หากงง ให้กลับไปดูโค้ด js ด้านบน
-  //ใช้ javascript ช่วย เมื่อมีการกดปุ่ม hamburger
-  // .navbar-link จะถูกเพิ่ม class active เข้ามาใน html
-  // เมื่อ navbar-link active ==>css ด้านล่างจะทำงาน
-  // สั่งให้ navbar-link เลื่อนลงมาในตำแหน่งที่กำหนดและ opacity แสดง
-  .navbar-link.active {
-    opacity: 1;
-    top: 120%;
-  } // BANNER =======================================================
+  }  // BANNER =======================================================
   .banner {
     margin: 0.5em;
     .banner-container-grid {
@@ -140,7 +148,7 @@
       width: 100%;
       height: 100%;
       background-color:rgba(47, 48, 49, 0.74);
-      overflow-y: scroll;
+      // overflow-y: scroll;
       .filterbar-content {
         display:flex;
        
@@ -167,7 +175,208 @@
       }
     }
   }
-  
+
+  //=============================================================
+  //=============================================================
+  //=============================================================
+  //=============================================================
+  //PRODUCT DETAIL//==============================================
+  .product-detail {
+ 
+    .detail-content {
+        
+        max-width: 95%;
+        height:90%;
+        
+        flex-direction: column;
+      .close-btn {
+ 
+      }
+      section {
+        &.detail-img {
+          flex:30%;
+          // flex-direction: row;
+          
+          .img-show {      
+            flex:1;
+            &::after{
+              opacity: 0.8;
+            }
+            img {
+              
+            }
+          }
+          .img-group {
+            flex:1;
+            .btn {
+
+            }
+            .img-slider {
+                padding: 2em 0;
+              div {
+                
+                width: 35%;
+                max-width: 35%;
+                img {
+                
+                }        
+              }
+            }
+          }
+        }
+        &.detail-data {
+          flex:70%;
+          .detail-titlebar {
+              
+            .titlebar-background {
+            
+            }
+            .titlebar-content {
+             
+              .status {
+               
+                div {
+                
+                }
+                .hot {
+                 
+                }
+                .sell {
+                 
+                }
+                .normal {
+                 
+                }
+              }
+              .titlebar-name {
+                font-size: 1em;
+                margin-bottom:0.5em;
+              }
+              .titlebar-id {
+               
+              }
+              .price-transpot {
+              
+              }
+              .price-number {
+                flex-wrap: wrap;
+                font-size: 1em;
+                div {
+                 flex: 1;
+               
+                 text-align: center;
+                }
+                .number-normal {
+                
+                }
+                .number-sell {
+                
+                  span {
+                
+                  }
+                }
+                .button-confirmbuy {
+
+                }
+              }
+            }
+          }
+          .detail-body {
+            
+            .tabbar {
+              
+              button {
+                font-size:0.9em;
+                padding: 10px 0;
+                i{
+
+                }
+              }
+            }
+            .body-container {
+             
+              div.content,
+              div.rating {
+               
+                .content-type>div {
+                 
+                  span {
+                   
+                  }
+                }
+                .content-payment>div {
+                 
+                  span {
+                
+                  }
+                }
+                .content-transpot>div {
+                 
+                  span {
+                  
+                  }
+                }
+                header {
+                
+                }
+              }
+              .content {
+                
+                &>div {
+                  div {
+                  
+                  }
+               
+                }
+              }
+              .rating {
+               
+                .rating-point {
+                 
+                  .point-icon {
+                    i {
+                    
+                    }
+                  }
+                  .point-detail {
+                    span {
+                     
+                    }
+                  }
+                }
+                .rating-comment {
+                  .comment-item {
+                 
+                    .item-name {
+                    
+                    }
+                    .item-point {
+                 
+                      span {
+                      
+                      }
+                    }
+                    .item-conment {
+                      
+                    }
+                    .item-date {
+                     
+                    }
+                  }
+                }
+              }
+            }
+          } // detail-body [END]
+        }
+      }
+    }
+  }
+
+
+
+
+
+
   //FOOTER =======================================================
   .footer-container {
     padding: 1em;
@@ -360,6 +569,7 @@
         display:flex;
         flex-direction: column;
         position: relative; 
+        
         top:0;
         left:0;
         bottom:0;
@@ -369,7 +579,7 @@
         justify-content: center;
         overflow-y:scroll;
         // overflow-x:hidden;
-        padding-top:8em;
+        padding-top:15em;
         padding-bottom:2em;
         div:first-child{
           

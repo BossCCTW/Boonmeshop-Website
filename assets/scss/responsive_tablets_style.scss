@@ -1,4 +1,4 @@
-@media (max-width:860px) and (min-width:649px) {
+@media only screen and (max-width:860px) {
   // NAVBAR =======================================================
   .navbar {
     .navbar-container {
@@ -125,10 +125,202 @@
     .card{
       .card-image{
         height:150px;
+        img{
+          width:100%;
+        }
       }
     }
   } 
-  
+  //=============================================================
+  //=============================================================
+  //=============================================================
+  //=============================================================
+  //PRODUCT DETAIL//==============================================
+  .product-detail {
+ 
+    .detail-content {
+        margin: 0 1em;
+        max-width: 95%;
+        height:75%;
+      .close-btn {
+ 
+      }
+      section {
+        &.detail-img {
+         
+          .img-show {         
+            img {
+         
+            }
+          }
+          .img-group {
+
+            .btn {
+
+            }
+            .img-slider {
+        
+              div {
+              
+                img {
+                
+                }        
+              }
+            }
+          }
+        }
+        &.detail-data {
+        
+          .detail-titlebar {
+              
+            .titlebar-background {
+            
+            }
+            .titlebar-content {
+             
+              .status {
+               
+                div {
+                
+                }
+                .hot {
+                 
+                }
+                .sell {
+                 
+                }
+                .normal {
+                 
+                }
+              }
+              .titlebar-name {
+                font-size: 1em;
+                margin-bottom:0.5em;
+              }
+              .titlebar-id {
+               
+              }
+              .price-transpot {
+              
+              }
+              .price-number {
+                flex-wrap: wrap;
+                font-size: 1em;
+                div {
+                 flex: 1;
+                 text-align: center;
+                }
+                .number-normal {
+                
+                }
+                .number-sell {
+                
+                  span {
+                
+                  }
+                }
+                .button-confirmbuy {
+
+                }
+              }
+            }
+          }
+          .detail-body {
+            
+            .tabbar {
+              
+              button {
+                font-size:0.9em;
+                padding: 10px 0;
+                i{
+
+                }
+              }
+            }
+            .body-container {
+             
+              div.content,
+              div.rating {
+               
+                .content-type>div {
+                 
+                  span {
+                   
+                  }
+                }
+                .content-payment>div {
+                 
+                  span {
+                
+                  }
+                }
+                .content-transpot>div {
+                 
+                  span {
+                  
+                  }
+                }
+                header {
+                
+                }
+              }
+              .content {
+                
+                &>div {
+                  div {
+                  
+                  }
+               
+                }
+              }
+              .rating {
+               
+                .rating-point {
+                 
+                  .point-icon {
+                    i {
+                    
+                    }
+                  }
+                  .point-detail {
+                    span {
+                     
+                    }
+                  }
+                }
+                .rating-comment {
+                  .comment-item {
+                 
+                    .item-name {
+                    
+                    }
+                    .item-point {
+                 
+                      span {
+                      
+                      }
+                    }
+                    .item-conment {
+                      
+                    }
+                    .item-date {
+                     
+                    }
+                  }
+                }
+              }
+            }
+          } // detail-body [END]
+        }
+      }
+    }
+  }
+
+
+
+
+
+  //==============================================================
   //FOOTER =======================================================
   .footer-container {
     padding: 1em;
