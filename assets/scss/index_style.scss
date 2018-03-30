@@ -1045,6 +1045,11 @@ $bg-total:#5C6BC0;
         color: rgb(70, 70, 70);
       }
       .price_discounted {
+        span{
+          font-size:80%;
+          color: rgb(90, 90, 90);
+          text-decoration: line-through;
+        }
         color: rgb(219, 69, 69);
       }
     }
@@ -1238,6 +1243,7 @@ $bg-total:#5C6BC0;
         z-index: 2;
         box-shadow: -2px 10px 20px rgba(0, 0, 0, 0.19), -4px 6px 6px rgba(0, 0, 0, 0.23);
         .detail-titlebar {
+          flex:1;
           padding: 1em;
           padding-bottom: 1.5em;
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -1337,13 +1343,16 @@ $bg-total:#5C6BC0;
           }
         }
         .detail-body {
+          flex:4;
           overflow: hidden;
           display: flex;
           flex-direction: column;
+          
           .tabbar {
             flex-shrink: 0;
             display: flex;
             z-index: 2;
+            
             button {
               width: 100%;
               padding: 1em 0;
@@ -1374,14 +1383,58 @@ $bg-total:#5C6BC0;
               }
             }
           }
+
+          .tabbar-mobile{
+            flex-shrink: 0;
+            display: none;
+            z-index: 2;
+            button {
+              width: 100%;
+              
+              border: none;
+              text-decoration: none;
+              outline: none;
+              color: rgb(87, 87, 87);
+              background-color: rgb(243, 243, 243);
+              box-shadow: 0 0px 1px rgba(0, 0, 0, 0.12), 0 0px 1px rgba(0, 0, 0, 0.24);
+              z-index: 1;
+              i {
+                font-size: 1.4em;
+                color:#4435b9;
+              }
+              &:active,
+              &:hover {
+                cursor: pointer;
+                background-color: #ffffff;
+              }
+              &.active {
+                background-color: #fff;
+                color: #222;
+                font-weight: bold;
+                box-shadow: 2px -2px 1px rgba(0, 0, 0, 0.06), 1px -2px 2px rgba(0, 0, 0, 0.12), -2px -2px 3px rgba(0, 0, 0, 0.12), -1px -2px 2px rgba(0, 0, 0, 0.24);
+                border-bottom: none;
+                z-index: 2;
+                & i {
+                  color: rgb(69, 55, 194);
+                }
+              }
+            }
+          }
           .body-container {
             $primary-text-color: #333;
             $seconary-text-color: #666; // height:100%; 
             display: flex;
             overflow: hidden;
+            .close-tab-btn{
+              display:none;
+              
+            }
             div.content,
             div.rating {
+              
+              display: none;
               padding: 1em;
+              padding-top:2em;
               color: $seconary-text-color;
               width: 100%;
               flex-shrink: 0;
@@ -1389,6 +1442,7 @@ $bg-total:#5C6BC0;
               background-color: #fff;
               padding-bottom: 2em;
               overflow-y: auto;
+              flex-direction: column;
               .content-type>div {
                 display: flex;
                 flex-wrap: wrap;
@@ -1428,8 +1482,20 @@ $bg-total:#5C6BC0;
                 font-size: 1.05em;
               }
             }
+            @keyframes slideLeftToRight{
+              from{
+                transform:translateX(-100%);
+              }
+              to{
+                transform:translateX(0);
+              }
+            }
             .content {
-              transition: all 0.2s ease;
+              animation: slideLeftToRight 0.2s ease;
+              // transition: all 0.2s ease;
+              &.active{
+
+              }
               &>div {
                 div {
                   margin: 0.3em 0.8em;
@@ -1437,10 +1503,19 @@ $bg-total:#5C6BC0;
                 margin-bottom:1em;
               }
             }
+            @keyframes slideRightToLeft{
+              from{
+                transform:translateX(100%);
+              }
+              to{
+                transform:translateX(0);
+              }
+            }
             .rating {
-              // transform: translateX(-100%);
-              transition: all 0.2s ease;
+              animation: slideRightToLeft 0.2s ease;
+              
               .rating-point {
+                flex: 1;
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
@@ -1456,6 +1531,7 @@ $bg-total:#5C6BC0;
                 }
               }
               .rating-comment {
+                flex:1;
                 .comment-item {
                   margin-bottom: 0.5em;
                   padding: 0.5em;
