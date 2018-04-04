@@ -4,39 +4,32 @@ const router = express.Router();
 
 const MongoClient = require('mongodb').MongoClient;
 //path database
-const url = 'mongodb://localhost:27017'; 
+const url = 'mongodb://localhost:27017';
 // Database Name
 const dbName = 'boonmeeweb';
 
 
-const assert = require('assert');
+module.exports = router; //exports router to app.js file
 
 
-module.exports = router;//exports router to app.js file
+router.get('/menu', (req, res) => {
 
-
-router.get('/menu',(req,res)=>{
-    MongoClient.connect(url,function(err,client){
-    assert.equal(null, err);
-    const db = client.db(dbName);
-    findDocument(db,result=>{  
-        res.json(result);
-        client.close();
-    })   
-   });
+    MongoClient.connect(url, function (err, client) {
+        if (err) throw err;
+        const db = client.db(dbName);
+        findMenu(db, result => {
+            res.json(result);
+            client.close();
+        });
+    });
 });
 
 
-function findDocument(db,callback){
+function findMenu(db, callback) {
     db.collection('menu')
-    .find()
-    .toArray((err,result)=>{
-        if(err) throw err;
-        callback(result);
-    })
+        .find()
+        .toArray((err, result) => {
+            if (err) throw err;
+            callback(result);
+        });
 }
-
-
-
-
-
