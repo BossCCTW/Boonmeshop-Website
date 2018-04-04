@@ -1099,7 +1099,7 @@ input:-moz-placeholder {
   align-items: center; }
   .product-detail .detail-content {
     position: relative;
-    width: 80%;
+    width: 75%;
     height: 90%;
     border-radius: 1px;
     background-color: #fff;
@@ -1156,7 +1156,7 @@ input:-moz-placeholder {
         -webkit-box-flex: 2;
         -ms-flex: 2;
         flex: 2;
-        background: #c4c4c4;
+        background: #cecece;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -1178,9 +1178,9 @@ input:-moz-placeholder {
           align-items: center;
           -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
           box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-          -webkit-transition: 0.2s ease-in;
-          -o-transition: 0.2s ease-in;
-          transition: 0.2s ease-in; }
+          -webkit-transition: 0.2s ease;
+          -o-transition: 0.2s ease;
+          transition: 0.2s ease; }
           .product-detail .detail-content section.detail-img .img-group .btn:hover, .product-detail .detail-content section.detail-img .img-group .btn:active {
             cursor: pointer;
             background-color: #949494;
@@ -1201,11 +1201,11 @@ input:-moz-placeholder {
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
             background-color: #585858;
             margin: 0.5em;
-            -webkit-filter: brightness(90%);
-            filter: brightness(90%);
-            -webkit-transition: 0.2s ease-in;
-            -o-transition: 0.2s ease-in;
-            transition: 0.2s ease-in; }
+            -webkit-filter: brightness(100%);
+            filter: brightness(100%);
+            -webkit-transition: 0.1s ease;
+            -o-transition: 0.1s ease;
+            transition: 0.1s ease; }
             .product-detail .detail-content section.detail-img .img-group .img-slider div img {
               width: 100%;
               max-height: 100%;
@@ -1215,8 +1215,8 @@ input:-moz-placeholder {
               border-radius: 2px; }
             .product-detail .detail-content section.detail-img .img-group .img-slider div:hover {
               cursor: pointer;
-              -webkit-filter: brightness(110%);
-              filter: brightness(110%); }
+              -webkit-filter: brightness(115%);
+              filter: brightness(115%); }
     .product-detail .detail-content section.detail-data {
       -webkit-box-flex: 40%;
       -ms-flex: 40%;
