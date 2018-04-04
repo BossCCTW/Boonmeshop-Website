@@ -4,9 +4,16 @@ var app = express();
 const fileSystem = require('fs');
 const pathSlideShow = __dirname + '/assets/imgs/slideshow';
 
+const bodyParser = require('body-parser');
+app.use(bodyParser()); //สั้งให้ bodyParser ทำงาน
+
 //set ให้ express รู้จักไฟล์ต่างๆภายนอก เมื่อมีการลิงค์ไฟล์ css image icon
 app.use('/assets', express.static(__dirname + '/assets/'));
 app.use('/scripts', express.static(__dirname + '/scripts/'));
+
+
+//เมื่อมีการเรียก url ที่ขึ้นต้นด้วย /api จะเข้าไปใช้งานไฟล์นี้
+app.use('/api',require(__dirname+'/scripts/api.js'));
 
 
 //send file html INDEX-PAGE
@@ -23,14 +30,9 @@ app.get('/admin', (req, res) => {
     res.sendFile(__dirname + '/admin.html');
 });
 
-
-
 app.get('/person', function (req, res) {
     res.sendFile(__dirname + '/person.html');
 });
-
-
-
 
 app.get('/slideShow', (req, res) => {
     fileSystem.readdir(pathSlideShow, (err, files) => {
@@ -40,6 +42,7 @@ app.get('/slideShow', (req, res) => {
         res.send(JSON.stringify(files));
     });
 });
+
 
 
 app.listen(2000, function () {

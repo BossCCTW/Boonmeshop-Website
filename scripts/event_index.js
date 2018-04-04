@@ -1,5 +1,5 @@
 "use strict";
-let Navbar = (function () {
+let Navbar = (() => {
   //Navbar DOM
   let $navbar = $('.navbar').find('.navbar-container');
   let $link = $navbar.find('.navbar-link');
@@ -88,9 +88,9 @@ let Navbar = (function () {
   }
 })();
 
-let Menu = (function () {})();
+let Menu = (() => {})();
 
-let Slideshow = (function () {
+let Slideshow = (() => {
   let index = 0;
   let nowIndex = 0;
   let imagesList = [];
@@ -191,7 +191,7 @@ let Slideshow = (function () {
 
 })();
 
-let Promotion = (function () {
+let Promotion = (() => {
 
   //Catch DOM
   let $promotionContainer = $('.container').find('.banner .banner-container-grid .banner-slideshow_promotion');
@@ -214,7 +214,7 @@ let Promotion = (function () {
   function scrollBack() {
     // $slideShowImagesContainer.scrollLeft(setScaleScroll(--count))
     console.log('back scroll');
-    
+
     $slideShowImagesContainer.animate({
       scrollLeft: setScaleScroll(--count)
     });
@@ -223,7 +223,7 @@ let Promotion = (function () {
   function scrollNext() {
     // $slideShowImagesContainer.scrollLeft(setScaleScroll(++count)); 
     console.log('next scroll');
-    
+
     $slideShowImagesContainer.animate({
       scrollLeft: setScaleScroll(++count)
     });
@@ -241,28 +241,232 @@ let Promotion = (function () {
   }
 })();
 
-let Filter = (function(){
-    let $HeaderContainer = $('.market').children('.market-header');
-    let $titleHeader  = $HeaderContainer.find('.market-header_titlebar-title');
-    let $buttonFilter  = $HeaderContainer.find('.market-header_titlebar-button');
-    let $filterContainer = $HeaderContainer.find('.market-filterbar');
-    let $filterContent = $filterContainer.find('.filterbar-content');
-    
-    $buttonFilter.on('click',showFilter);
-    $filterContainer.on('click',closeFilter);
-    $filterContent.on('click',Navbar.stopCallParent);
+let Filter = (() => {
+  let $HeaderContainer = $('.market').children('.market-header');
+  let $titleHeader = $HeaderContainer.find('.market-header_titlebar-title');
+  let $buttonFilter = $HeaderContainer.find('.market-header_titlebar-button');
+  let $filterContainer = $HeaderContainer.find('.market-filterbar');
+  let $filterContent = $filterContainer.find('.filterbar-content');
 
-    function showFilter(event){
-      $filterContainer.css('display','block');
-      // $('body').css('overflow','hidden');
-    }
-    function closeFilter(event){
-      $filterContainer.css('display','none');
-      // $('body').css('overflow','initial');
-    }
-  
+  $buttonFilter.on('click', showFilter);
+  $filterContainer.on('click', closeFilter);
+  $filterContent.on('click', Navbar.stopCallParent);
+
+  function showFilter(event) {
+    $filterContainer.css('display', 'block');
+
+  }
+
+  function closeFilter(event) {
+    $filterContainer.css('display', 'none');
+
+  }
+
 })();
 
+let Market = (() => {
+  let percentProgress = 0;
+  let loopTimoutProgress;
+
+  //market
+  let $marketContainer = $('.market').find('.market-body>.market-item-container');
+  let $cardProduct = $marketContainer.children('.card');
+
+  //progressbar
+  let $progressBarContainer = $('.market').children('.progress-container');
+  let $progressBarLoader = $progressBarContainer.find('.progress-bar');
+  let $progressBarBtnClose = $progressBarContainer.find('.progress-bar_button-close');
+
+
+  //product-detail
+  let $productDetailContainer = $('.product-detail');
+  let $btnCloseDetail = $productDetailContainer.find('.detail-content>.close-btn');
+
+  let $detailDataContainer = $productDetailContainer.find('.detail-data');
+  let $btnTabContentDetail = $detailDataContainer.find('.tabbar .tabbar-content');
+  let $btnTabRatingDetail = $detailDataContainer.find('.tabbar .tabbar-rating');
+
+  let $bodyTabDetailContainer = $detailDataContainer.find('.body-container');
+  let $tabContent = $detailDataContainer.find('.content');
+  let $tabRating = $detailDataContainer.find('.rating');
+  let $btnBuyProduct = $detailDataContainer.find('.button-confirmbuy');
+  let $btnTabContentMobile = $detailDataContainer.find('.tabbar-mobile .tabbar-content');
+  let $btnTabRatingMobile = $detailDataContainer.find('.tabbar-mobile .tabbar-rating')
+  let $btnCloseTabMobile = $bodyTabDetailContainer.find('.close-tab-btn');
+
+
+
+  let imgSelected = 0;
+  let imgOrigin = '';
+  let $imgShowBackground = $productDetailContainer.find('.img-show');
+  let $imgShow = $imgShowBackground.find('img');
+  let $imgSlideContainer = $productDetailContainer.find('.img-slider');
+  let $imgItem = $imgSlideContainer.children('div');
+
+
+
+  // SLIDESHOW IMG 
+  $imgItem.on('click', setImageShowOnClick);
+
+  //CARD PRODUCT MARKET
+  $cardProduct.on('click', fetchDataDetail); // << set default template
+
+  //PROGRESSBAR
+  $progressBarBtnClose.on('click', cancelProgressBar);
+
+  //DETAIL PRODUCT
+  $btnCloseDetail.on('click', closeProductDetail);
+  $btnTabContentDetail.on('click', {target: 'content'}, showTabTarget);
+  $btnTabRatingDetail.on('click', {target: 'rating'}, showTabTarget);
+  $btnBuyProduct.on('click', buyProduct);
+
+  $btnTabContentMobile.on('click',{target: 'Detail'},showTabDetailMobile);
+  $btnTabRatingMobile.on('click',{target:'Rating'},showTabDetailMobile);
+  $btnCloseTabMobile.on('click', closeTabMobile);
+
+  function showTabDetailMobile(event){
+    if(event.data.target == 'Detail'){
+      console.log('Mobile content');
+      $bodyTabDetailContainer.css('display', 'flex');
+      $tabContent.css('display', 'block');
+      $tabRating.css('display', 'none');
+    }else{
+      console.log('Mobile Rating');
+      $bodyTabDetailContainer.css('display', 'flex');
+      $tabRating.css('display', 'block');
+      $tabContent.css('display', 'none');
+    }
+  }
+
+  function closeTabMobile() {
+    if ($tabContent.css('display') == 'block') {
+      $tabContent.css('display', 'none');
+    } else {
+      $tabRating.css('display', 'none');
+    }
+    $bodyTabDetailContainer.css('display', 'none');
+    $bodyTabDetailContainer.css('display', 'flex');
+
+  }
+
+
+  function fetchDataDetail(event) {
+    let idProduct = event.currentTarget.getAttribute('data-id');
+    showProgressbar();
+  }
+
+
+  function showProgressbar() {
+    if ($progressBarContainer.css('display') == 'none') {
+      $progressBarContainer.css('display', 'flex');
+    }
+
+    if (percentProgress < 100) {
+      percentProgress += 1;
+      $progressBarLoader.css('width', percentProgress + '%');
+      // console.log(percentProgress);
+      loopTimoutProgress = setTimeout(showProgressbar, 3);
+    } else {
+      $progressBarContainer.css('display', 'none');
+      percentProgress = 0;
+      showProductDetail();
+    }
+  }
+
+  function cancelProgressBar(event) {
+    clearTimeout(loopTimoutProgress);
+    $progressBarContainer.css('display', 'none');
+    percentProgress = 0;
+  }
+
+  function showProductDetail() {
+    //set default Tab Active
+    $btnTabContentDetail.addClass('active'); //ตั้งให้ content detail แสดงเป็นค่าเริ่มต้น
+    setTabActive();
+    //set default Image Frist function
+    setDefaultImageShow($imgSlideContainer.find('div:nth-child(1) img').attr('src')); //ส่ง src รูปแรกให้ไปแสดงเป็นรูปใหญ่
+
+    $productDetailContainer.css('display', 'flex');
+  }
+
+  function closeProductDetail() {
+    $productDetailContainer.css('display', 'none');
+  }
+
+  function showTabTarget(event) {
+    console.log(event.data.target);
+    if (event.data.target == 'rating') { //Click Rating
+      if ($btnTabContentDetail.hasClass('active')) {
+        $btnTabRatingDetail.toggleClass('active');
+        $btnTabContentDetail.removeClass('active');
+      }
+
+    } else { // Clcik Content
+      if ($btnTabRatingDetail.hasClass('active')) {
+        $btnTabContentDetail.toggleClass('active');
+        $btnTabRatingDetail.removeClass('active');
+      }
+    }
+    setTabActive();
+  }
+
+  function setTabActive() {
+    if ($btnTabContentDetail.hasClass('active')) {
+      $tabContent.css('display', 'block');
+      $tabRating.css('display', 'none');
+    } else {
+      $tabRating.css('display', 'block');
+      $tabContent.css('display', 'none');
+    }
+  }
+
+  function buyProduct() {
+    alert('Buy it ?');
+  }
+
+  function setDefaultImageShow(imgUrl = null) {
+    imgOrigin = imgUrl;
+
+
+    if (imgUrl) {
+      let urlImageFirst = imgUrl;
+
+      $imgShowBackground.css('background-image', `url(${urlImageFirst})`);
+      $imgShow.attr('src', urlImageFirst);
+      $imgSlideContainer.children('div').eq(imgSelected).addClass('active');
+      console.log('set default' + imgOrigin);
+    }
+    console.log(imgSelected);
+
+  }
+
+  function setImageShowOnClick(event = null) {
+    console.log(event.target);
+
+    if (event.target.getAttribute('src')) {
+      //ตรวจสอบว่า รูปที่กดไม่ซ้ำกับรูปเดิม จะได้ไม่ต้อง เซ็ตรูปใหม่
+      if (imgOrigin != event.target.getAttribute('src')) {
+        $imgShow.attr('src', event.target.getAttribute('src'));
+        $imgShowBackground.css('background-image', `url(${event.target.getAttribute('src')})`);
+        imgOrigin = event.target.getAttribute('src');
+
+        //ตรวจสอบตำแหน่งที่คลิกว่าเป็น div ใด
+        let target = $(event.target).closest('div');
+        // หา index ที่คลิก
+        let newItem = $imgSlideContainer.find('div').index(target);
+        //เพิ่ม Class active 
+        $imgSlideContainer.children('div').eq(newItem).toggleClass('active');
+        //ลบ Active จาก div เดิมออก
+        $imgSlideContainer.children('div').eq(imgSelected).toggleClass('active');
+        //เก็บตำแหน่งใหม่ไว้
+        imgSelected = newItem;
+        console.log('set');
+      }
+
+    }
+
+  }
+})();
 
 
 

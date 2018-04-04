@@ -69,7 +69,9 @@ var people = (function(){
     function deletePerson(event){
         let remove = $(event.target).closest('li');
         let item = $ul.find('li').index(remove);    
-        people.splice(item,1);    
+        people.splice(item,1);
+        console.log(event.target);
+            
         _render();
     }
     function _render(){
