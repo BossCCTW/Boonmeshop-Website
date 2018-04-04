@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+const path = require('path');
 
 const fileSystem = require('fs');
 const pathSlideShow = __dirname + '/assets/imgs/slideshow';
@@ -8,8 +9,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser()); //สั้งให้ bodyParser ทำงาน
 
 //set ให้ express รู้จักไฟล์ต่างๆภายนอก เมื่อมีการลิงค์ไฟล์ css image icon
-app.use('/assets', express.static(__dirname + '/assets/'));
-app.use('/scripts', express.static(__dirname + '/scripts/'));
+app.use('/assets', express.static(path.join(__dirname+'/assets')));
+app.use('/scripts', express.static(path.join(__dirname+'/scripts')));
 
 
 //เมื่อมีการเรียก url ที่ขึ้นต้นด้วย /api จะเข้าไปใช้งานไฟล์นี้
