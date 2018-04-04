@@ -3,7 +3,6 @@
   .navbar .navbar-container {
     margin: 0;
     padding: 0; }
-
   .navbar-webname {
     text-align: left; }
     .navbar-webname .navbar-icon_title {
@@ -11,15 +10,12 @@
       display: inline;
       font-size: 0.8em;
       position: relative; }
-
   .navbar-webname-subtitle span {
     display: none; }
-
   .navbar-webname-subtitle:after {
     font-size: 1em;
     line-height: 2em;
-    content: 'α╕êα╕│α╕½α╕Öα╣êα╕▓α╕óα╕¡α╕╕α╕¢α╕üα╕úα╕ôα╣îα╣éα╕òα╣èα╕░α╕ùα╕│α╕çα╕▓α╕Ö'; }
-
+    content: 'จำหน่ายอุปกรณ์โต๊ะทำงาน'; }
   .navbar-link {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -51,31 +47,24 @@
     .navbar-link .navbar-contacts_container ul li {
       border-top: none;
       margin: 0 0.3em; }
-
   .navbar-hamburger {
     margin: 0.7em 0.1em;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex; }
-
   .navbar-link.active {
     opacity: 1;
     top: 100%; }
-
   .modal-login .modal-login_content {
     margin: 10% auto;
     width: 40%; }
-
   .modal-download .modal-download_content {
     margin: 10% auto;
     width: 40%; }
-
   .banner {
     margin: 0.5em; }
-
   .banner-menu_item {
     min-height: 70px; }
-
   .menu {
     margin-bottom: 0.5em; }
     .menu .menu-products {
@@ -93,26 +82,20 @@
       .menu .menu-products section {
         margin: 0.2em;
         width: 15%; }
-
   .market-header {
     margin: 0.5em; }
-
   .market-filterbar .filterbar-content section.filterbar_type article div {
     text-align: left; }
-
   .market-header_titlebar-title {
     font-size: 1.4em; }
-
   .market-body {
     margin: 0.5em; }
-
   .market-item-container {
     grid-template-columns: repeat(5, 1fr); }
     .market-item-container .card .card-image {
       height: 150px; }
       .market-item-container .card .card-image img {
         width: 100%; }
-
   .product-detail .detail-content {
     margin: 0 1em;
     max-width: 95%;
@@ -132,16 +115,11 @@
     .product-detail .detail-content section.detail-data .detail-body .tabbar button {
       font-size: 0.9em;
       padding: 10px 0; }
-
   .footer-container {
     padding: 1em;
     font-size: 2.5vmin; }
-
   .footer-grid-nested {
     grid-column: 1/6;
     grid-template-columns: repeat(2, 1fr); }
-
   .footer-grid-child {
     grid-column: 1/6; } }
-
-

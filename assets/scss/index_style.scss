@@ -1089,11 +1089,7 @@ $bg-total:#5C6BC0;
   align-items: center;
   .detail-content {
     position: relative;
-<<<<<<< HEAD
-    width: 75%;
-=======
     width: 100%;
->>>>>>> 39577e56816bf4641da5b6121fbbaa1079cf6ab4
     height: 90%;
     max-width: 980px;
     margin: 0 auto;
@@ -1113,7 +1109,7 @@ $bg-total:#5C6BC0;
       &:hover,
       &:active {
         cursor: pointer;
-        color: #999+50%;
+        color: rgb(219, 219, 219);
       }
     }
     section {
@@ -1159,14 +1155,9 @@ $bg-total:#5C6BC0;
           }
         }
         .img-group {
-<<<<<<< HEAD
-          flex: 2;
-          background: rgb(206, 206, 206);
-=======
           flex-basis:25%;
 
           background: rgb(196, 196, 196);
->>>>>>> 39577e56816bf4641da5b6121fbbaa1079cf6ab4
           display: flex;
           align-items: stretch;
           justify-content: space-between;
@@ -1179,11 +1170,7 @@ $bg-total:#5C6BC0;
             display: flex;
             align-items: center;
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-<<<<<<< HEAD
-            transition:0.2s ease;
-=======
             transition: 0.2s ease;
->>>>>>> 39577e56816bf4641da5b6121fbbaa1079cf6ab4
             &:hover,
             &:active {
               cursor: pointer;
@@ -1219,12 +1206,6 @@ $bg-total:#5C6BC0;
               flex-shrink: 0;
               box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
               background-color: #585858;
-<<<<<<< HEAD
-              margin: 0.5em;
-              filter:brightness(100%);
-              
-              transition: 0.1s ease;
-=======
               margin: 0.2em;
               filter: brightness(95%);
               transition: 0.1s ease;
@@ -1239,7 +1220,6 @@ $bg-total:#5C6BC0;
                 border: 2px solid rgb(68, 100, 204);
                 border-radius: 2px;
               }
->>>>>>> 39577e56816bf4641da5b6121fbbaa1079cf6ab4
               img {
                 width: auto;
                 height: 100%;
@@ -1248,12 +1228,8 @@ $bg-total:#5C6BC0;
                 border-radius: 2px;
               }
               &:hover {
-<<<<<<< HEAD
-                cursor: pointer;filter:brightness(115%);
-=======
                 cursor: pointer;
                 filter: brightness(110%);
->>>>>>> 39577e56816bf4641da5b6121fbbaa1079cf6ab4
               }
             }
           }
@@ -1550,7 +1526,7 @@ $bg-total:#5C6BC0;
                 }
                 .point-detail {
                   span {
-                    color: #2979ff;
+                    color: rgb(41, 121, 255);
                   }
                 }
               }

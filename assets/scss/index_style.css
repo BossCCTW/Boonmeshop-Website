@@ -4,10 +4,10 @@ html {
   height: 100%; }
 
 body {
-  /*α╕òα╕▒α╣ëα╕çα╕äα╣êα╕▓α╣Çα╕¢α╣çα╕Ö display flex
-  α╣Çα╕₧α╕╖α╣êα╕¡α╣âα╕½α╣ëα╣Çα╕úα╕╡α╕óα╕çα╕Ñα╕│α╕öα╕▒α╕Ü div α╕ùα╕▒α╣ëα╕çα╕½α╕íα╕ö α╕êα╕▓α╕ü α╕Üα╕Öα╕Ñα╕çα╕Ñα╣êα╕▓α╕ç
-  α╣üα╕Üα╕Ü column α╣Çα╕¡α╕╖α╣ëα╕¡α╕üα╕│α╕Öα╕ºα╕óα╣âα╕Öα╕üα╕▓α╕úα╕ùα╕│ footer α╣üα╕Üα╕Ü sticky
-  footer α╕êα╕░α╕äα╕çα╕¡α╕óα╕╣α╣êα╕öα╣ëα╕▓α╕Öα╕Ñα╕çα╣Çα╕¬α╕íα╕¡ α╣üα╕íα╣ëα╕ºα╣êα╕▓α╣Çα╕Öα╕╖α╣ëα╕¡α╕½α╕▓α╣âα╕Ö container body α╕êα╕░α╣Çα╕óα╕¡α╕░α╣üα╕äα╣êα╣äα╕½α╕Ö
+  /*ตั้งค่าเป็น display flex
+  เพื่อให้เรียงลำดับ div ทั้งหมด จาก บนลงล่าง
+  แบบ column เอื้อกำนวยในการทำ footer แบบ sticky
+  footer จะคงอยู่ด้านลงเสมอ แม้ว่าเนื้อหาใน container body จะเยอะแค่ไหน
   */
   display: -webkit-box;
   display: -ms-flexbox;
@@ -149,6 +149,7 @@ input:-moz-placeholder {
   to {
     opacity: 1;
     top: 0%; } }
+
 .modal-login {
   display: none;
   position: fixed;
@@ -569,6 +570,7 @@ input:-moz-placeholder {
     box-shadow: 0 3px 10px 0px rgba(0, 0, 0, .452);
     -webkit-animation: gradiantAnimate 10s ease infinite;
     animation: gradiantAnimate 10s ease infinite; }
+
 @-webkit-keyframes gradiantAnimate {
   0% {
     background-position: 0%; }
@@ -576,6 +578,7 @@ input:-moz-placeholder {
     background-position: 100%; }
   100% {
     background-position: 0%; } }
+
 @keyframes gradiantAnimate {
   0% {
     background-position: 0%; }
@@ -722,6 +725,7 @@ input:-moz-placeholder {
     opacity: 0; }
   to {
     opacity: 1; } }
+
 .progress-container {
   width: 100%;
   height: 100%;
@@ -841,6 +845,7 @@ input:-moz-placeholder {
   to {
     opacity: 1;
     left: 0%; } }
+
 .market-filterbar {
   grid-column: 1/6; }
   .market-filterbar .filterbar-content {
@@ -1061,6 +1066,7 @@ input:-moz-placeholder {
     opacity: 1;
     -webkit-transform: scale(1, 1);
     transform: scale(1, 1); } }
+
 .product-detail {
   position: fixed;
   top: 0;
@@ -1507,6 +1513,7 @@ input:-moz-placeholder {
               color: #333;
               margin-bottom: 0.5em;
               font-size: 1.05em; }
+
 @-webkit-keyframes slideLeftToRight {
   from {
     -webkit-transform: translateX(-100%);
@@ -1514,6 +1521,7 @@ input:-moz-placeholder {
   to {
     -webkit-transform: translateX(0);
     transform: translateX(0); } }
+
 @keyframes slideLeftToRight {
   from {
     -webkit-transform: translateX(-100%);
@@ -1528,6 +1536,7 @@ input:-moz-placeholder {
               margin-bottom: 1em; }
               .product-detail .detail-content section.detail-data .detail-body .body-container .content > div div {
                 margin: 0.3em 0.8em; }
+
 @-webkit-keyframes slideRightToLeft {
   from {
     -webkit-transform: translateX(100%);
@@ -1535,6 +1544,7 @@ input:-moz-placeholder {
   to {
     -webkit-transform: translateX(0);
     transform: translateX(0); } }
+
 @keyframes slideRightToLeft {
   from {
     -webkit-transform: translateX(100%);
@@ -1623,5 +1633,3 @@ input:-moz-placeholder {
   width: 100%;
   padding: 1em;
   border: 1px solid rgba(0, 0, 0, .2); }
-
-
