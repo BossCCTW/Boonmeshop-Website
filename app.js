@@ -23,6 +23,7 @@ app.get('/', function (req, res) {
 //send file html REGISTER-PAGE
 app.get('/register', function (req, res) {
     res.sendFile(__dirname + '/register.html');
+    
 });
 
 //send file html ADMIN
