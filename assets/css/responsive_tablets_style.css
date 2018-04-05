@@ -26,19 +26,18 @@
     flex-direction: column;
     position: absolute;
     background-color: #fff;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .15), 0 1px 10px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .15), 0 1px 10px rgba(0, 0, 0, .1);
     right: 0;
     top: -100%;
     opacity: 0;
     -webkit-transition: 0.3s;
-    -o-transition: 0.3s;
     transition: 0.3s; }
     .navbar-link li {
       display: block;
       width: 100%;
       padding: 0.5em 3em;
-      border-top: 1px solid rgba(0, 0, 0, 0.15); }
+      border-top: 1px solid rgba(0, 0, 0, .15); }
     .navbar-link li:hover {
       background-color: #dde; }
     .navbar-link .navbar-link_register {

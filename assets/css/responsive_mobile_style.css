@@ -23,14 +23,13 @@
     flex-direction: column;
     position: absolute;
     background-color: #fff;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .15), 0 1px 10px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .15), 0 1px 10px rgba(0, 0, 0, .1);
     right: 0;
     margin: -0.1em;
     top: -33em;
     opacity: 0;
     -webkit-transition: 0.4s;
-    -o-transition: 0.4s;
     transition: 0.4s; }
     .navbar-link.active {
       opacity: 1;
@@ -39,7 +38,7 @@
       display: block;
       width: 100%;
       padding: 0.5em 3em;
-      border-top: 1px solid rgba(0, 0, 0, 0.15); }
+      border-top: 1px solid rgba(0, 0, 0, .15); }
     .navbar-link li:hover {
       background-color: #dde; }
     .navbar-link .navbar-link_register {
@@ -117,7 +116,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(47, 48, 49, 0.74); }
+      background-color: rgba(47, 48, 49, .74); }
       .market-header .market-filterbar .filterbar-content {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -298,20 +297,19 @@
     flex-direction: column;
     position: absolute;
     background-color: #fff;
-    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 1px 10px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .15), 0 1px 10px rgba(0, 0, 0, .1);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .15), 0 1px 10px rgba(0, 0, 0, .1);
     right: 0;
     margin: -0.1em;
     top: -33em;
     opacity: 0;
     -webkit-transition: 0.4s;
-    -o-transition: 0.4s;
     transition: 0.4s; }
     .navbar-link li {
       display: block;
       width: 100%;
       padding: 0.5em 3em;
-      border-top: 1px solid rgba(0, 0, 0, 0.15); }
+      border-top: 1px solid rgba(0, 0, 0, .15); }
     .navbar-link li:hover {
       background-color: #dde; }
     .navbar-link .navbar-link_register {
@@ -346,7 +344,6 @@
           padding: 0.7em;
           white-space: nowrap;
           overflow: hidden;
-          -o-text-overflow: ellipsis;
           text-overflow: ellipsis; }
         .banner .banner-container-grid .banner-slideshow_promotion .promotion-container {
           max-height: 250px; }
@@ -398,7 +395,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(47, 48, 49, 0.74); }
+      background-color: rgba(47, 48, 49, .74); }
       .market-header .market-filterbar .filterbar-content {
         display: -webkit-box;
         display: -ms-flexbox;

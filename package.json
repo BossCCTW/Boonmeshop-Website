@@ -12,9 +12,14 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+<<<<<<< HEAD
     "mongodb": "^3.0.5"
   },
   "devDependencies": {
     "nodemon": "^1.17.3"
+=======
+    "mongodb": "^3.0.5",
+    "path": "^0.12.7"
+>>>>>>> 54830d0e0771765f1540c23fcf121e8948d1e6a0
   }
 }
