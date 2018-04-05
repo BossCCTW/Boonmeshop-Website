@@ -4,22 +4,25 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "crypto": "^1.0.1",
     "express": "^4.16.2",
-<<<<<<< HEAD
-    "mongodb": "^3.0.5"
+    "gridfs-stream": "^1.1.1",
+    "method-override": "^2.3.10",
+    "mongodb": "^3.0.5",
+    "mongoose": "^5.0.13",
+    "multer": "^1.3.0",
+    "multer-gridfs-storage": "^3.0.1",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "nodemon": "^1.17.3"
-=======
-    "mongodb": "^3.0.5",
-    "path": "^0.12.7"
->>>>>>> 54830d0e0771765f1540c23fcf121e8948d1e6a0
   }
 }

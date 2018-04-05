@@ -1,32 +1,27 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 const path = require('path');
 
-const fileSystem = require('fs');
-const pathSlideShow = __dirname + '/assets/imgs/slideshow';
-
-const bodyParser = require('body-parser');
-app.use(bodyParser()); //สั้งให้ bodyParser ทำงาน
-
+// const bodyParser = require('body-parser');
+// app.use(bodyParser()); //สั้งให้ bodyParser ทำงาน
 //set ให้ express รู้จักไฟล์ต่างๆภายนอก เมื่อมีการลิงค์ไฟล์ css image icon
 app.use('/assets', express.static(path.join(__dirname+'/assets')));
 app.use('/scripts', express.static(path.join(__dirname+'/scripts')));
-
-
 //เมื่อมีการเรียก url ที่ขึ้นต้นด้วย /api จะเข้าไปใช้งานไฟล์นี้
-app.use('/api',require(__dirname+'/scripts/api.js'));
+app.use('/api',require(__dirname+'/api.js'));
 
 
 //send file html INDEX-PAGE
 app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
+
+
 //send file html REGISTER-PAGE
 app.get('/register', function (req, res) {
     res.sendFile(__dirname + '/register.html');
     
 });
-
 //send file html ADMIN
 app.get('/admin', (req, res) => {
     res.sendFile(__dirname + '/admin.html');
@@ -34,15 +29,6 @@ app.get('/admin', (req, res) => {
 
 app.get('/person', function (req, res) {
     res.sendFile(__dirname + '/person.html');
-});
-
-app.get('/slideShow', (req, res) => {
-    fileSystem.readdir(pathSlideShow, (err, files) => {
-        // files.forEach(file =>{  
-        // });
-        res.setHeader('Content-Type', 'application/json');
-        res.send(JSON.stringify(files));
-    });
 });
 
 
