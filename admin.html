@@ -21,13 +21,13 @@
                 <div class="row">
                     <div class="col-md-6 mx-auto">
                         <div class="display-4 my-4"> Menu Product [Upload]</div>
-                        <form action="menu" method="POST">                                      
-                                <input type="text" class="form-control mb-2" placeholder="ชื่อเมนู TH">
-                                <input type="text" class="form-control mb-2" placeholder="ชื่อเมนู EN">
-                                <div class="custon-file position-relative mb-2">
-                                    <input type="file" name="fileImage" id="fileIconMenu" class="custom-file-input">
-                                    <label for="fileIconMenu" class="custom-file-label">Choose File icon</label>
-                                </div>  
+                        <form action="/menu" method="post" enctype="multipart/form-data">                                      
+                                <input type="text" class="form-control mb-2" placeholder="ชื่อเมนู TH" value="โคมไฟ" id="nameMenuTh" name="nameMenuTh">
+                                <input type="text" class="form-control mb-2" placeholder="ชื่อเมนู EN" value="Lamp" id="nameMenuEn" name="nameMenuEn">
+                                <div class="form-group">
+                                    <label for="fileIconMenu">Choose file icon</label>
+                                    <input type="file" class="form-control-file" name="fileMenuIcon" id="fileMenuIcon" >
+                                </div>
                                 <input type="submit" value="Submit" class="btn btn-primary btn-block">               
                         </form>
                     </div>

@@ -1,14 +1,29 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const bodyParser = require('body-parser');
+const mongoose = require("mongoose");
 
-// const bodyParser = require('body-parser');
-// app.use(bodyParser()); //สั้งให้ bodyParser ทำงาน
+
+const menuRoutes = require(__dirname+'/api/routes/menu');
+const slideShowRoutes = require(__dirname+'/api/routes/slideshow');
+
+
+mongoose.connect('mongodb://localhost:27017/boonmeeweb');
+mongoose.Promise = global.Promise;
+
+app.use(bodyParser.json()); //สั้งให้ bodyParser ทำงาน
+app.use(bodyParser.urlencoded({ extended: false }));
+
 //set ให้ express รู้จักไฟล์ต่างๆภายนอก เมื่อมีการลิงค์ไฟล์ css image icon
 app.use('/assets', express.static(path.join(__dirname+'/assets')));
 app.use('/scripts', express.static(path.join(__dirname+'/scripts')));
-//เมื่อมีการเรียก url ที่ขึ้นต้นด้วย /api จะเข้าไปใช้งานไฟล์นี้
-app.use('/api',require(__dirname+'/api.js'));
+app.use('/uploads', express.static(path.join(__dirname+'/uploads')));
+app.use('/menu',express.static(path.join(__dirname+'/uploads/menu')));
+
+app.use('/menu',menuRoutes);
+app.use('/slideshow',slideShowRoutes);
+
 
 
 //send file html INDEX-PAGE
@@ -16,20 +31,15 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-
 //send file html REGISTER-PAGE
 app.get('/register', function (req, res) {
-    res.sendFile(__dirname + '/register.html');
-    
+    res.sendFile(__dirname + '/register.html'); 
 });
 //send file html ADMIN
 app.get('/admin', (req, res) => {
     res.sendFile(__dirname + '/admin.html');
 });
 
-app.get('/person', function (req, res) {
-    res.sendFile(__dirname + '/person.html');
-});
 
 
 

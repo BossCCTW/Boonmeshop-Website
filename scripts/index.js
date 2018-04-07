@@ -97,7 +97,7 @@ let Slideshow = (() => {
 
   const time = 2000;
   const pathImage = 'assets/imgs/slideshow/';
-  const url = 'http://localhost:2000/api/slideShow';
+  const url = 'http://localhost:2000/slideShow/';
 
   //Catch DOM
   let $slideShowContainer = $('.container').find('.banner-slideshow');
