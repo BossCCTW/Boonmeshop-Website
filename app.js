@@ -5,24 +5,48 @@ const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 
 
-const menuRoutes = require(__dirname+'/api/routes/menu');
-const slideShowRoutes = require(__dirname+'/api/routes/slideshow');
+const menuRoutes = require(__dirname + '/api/routes/menu');
+const slideShowRoutes = require(__dirname + '/api/routes/slideshow');
+
+//set Routes go to api 
+app.use('/menu', menuRoutes);
+app.use('/slideshow', slideShowRoutes);
 
 
-mongoose.connect('mongodb://localhost:27017/boonmeeweb');
+// mongoose.connect('mongodb://localhost:27017/boonmeeweb');
+mongoose.connect("mongodb://boonmee:" +
+    process.env.MONGO_ATLAS_PW +
+    "@boonmee-web-shard-00-00-v3bmo.mongodb.net:27017,boonmee-web-shard-00-01-v3bmo.mongodb.net:27017,boonmee-web-shard-00-02-v3bmo.mongodb.net:27017/test?ssl=true&replicaSet=boonmee-web-shard-0&authSource=admin");
 mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json()); //สั้งให้ bodyParser ทำงาน
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+
+
+//set API CORS [Cross Origin Resouce] 
+// for send request from another client
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    if (req.method === 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+    }
+    next();
+});
+
+
 
 //set ให้ express รู้จักไฟล์ต่างๆภายนอก เมื่อมีการลิงค์ไฟล์ css image icon
-app.use('/assets', express.static(path.join(__dirname+'/assets')));
-app.use('/scripts', express.static(path.join(__dirname+'/scripts')));
-app.use('/uploads', express.static(path.join(__dirname+'/uploads')));
-app.use('/menu',express.static(path.join(__dirname+'/uploads/menu')));
+app.use('/assets', express.static(path.join(__dirname + '/assets')));
+app.use('/scripts', express.static(path.join(__dirname + '/scripts')));
+app.use('/uploads', express.static(path.join(__dirname + '/uploads')));
 
-app.use('/menu',menuRoutes);
-app.use('/slideshow',slideShowRoutes);
 
 
 
@@ -33,14 +57,27 @@ app.get('/', function (req, res) {
 
 //send file html REGISTER-PAGE
 app.get('/register', function (req, res) {
-    res.sendFile(__dirname + '/register.html'); 
+    res.sendFile(__dirname + '/register.html');
 });
 //send file html ADMIN
 app.get('/admin', (req, res) => {
     res.sendFile(__dirname + '/admin.html');
 });
 
-
+//@Handle ERROR REQUST 
+app.use((req, res, next) => {
+    const error = new Error('Not found');
+    error.status = 404;
+    next(error);
+});
+app.use((error, req, res, next) => {
+    res.status(error.status || 500);
+    res.json({
+        error: {
+            message: error.message
+        }
+    });
+});
 
 
 app.listen(2000, function () {

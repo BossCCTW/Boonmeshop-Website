@@ -3,7 +3,7 @@ const menuSchema = mongoose.Schema({
     _id:mongoose.Schema.Types.ObjectId,
     nameTh : {type:String,required: true},
     nameEn : {type:String,required: true},
-    menuIcon:{type:String,required:true}
+    iconUri:{type:String,required:true}
 });
 
 module.exports = mongoose.model('Menu',menuSchema);
