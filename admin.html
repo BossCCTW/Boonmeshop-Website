@@ -1,68 +1,127 @@
 <html>
-    <head>       
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Boonmee Admin v0.1</title>
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="assets/css/admin.css">
-    
-    </head>
-    <body>
-        <div class="container-fluid p-0">
-            <nav class="navbar navbar-light bg-light p-0 navbar-shadow mb-3 ">
-                <span class="navbar-brand h1 mx-3 d-flex">BOONMEE-WEB &nbsp;
-                    <span class=text-primary>ADMIN</span>
-                    </span>
-            </nav>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-10 mx-auto">
-                        <div class="display-4 my-4"> Menu Product [Upload]</div>
-                        <form action="/menu" method="post" enctype="multipart/form-data">                                      
-                                <input type="text" class="form-control mb-2" placeholder="ชื่อเมนู TH เช่น 'โคมไฟ'" id="nameMenuTh" name="nameMenuTh" required>
-                                <input type="text" class="form-control mb-2" placeholder="ชื่อเมนู EN เช่น 'Lamp'" id="nameMenuEn" name="nameMenuEn" required>
-                                <div class="form-group">
-                                    <label for="fileIconMenu">Choose file icon</label>
-                                    <input type="file" class="form-control-file" name="fileMenuIcon" id="fileMenuIcon" >
-                                </div>
-                                <input type="submit" value="Submit" class="btn btn-primary btn-block">               
-                        </form>
-                    </div>
-                    <div class="w-100">                   
-                    </div>
-                    <div class="row col-10 mx-auto">
-                             <!-- https://www.youtube.com/watch?v=srPXMt1Q0nY&index=10&list=PL55RiY5tL51q4D-B63KBnygU6opNPFk_q -->
-                       <div class="card col-md-2 p-0 text-center">
-                        <img class="card-img-top img-fluid img-thumbnail" src="http://freevector.co/wp-content/uploads/2011/08/71192-plant-pot.png" alt="Card image cap" >
-                        <div class="card-body p-0">
-                            <p class="card-text m-0">
-                                Name TH
-                            </p>
-                            <P class="card-text m-0">
-                                Name EN
-                            </P>
-                            <button type="button" class="btn btn-outline-success w-100">Edit</button>
-                            <button type="button" class="btn btn-outline-danger w-100">Delete</button>
+    <title>Boonmee Admin v0.1</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/admin.css">
+
+    <style>
+        .shadow-material {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <nav class="navbar navbar-light bg-light p-0 navbar-shadow mb-3 ">
+            <span class="navbar-brand h1 mx-3 d-flex">BOONMEE-WEB &nbsp;
+                <span class=text-primary>ADMIN</span>
+            </span>
+        </nav>
+
+        <div class="container">
+            <div class="menu-container row d-flex justify-content-center">
+                <div class="col-10">
+                    <div class="display-4 my-4"> Menu [Upload]</div>
+                    <form action="/menu" method="POST" enctype="multipart/form-data">
+                        <input type="text" class="form-control mb-2" placeholder="ชื่อเมนู TH เช่น 'โคมไฟ'" id="nameMenuTh" name="nameMenuTh" required>
+                        <input type="text" class="form-control mb-2" placeholder="ชื่อเมนู EN เช่น 'Lamp'" id="nameMenuEn" name="nameMenuEn" required>
+                        <div class="form-group">
+                            <label for="fileIconMenu">Choose file icon</label>
+                            <input type="file" class="form-control-file" name="fileMenuIcon" id="fileMenuIcon" required>
                         </div>
-                       </div>
-                       
+                        <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                    </form>
+                </div>
 
-                    </div>
+                <div class="row col-10 mb-4" id="listMenu">
+                </div>
+                <div class="w-100 border-top">
 
                 </div>
-               
-               
-                
+                <div class="position-absolute modal-dialog-centered w-100 d-none" id="modelUpdateMenu">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content shadow-material">
+                            <div class="modal-header">
+                                <h5 class="modal-title">แก้ไขข้อมูลเมนู </h5>
+                                <button type="button" class="close" aria-label="Close" id="btnClose">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="updateNameTh" class="col-form-label">ชื่อเมนู(ไทย):</label>
+                                        <input type="text" class="form-control" id="ipUpdateNameTh">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="updateNameEn" class="col-form-label">ชื่อเมนู(อังกฤษ)</label>
+                                        <input type="text" class="form-control" id="ipUpdateNameEn">
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                                <button type="button" class="btn btn-primary" id="btnSaveUpdateMenu">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-        
+
+            <div class="slideshow-container row d-flex justify-content-center">
+                <div class="col-10">
+                    <div class="display-4 my-4"> Slide Show [Upload]</div>
+                    <form  action="/slideshow" method="POST" enctype="multipart/form-data">
+                       <em style="color:red;" class="notify-txt"></em>
+                        <input type="text" class="form-control mb-2" placeholder="โค้ดสินค้าในภาพ สามารถใส่ได้มากกว่า 1 เช่น #F223,#L123" id="inputCodeLinkSlideShow" name="inputCodeLinkSlideShow" required>                     
+                        <div class="form-group">
+                            <label for="fileIconMenu">Choose file image slideshow </label>
+                            <em style="color:red;" class="notify-img"></em>
+                            <input type="file" class="form-control-file mb-2" name="inputImageSlideshow" id="inputImageSlideshow" required>
+                            <div id="previewUploadSlideshow">
+                                   
+                            </div>
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-primary btn-block" id="btnSaveUploadSlideshow" >
+                    </form>
+                   
+                </div>
+                <div class="row col-10 mb-4" id="listSlideshow">
+                    <div class="card col-6 p-0 text-center">
+                        <p class="card-text m-0 ml-1 text-left">ID:</p>
+                        <p class="card-text m-0 ml-1 text-left">LinkCode:</p>
+                        <img class="img-fluid" src="https://fthmb.tqn.com/6K_9JPn8AYw8RmpwSN7mXvX8t_Y=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/easy-diy-desk-5a1f5ce613f129003887a0b0-5a26e5ccbeba3300377730f6.jpg"
+                            alt="Card image cap">
+                            <button type="button" class="btn btn-outline-danger w-100 p-0 rounded-bottom rounded-0" id="btnDeleteSlideshow">Delete</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="scripts/admin.js" type="text/javascript"></script>
+
 </html>

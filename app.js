@@ -13,11 +13,11 @@ app.use('/menu', menuRoutes);
 app.use('/slideshow', slideShowRoutes);
 
 
-// mongoose.connect('mongodb://localhost:27017/boonmeeweb');
-mongoose.connect("mongodb://boonmee:" +
-    process.env.MONGO_ATLAS_PW +
-    "@boonmee-web-shard-00-00-v3bmo.mongodb.net:27017,boonmee-web-shard-00-01-v3bmo.mongodb.net:27017,boonmee-web-shard-00-02-v3bmo.mongodb.net:27017/test?ssl=true&replicaSet=boonmee-web-shard-0&authSource=admin");
-mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost:27017/boonmeeweb');
+// mongoose.connect("mongodb://boonmee:" +
+//     process.env.MONGO_ATLAS_PW +
+//     "@boonmee-web-shard-00-00-v3bmo.mongodb.net:27017,boonmee-web-shard-00-01-v3bmo.mongodb.net:27017,boonmee-web-shard-00-02-v3bmo.mongodb.net:27017/test?ssl=true&replicaSet=boonmee-web-shard-0&authSource=admin");
+// mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json()); //สั้งให้ bodyParser ทำงาน
 app.use(bodyParser.urlencoded({
