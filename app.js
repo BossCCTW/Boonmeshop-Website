@@ -5,24 +5,31 @@ const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 
 
+
+
+
 const menuRoutes = require(__dirname + '/api/routes/menu');
 const slideShowRoutes = require(__dirname + '/api/routes/slideshow');
-
+const promotionRoutes = require(__dirname+'/api/routes/promotion');
+const materialRoutes = require(__dirname+'/api/routes/material');
+const productRouters = require(__dirname+'/api/routes/product');
 //set Routes go to api 
 app.use('/menu', menuRoutes);
 app.use('/slideshow', slideShowRoutes);
+app.use('/promotion',promotionRoutes);
+app.use('/material',materialRoutes);
+app.use('/product',productRouters);
 
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(bodyParser.json()); //สั้งให้ bodyParser ทำงาน
 
 mongoose.connect('mongodb://localhost:27017/boonmeeweb');
 // mongoose.connect("mongodb://boonmee:" +
 //     process.env.MONGO_ATLAS_PW +
 //     "@boonmee-web-shard-00-00-v3bmo.mongodb.net:27017,boonmee-web-shard-00-01-v3bmo.mongodb.net:27017,boonmee-web-shard-00-02-v3bmo.mongodb.net:27017/test?ssl=true&replicaSet=boonmee-web-shard-0&authSource=admin");
 // mongoose.Promise = global.Promise;
-
-app.use(bodyParser.json()); //สั้งให้ bodyParser ทำงาน
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
 
 
 //set API CORS [Cross Origin Resouce] 

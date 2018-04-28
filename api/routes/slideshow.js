@@ -11,9 +11,9 @@ const multer = require('multer');
 const Slideshow = require('../models/slideshow');
 
 //Middleware [Get data from [POST] for => get parameter in req.body]
-// router.use(bodyParser.urlencoded());
+router.use(bodyParser());
+router.use(bodyParser.urlencoded({extended:false}));
 router.use(bodyParser.json());
-
 
 //Create Multer Stotage
 let storage = multer.diskStorage({
@@ -46,10 +46,34 @@ const upload = multer({
 
 
 const pathSlideShow ='./assets/imgs/slideshow';
-router.get('/', (req, res) => {
+router.get('/all', (req, res) => {
     fs.readdir(pathSlideShow, (err, files) => {
         res.setHeader('Content-Type', 'application/json');
         res.send(JSON.stringify(files));
+    });
+});
+
+//@GET ALL the Slideshow 
+router.get('/',(req,res)=>{
+    Slideshow.find()
+    .exec()
+    .then(doc=>{
+        if(doc.length > 0){
+            res.status(200).json({
+                status:200,
+                data:doc
+            });
+        }else{
+            res.status(500).json({
+                status: 500,
+                data: 'No Item Slideshow'
+            });
+        }
+    })
+    .catch(err=>{
+        res.status(500).json({
+            error:err
+        });
     });
 });
 
@@ -87,5 +111,118 @@ router.post('/',upload.single('fileImage'),(req,res)=>{
     
     
 });
+
+//@PATCH FOR EDIT CODE LINK AND IMAGE SLIDESHOW
+router.patch('/:slideId',upload.single('imageUpdateSlide'),(req,res)=>{
+   
+    let id = req.params.slideId;
+    let codeLink = req.body.codeLinkUpdate.split(',');
+    
+    // console.log(req.file);
+    
+    let dataUpdate = {};
+    if(req.file == undefined){
+        dataUpdate ={codeLink:codeLink};
+
+    }else{
+        dataUpdate = {codeLink:codeLink
+                    ,imgUri:req.file.path};
+
+                Slideshow.findById(id)
+                .exec()
+                .then(doc => {                  
+                    if (doc) {
+                       let imageUri = doc.imgUri;
+
+                        //delete Old image
+                        //check file image exist from path imgUri
+                        if (fs.existsSync(imageUri)) {
+                            fs.unlink(imageUri, (err) => {
+                            if (err) throw err;
+                                console.log(imageUri+' was deleted !!!!!');        
+                            });
+                        }else{
+                            console.log('image is not exist');                
+                        }
+                            
+                    } else {
+                           console.log(JSON.stringify({message: 'No valid entry found for provided ID'}));   
+                    }})
+                    .catch(err => {
+                        console.log(err);
+                    });     
+    }
+
+    Slideshow.update({_id: id}, {$set: dataUpdate})
+    .exec()
+    .then(result => {
+        console.log(result);
+        res.status(200).json({
+            status: 200,
+            result: result
+        });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            status:500,
+            error: err
+        });
+    });
+    
+     
+});
+
+//@DELETE SLIDE BY ID AND DELETE FILE IMAGE IN SERVER
+router.delete('/:slideId',(req,res)=>{
+    const id = req.params.slideId;
+    let imageUri = req.body.imgDelete;
+
+    //findById for delete image file
+    Slideshow.findById(id)
+    .exec()
+    .then(doc => {                  
+        if (doc) {
+           let imageUri = doc.imgUri;
+
+            //delete Old image
+            //check file image exist from path imgUri
+            if (fs.existsSync(imageUri)) {
+                fs.unlink(imageUri, (err) => {
+                if (err) throw err;
+                    console.log(imageUri+' was deleted !!!!!');        
+                });
+            }else{
+                console.log('image is not exist');                
+            }
+                
+        } else {
+               console.log(JSON.stringify({message: 'No valid entry found for provided ID'}));   
+        }})
+        .catch(err => {
+            console.log(err);
+        });     
+
+    //delete data by id in mongoDB
+    Slideshow.remove({
+        _id: id
+    }).exec()
+    .then(result => {
+         if(result.ok == 1){
+            res.status(200).json({
+                status: 200,
+                result:result
+            });
+         }                 
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error: err
+        });
+    });
+    
+});
+
 
 module.exports = router;

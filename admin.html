@@ -37,7 +37,7 @@
                             <label for="fileIconMenu">Choose file icon</label>
                             <input type="file" class="form-control-file" name="fileMenuIcon" id="fileMenuIcon" required>
                         </div>
-                        <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                        <input type="submit" value="Save Upload" class="btn btn-primary btn-block">
                     </form>
                 </div>
 
@@ -77,51 +77,518 @@
                 </div>
             </div>
 
+            <!-- SLIDESHOW -->
             <div class="slideshow-container row d-flex justify-content-center">
                 <div class="col-10">
                     <div class="display-4 my-4"> Slide Show [Upload]</div>
-                    <form  action="/slideshow" method="POST" enctype="multipart/form-data">
-                       <em style="color:red;" class="notify-txt"></em>
-                        <input type="text" class="form-control mb-2" placeholder="โค้ดสินค้าในภาพ สามารถใส่ได้มากกว่า 1 เช่น #F223,#L123" id="inputCodeLinkSlideShow" name="inputCodeLinkSlideShow" required>                     
+                    <form action="/slideshow" method="POST" enctype="multipart/form-data">
+                        <em style="color:red;" class="notify-txt"></em>
+                        <input type="text" class="form-control mb-2" placeholder="โค้ดสินค้าในภาพ สามารถใส่ได้มากกว่า 1 เช่น #F223,#L123" id="inputCodeLinkSlideShow"
+                            name="inputCodeLinkSlideShow" required>
                         <div class="form-group">
                             <label for="fileIconMenu">Choose file image slideshow </label>
                             <em style="color:red;" class="notify-img"></em>
                             <input type="file" class="form-control-file mb-2" name="inputImageSlideshow" id="inputImageSlideshow" required>
                             <div id="previewUploadSlideshow">
-                                   
+
                             </div>
                         </div>
-                        <input type="submit" value="Submit" class="btn btn-primary btn-block" id="btnSaveUploadSlideshow" >
+                        <div id="showComplete">
+                        </div>
+                        <input type="submit" value="Save Upload" class="btn btn-primary btn-block" id="btnSaveUploadSlideshow">
                     </form>
-                   
+
                 </div>
                 <div class="row col-10 mb-4" id="listSlideshow">
-                    <div class="card col-6 p-0 text-center">
-                        <p class="card-text m-0 ml-1 text-left">ID:</p>
-                        <p class="card-text m-0 ml-1 text-left">LinkCode:</p>
-                        <img class="img-fluid" src="https://fthmb.tqn.com/6K_9JPn8AYw8RmpwSN7mXvX8t_Y=/960x0/filters:no_upscale():max_bytes(150000):strip_icc()/easy-diy-desk-5a1f5ce613f129003887a0b0-5a26e5ccbeba3300377730f6.jpg"
-                            alt="Card image cap">
-                            <button type="button" class="btn btn-outline-danger w-100 p-0 rounded-bottom rounded-0" id="btnDeleteSlideshow">Delete</button>
+
+                </div>
+
+                <div class="w-100 h-100 position-fixed d-none" style="z-index:1050; top:0; background-color: rgba(0, 0, 0, 0.63);" id="modalUpdateSlide">
+
+                    <div class="modal-update_slideshow card shadow-material mb-4 position-fixed" style="max-width: 22rem;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                        <h5 class="card-header">Update Slideshow
+                            <button type="button" class="close" aria-label="Close" id="btnClose">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </h5>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h5 class="card-title" id="idUpdateSlide">ID:
+                                <span></span>
+                            </h5>
+                            <input type="text" class="form-control mb-3 w-100" placeholder="" id="inputCodeLinkUpdateSlide" name="inputCodeLinkSlideShow"
+                                required>
+                            <img id="imgShowUpdateSlide" style="max-height:180px; object-fit: scale-down;" src="" class="img-fluid mb-3 w-100" alt="...">
+
+                            <div class="form-group">
+                                <label for="inputFileImageUpdateSlide" id="labelForinputUpdateSlide">Choose file Image Update</label>
+                                <input type="file" class="form-control-file" name="inputFileImageUpdateSlide" id="inputFileImageUpdateSlide" required>
+                            </div>
+                            <button class="btn btn-primary" id="btnSaveUpdateSlide">Update Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-100 h-100 position-fixed d-none" style="z-index:1050; top:0; background-color: rgba(0, 0, 0, 0.63);" id="modalDeleteSlide">
+
+                    <div class="card shadow-material mb-4 position-fixed col-4" style="top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                        <h5 class="card-header">Delete Slideshow </h5>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h6 class="card-title m-0" id="">Are you sure to Delete ?</h6>
+                            <span class="mb-2 " id="modalDeleteSlide_Id"></span>
+                            <div class="input-group">
+                                <button class="btn btn-secondary mr-1 col" id="btnModalDeleteSlide_cancel">Cancel</button>
+                                <button class="btn btn-danger col" id="btnModalDeleteSlide_ok"> Delete </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- SLIDESHOW -->
+            <div class="w-100 border-top"></div>
+            <!-- PROMOTION -->
+            <div class="promotion-container row d-flex justify-content-center">
+
+                <div class="promotion-upload col-10">
+                    <h1 class="display-4 mb-3">
+                        Promotion [Upload]
+                    </h1>
+
+                    <em style="color:red;" class="w-100 notify-title" id=""></em>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="promo-title">Promotion Title</span>
+                        </div>
+                        <input type="text" class="form-control" id="inputTitlePromotion" aria-describedby="promo-title" placeholder="เช่น 'โปรโมชั่นต้อนรับสงกรานต์สิ้นค้าร่วมรายการลดสูงสุด 50%'">
+                    </div>
+                    <em style="color:red;" class="w-100 notify-querycode" id=""></em>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="promotion-querycode">Promotion Query-Code</span>
+                        </div>
+                        <input type="text" class="form-control" id="inputQueryCodePromotion" aria-describedby="promotion-querycode" placeholder="{product-status:popular}">
+                    </div>
+
+                    <em style="color:red;" class="w-100 notify-image" id=""></em>
+                    <div class="input-group">
+                        <label for="inputImagePromotion">Choose file image Promotion </label>
+                        <!-- <em style="color:red;" class="notify-img"></em> -->
+                        <input type="file" class="form-control-file mb-2" name="inputImagePromotion" id="inputImagePromotion" required>
+                        <div id="previewUploadImage" class="w-100 bg-dark mb-3">
+
+                        </div>
+                    </div>
+                    <button id="btnSaveUploadPromotion" type="button" class="btn btn-primary col mb-4">Save Upload</button>
+                </div>
+
+                <div class="promotion-list col-10 row">
+
+                </div>
+
+
+                <div class="promotion-modal-update w-100 h-100 position-fixed d-none" style="z-index:1050; top:0; background-color: rgba(0, 0, 0, 0.63);"
+                    id="">
+                    <div class="card shadow-material mb-4 position-fixed" id="modalUpdatePromotion" style="max-width: 22rem;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                        <h5 class="card-header">Update Promotion
+                            <button type="button" class="close btn-close-modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </h5>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h5 class="card-title" id="idUpdatePromotion">ID:
+                                <span></span>
+                            </h5>
+
+                            <em style="color:red;" class="w-100 notify-update-title" id=""></em>
+                            <input type="text" class="form-control mb-3 w-100" placeholder="" id="inputTitleUpdatePromotion" name="inputTitleUpdatePromotion"
+                                required>
+
+                            <em style="color:red;" class="w-100 notify-update-querycode" id=""></em>
+                            <input type="text" class="form-control mb-3 w-100" placeholder="" id="inputQueryCodePromotion" name="inputQueryCodePromotion"
+                                required>
+
+                            <img id="imagePreviewUpdatePromotion" style="max-height:180px; object-fit: scale-down;" src="" class="img-fluid mb-3 w-100"
+                                alt="...">
+
+                            <em style="color:red;" class="w-100 notify-update-image" id=""></em>
+                            <div class="form-group">
+                                <label for="inputImageUpdatePromotion" id="labelForinputUpdateSlide">Choose file Image Update</label>
+                                <input type="file" class="form-control-file" name="inputImageUpdatePromotion" id="inputFileImageUpdateSlide" required>
+                            </div>
+
+                            <button class="btn btn-primary" id="btnSaveUpdatePromotion">Update Now</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="promotion-modal-delete w-100 h-100 position-fixed d-none" style="z-index:1050; top:0; background-color: rgba(0, 0, 0, 0.63);">
+                    <div class="card shadow-material mb-4 position-fixed col-4" style="top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                        <h5 class="card-header">Delete Promotion</h5>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h6 class="card-title m-0" id="">Are you sure to Delete ?</h6>
+
+                            <span class="mb-2 " id="idDeletePromotion">id</span>
+                            <div class="input-group">
+                                <button class="btn btn-secondary mr-1 col" id="btnCancelModalDeletePromotion">Cancel</button>
+                                <button class="btn btn-danger col" id="btnSaveDeletePromotion"> Delete </button>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
 
             </div>
+            <!-- PROMOTION -->
+            <div class="w-100 border-top">
+
+            </div>
+            <!-- MATERIAL -->
+            <div class="material-container row d-flex justify-content-center">
+                <div class="material-upload col-10">
+
+                    <h1 class="display-4 mb-3">
+                        Material [Upload]
+                    </h1>
+
+                    <em style="color:red;" class="w-100 notify-name-th"></em>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Material Name[TH]</span>
+                        </div>
+                        <input type="text" class="form-control" id="inputNameThMaterial" placeholder="เช่น เหล็ก, หิน, ปูน">
+                    </div>
+
+                    <em style="color:red;" class="w-100 notify-name-en"></em>
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Material Name[EN]</span>
+                        </div>
+                        <input type="text" class="form-control" id="inputNameEnMaterial" placeholder="iron, stone, cement">
+                    </div>
+
+                    <button type="button" class="btn btn-primary col mb-4" id="btnSaveUploadMaterial">Save Upload</button>
+                </div>
+
+
+                <div class="material-list row col-10 mb-4 ">
+
+
+
+
+                </div>
+
+
+
+                <div class="w-100 h-100 position-fixed d-none" style="z-index:1050; top:0; background-color: rgba(0, 0, 0, 0.63);" id="modalUpdateMaterial">
+                    <div class="card shadow-material mb-4 position-fixed" id="" style="max-width: 22rem;top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                        <h5 class="card-header">Update Material
+                            <button type="button" class="close btn-close-modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </h5>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h5 class="card-title">ID:
+                                <span class="id-update"></span>
+                            </h5>
+
+                            <em style="color:red;" class="w-100 notify-update"></em>
+                            <input type="text" class="form-control mb-3 w-100 input-update-nameth" placeholder="name th" id="" name="" required>
+
+                            <input type="text" class="form-control mb-3 w-100 input-update-nameen" placeholder="name en" id="" name="" required>
+
+                            <button class="btn btn-primary btn-save-update" id="">Update Now</button>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class=" w-100 h-100 position-fixed d-none" style="z-index:1050; top:0; background-color: rgba(0, 0, 0, 0.63);" id="modalDeleteMaterial">
+                    <div class="card shadow-material mb-4 position-fixed col-4" style="top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                        <h5 class="card-header">Delete Material</h5>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h6 class="card-title m-0" id="">Are you sure to Delete ?</h6>
+
+                            <span class="mb-2" id="idDeleteMaterial">id</span>
+                            <div class="input-group">
+                                <button class="btn btn-secondary mr-1 col btn-cancel" id="">Cancel</button>
+                                <button class="btn btn-danger col btn-save-delete" id=""> Delete </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- MATERIAL -->
+
+            <div class="w-100 border-top">
+
+            </div>
+
+            <!-- PRODUCT -->
+            <div class="product-container row d-flex justify-content-center mt-4" id="productContainer">
+                <div class="product-upload col-10">
+
+                    <h1 class="display-4 mb-3 mt-4">
+                        Product [Upload]
+                    </h1>
+
+                    <!-- ชื่อสินค้า -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-2 p-0">
+                            <span class="input-group-text w-100" id="">ชื่อสินค้า</span>
+                        </div>
+                        <input type="text" class="form-control" id="inputNameThMaterial" placeholder="">
+                    </div>
+
+                    <!-- ราคา -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-2 p-0">
+                            <span class="input-group-text w-100" id="">ราคา</span>
+                        </div>
+                        <input type="number" class="form-control" id="inputNameThMaterial" placeholder="">
+                    </div>
+
+                    <!-- preview image Avatar -->
+                    <div class="w-100 preview-image-avatar" style="background-color: rgba(0, 0, 0, 0.6)">
+                        <img class="img-card-top d-block mx-auto" src="uploads/product/1524838428916productGallery05.jpeg" alt="preview image avatar"
+                            style="max-width:100%; height:300px; object-fit: contain;">
+                    </div>
+
+                    <!-- input Image Avatar -->
+                    <label class="d-block" for="inputImgAvatarProduct">Choose file Avatar Product</label>
+                    <input type="file" class="form-control-file mb-3" id="inputImgAvatarProduct">
+
+
+                    <!-- Preview Image Gallery -->
+                    <div class="w-100 preview-image-gallery row mx-auto rounded" style="background-color: rgba(0, 0, 0, 0.6)">
+                        <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
+                            style="max-height:150px; object-fit: contain;">
+                        <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
+                            style="max-height:150px; object-fit: contain;">
+                        <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
+                            style="max-height:150px; object-fit: contain;">
+                        <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
+                            style="max-height:150px; object-fit: contain;">
+                    </div>
+
+                    <!-- Input Image Gallery -->
+                    <label class="d-block" for="inputImgAvatarProduct">Choose file image preview-image-gallery</label>
+                    <input type="file" class="form-control-file mb-3" id="inputImgAvatarProduct">
+
+
+                    <p class="h5">Detail.</p>
+
+                    <!-- ประเภทสินค้า -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend w-100">
+                            <label class="input-group-text w-100 rounded-0" for="inputGroupSelect01">ประเภทสินค้า</label>
+                        </div>
+                        <select class="custom-select rounded-0" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            <option value="1">โคมไฟ (Lamp)</option>
+                            <option value="2">แก้วน้ำ (Cup)</option>
+                            <option value="3">กระถางต้นไม้ (Pot)</option>
+                        </select>
+                    </div>
+
+                    <!-- ชนิดวัสดุ -->
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend w-100 rounded-0">
+                            <label class="input-group-text w-100 rounded-0" for="inputGroupSelect02">ชนิดวัสดุสินค้า</label>
+                        </div>
+                        <div class="btn-group d-flex justify-content-center w-100" role="group" aria-label="Basic example" id="inputGroupSelect02">
+                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">ไม้</button>
+                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">เหล็ก</button>
+                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">พลาสติก</button>
+                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">ปูน</button>
+                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">คาบอน</button>
+                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">อลูมิเนียม</button>
+                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">หินอ่อน</button>
+                        </div>
+                    </div>
+
+                    <!-- List วัสดุที่เลือก -->
+                    <div class="w-100 d-flex mt-1 border mb-3">
+                        <div class="alert btn-secondary p-1 mr-1 mb-0">
+                            <span class="mx-3 align-middle">ไม้</span>
+                            <button type="button" class="close pb-1" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="alert btn-secondary p-1 mr-1 mb-0">
+                            <span class="mx-3 align-middle">ปูน</span>
+                            <button type="button" class="close pb-1" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- รูปแบบการชำระเงิน / รูปแบบการจัดส่งสินค้า -->
+                    <div class="row">
+
+                        <!-- รูปแบบการชำระเงิน -->
+                        <div class="input-group mb-3 col-6">
+                            <div class="input-group-prepend w-100">
+                                <label class="input-group-text w-100  rounded-0" for="inputGroupSelect01">รูปแบบการชำระเงิน</label>
+                            </div>
+                            <ul class="list-group w-100">
+                                <li class="list-group-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            ชำระก่อนสั่งซื้อ
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            ชำระเงินปลายทาง
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- รูปแบบการจัดส่งสินค้า -->
+                        <div class="input-group col-6 mb-3">
+                            <div class="input-group-prepend w-100">
+                                <label class="input-group-text w-100 rounded-0" for="inputGroupSelect01">รูปแบบการจัดส่งสินค้า</label>
+                            </div>
+                            <ul class="list-group w-100">
+                                <li class="list-group-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            การส่งแบบพัสดุธรรมดา
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            การจัดส่งแบบลงทะเบียน
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            การจัดส่งแบบ EMS
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+
+                    <!-- สถานะสินค้า -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend w-100">
+                            <label class="input-group-text w-100 rounded-0" for="inputGroupSelect01">สถานะสินค้า</label>
+                        </div>
+                        <select class="custom-select rounded-0" id="inputGroupSelect01">
+                            <option selected>Choose...</option>
+                            <option value="1">ปกติ (Normal)</option>
+                            <option value="2">ลดราคา (Sell)</option>
+                            <option value="3">โปรโมชั่น (Promotion)</option>
+                            <option value="3">ขายดี (Popular)</option>
+                        </select>
+                    </div>
+
+                    <!-- เปอร์เซ็นการลดราคา -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4 p-0">
+                            <span class="input-group-text w-100" id="">เปอร์เซ็นการลดราคา</span>
+                        </div>
+                        <input type="number" class="form-control" id="inputNameThMaterial" placeholder="" value="0">
+                    </div>
+
+                    <!-- จำนวนชิ้นสินค้า-->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend col-4 p-0">
+                            <span class="input-group-text w-100" id="">จำนวนสินค้า</span>
+                        </div>
+                        <input type="number" class="form-control" id="inputNameThMaterial" placeholder="" value="0">
+                    </div>
+
+
+                    <!-- ข้อมูลสินค้า -->
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">ข้อมูลสินค้า</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                    <!-- ปุ่มบันทึกสินค้า -->
+                    <button type="button" id="btnSaveUploadProduct" class="btn btn-primary btn-block mb-4">Save Upload Product</button>
+                </div>
+
+                <!-- Product-List -->
+                <div class="product-list col-10 row mb-5">
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-1">
+                        <ul class="list-group">
+                            <li class="list-group-item p-0 bg-dark" style="cursor: pointer;">
+                                <img class="w-100" src="https://images.pexels.com/photos/279805/pexels-photo-279805.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                    alt="" style="max-height:200px; object-fit: contain;">
+                            </li>
+                            <li class="list-group-item text-truncate p-1">
+                                id12321321312312312
+                            </li>
+                            <li class="list-group-item p-1 text-truncate">name</li>
+                            <li class="list-group-item p-1">price</li>
+                            <li class="list-group-item d-flex p-0">
+                                <button class="btn btn-secondary rounded-0 col" type="submit">Delete</button>
+                                <button class="btn btn-primary w-100 rounded-0" type="submit">Update</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Product detail -->
+                <div class="product-detail w-100 h-100 position-fixed fixed-top" style="background-color: rgba(0, 0, 0, 0.43);">
+                    <div class="col-11 bg-white mx-auto m-1 p-1 mb-3 row" style="height:90%;top:50%; transform: translateY(-50%); overflow-y: visible;">
+                            <button type="button" class="close" aria-label="Close" style="position: absolute; right:0; top:0; top:-2rem">
+                                    <span aria-hidden="false">&times;</span>
+                            </button>
+                        <div class="col-6 p-1 h-100" style="max-height: 100%; overflow: hidden;">
+                            <ul class="list-group" >
+                                <li class="list-group-item h-75">1</li>
+                                <li class="list-group-item h-25">2</li>                   
+                            </ul>
+                        </div>
+                        <div class="col-6 p-1">
+                              
+                        </div>
+                      
+                    </div>
+                </div>
+
+
+
+            </div>
+            <!-- PRODUCT -->
 
 
 
         </div>
 
 
-    </div>
+</body>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
-    <script src="scripts/admin.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script src="scripts/admin.js" type="text/javascript"></script>
 
 </html>
