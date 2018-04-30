@@ -1035,15 +1035,54 @@ let material = (()=>{
 
 let product = (()=>{
     const uri = '/product/'
-    const urlfiler = new URL('http://localhost:2000/product/filter');
     const container = $('#productContainer');
-    let btnSaveUpload = container.find('#btnSaveUploadProduct');
-    btnSaveUpload.click(()=>{
-        let params = {name :'chanin',lastname:'sitthibunrueang'};
-        url.search = new URLSearchParams(params)
-        fetch(url)
-        .then(res => res.json())
-        .then(data => console.log(data));
-     
-    });
+
+
+    //DOM List product
+    let list = container.find('#listProduct');
+   
+    fetchList();
+
+    function fetchList(){
+        fetch(uri+'list')
+        .then((res)=> res.json())
+        .then((data)=>{
+            if(data.status == 200){
+                let output = '';
+                data.data.forEach((value)=>{
+                    output += `<div class="col-sm-6 col-md-4 col-lg-3 p-1 ">
+                                    <ul class="list-group rounded-0">
+                                        <li class="list-group-item p-0" style="cursor: pointer;">
+                                            <img class="w-100" src="${value.imageAvatar}"
+                                                alt="" style="width:100%; height:200px; overflow-y:hidden;">
+                                        </li>
+                                        <li class="list-group-item text-truncate p-1">
+                                            ${value._id}
+                                        </li>
+                                        <li class="list-group-item p-1 text-truncate">
+                                            ${value.name}
+                                        </li>
+                                        <li class="list-group-item p-1">
+                                         ${value.price}
+                                        </li>
+                                        <li class="list-group-item p-1">
+                                            ${value.type.nameTh}+' - '+${value.type.nameEn}
+                                        </li>
+                                        <li class="list-group-item d-flex p-0">
+                                            <button class="btn btn-secondary rounded-0 col" type="submit">Delete</button>
+                                            <button class="btn btn-primary w-100 rounded-0" type="submit">Update</button>
+                                        </li>
+                                    </ul>
+                                </div>`;
+                });
+                list.html(output);
+            }else{
+                list.html(`<h5>${data.data}</h5>`);
+            } 
+        })
+        .catch((err=>{
+            console.log(err);   
+        }))
+    }
+  
 })();

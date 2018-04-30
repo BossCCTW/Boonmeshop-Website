@@ -61,6 +61,7 @@ router.get('/filter',(req,res)=>{
     })
     // .limit(5) กำหนดจำนวน doc ที่ค้นหาเจอ เอาแค่ 5 อัน
     .select({
+        _id:1,
         name:1,
         price:1,
         type:1
@@ -72,6 +73,38 @@ router.get('/filter',(req,res)=>{
         });
     });
 
+});
+
+//@GET FOR LIST
+router.get('/list',(req,res)=>{
+    Product_Model.find()
+    .select({
+        _id:1,
+        name:1,
+        price:1,
+        type:1,
+        imageAvatar:1
+    })
+    .exec()
+    .then(doc =>{
+        if(doc.length > 0){
+            res.status(200).json({
+                status:200,
+                data:doc
+            });
+        }else{
+            res.status(500).json({
+                status: 500,
+                data: 'No Item in database'
+            });
+        }
+    })
+    .catch(err=>{
+        res.status(500).json({
+            error:err
+        });
+    });
+    
 });
 
 //@GET ALL 

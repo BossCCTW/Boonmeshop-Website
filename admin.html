@@ -14,6 +14,9 @@
         .shadow-material {
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
         }
+        .shadow-material-1{
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.671), 0 3px 6px rgbargba(0, 0, 0, 0.397)
+        }
     </style>
 
 </head>
@@ -329,6 +332,7 @@
 
             <!-- PRODUCT -->
             <div class="product-container row d-flex justify-content-center mt-4" id="productContainer">
+                <!-- Upload Product -->
                 <div class="product-upload col-10">
 
                     <h1 class="display-4 mb-3 mt-4">
@@ -353,7 +357,7 @@
 
                     <!-- preview image Avatar -->
                     <div class="w-100 preview-image-avatar" style="background-color: rgba(0, 0, 0, 0.6)">
-                        <img class="img-card-top d-block mx-auto" src="uploads/product/1524838428916productGallery05.jpeg" alt="preview image avatar"
+                        <img class="img-card-top d-block mx-auto" src="" alt="preview image avatar"
                             style="max-width:100%; height:300px; object-fit: contain;">
                     </div>
 
@@ -532,44 +536,356 @@
                 </div>
 
                 <!-- Product-List -->
-                <div class="product-list col-10 row mb-5">
-                    <div class="col-sm-6 col-md-4 col-lg-3 p-1">
-                        <ul class="list-group">
-                            <li class="list-group-item p-0 bg-dark" style="cursor: pointer;">
-                                <img class="w-100" src="https://images.pexels.com/photos/279805/pexels-photo-279805.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                                    alt="" style="max-height:200px; object-fit: contain;">
-                            </li>
-                            <li class="list-group-item text-truncate p-1">
-                                id12321321312312312
-                            </li>
-                            <li class="list-group-item p-1 text-truncate">name</li>
-                            <li class="list-group-item p-1">price</li>
-                            <li class="list-group-item d-flex p-0">
-                                <button class="btn btn-secondary rounded-0 col" type="submit">Delete</button>
-                                <button class="btn btn-primary w-100 rounded-0" type="submit">Update</button>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="col-10 row mb-5" id ="listProduct">
+                
                 </div>
                 <!-- Product detail -->
-                <div class="product-detail w-100 h-100 position-fixed fixed-top" style="background-color: rgba(0, 0, 0, 0.43);">
-                    <div class="col-11 bg-white mx-auto m-1 p-1 mb-3 row" style="height:90%;top:50%; transform: translateY(-50%); overflow-y: visible;">
-                            <button type="button" class="close" aria-label="Close" style="position: absolute; right:0; top:0; top:-2rem">
-                                    <span aria-hidden="false">&times;</span>
-                            </button>
-                        <div class="col-6 p-1 h-100" style="max-height: 100%; overflow: hidden;">
-                            <ul class="list-group" >
-                                <li class="list-group-item h-75">1</li>
-                                <li class="list-group-item h-25">2</li>                   
+                <div class="product-detail w-100 h-100 position-fixed fixed-top d-none" style="background-color: rgba(0, 0, 0, 0.43);">
+                    <button class="close p-2" type="button" aria-label="Close" style="position: absolute; right:0; top:0; ">
+                        <span aria-hidden="false">&times;</span>
+                    </button>
+                    <div class="product-detail_content col-11 col-md-10 bg-white mx-auto m-1 p-1 mb-3 row rounded" style="height:90%;top:50%; transform: translateY(-50%); overflow-y: scroll;">
+
+                        <div class="product-detail_image col-12 col-md-6 p-0 h-100 rounded-0" style="height: 100%; overflow: hidden;">
+                            <ul class="list-group rounded-0">
+                                <li class="list-group-item h-75 p-0 bg-dark rounded-0">
+                                    <img class="h-100 mx-auto d-block" style="max-width:100%; object-fit: contain;" src="https://images.pexels.com/photos/219779/pexels-photo-219779.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                        alt="">
+                                </li>
+                                <li class="list-group-item h-25 p-0 d-flex flex-nowrap " style="overflow-x: auto;">
+                                    <img class="h-100" src="https://images.pexels.com/photos/595103/pexels-photo-595103.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                        alt="">
+                                    <img class="h-100" src="https://images.pexels.com/photos/6803/light-rocks-pot-white.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                        alt="">
+                                    <img class="h-100" src="https://images.pexels.com/photos/37076/pots-plants-cactus-succulent.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                        alt="">
+                                    <img class="h-100" src="https://images.pexels.com/photos/584764/pexels-photo-584764.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                        alt="">
+                                    <img class="h-100" src="https://images.pexels.com/photos/947847/pexels-photo-947847.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                                        alt="">
+                                </li>
                             </ul>
                         </div>
-                        <div class="col-6 p-1">
-                              
+
+
+                        <div class="col-12 col-md-6 p-0 pl-1" style="height: 100%; overflow: hidden;">
+                            <ul class="list-group h-100">
+                                <li class="list-group-item">
+                                    <div class="px-1">
+                                        <span class="badge badge-primary">Status</span>
+                                    </div>
+
+                                    <div class="name px-1">
+                                        <h4 class="m-0">
+                                            Product Name
+                                        </h4>
+                                    </div>
+
+                                    <div class="product-id px-1">
+                                        ID :
+                                        <small class="text-muted">With faded secondary text</small>
+                                    </div>
+
+                                    <div class="shipping px-1">
+                                        ค่าจัดส่ง :
+                                        <small class="text-muted">90-150</small>
+                                    </div>
+
+                                    <div class="price ">
+                                        <h4 class="alert-warning d-inline px-2">
+                                            899-
+                                        </h4>
+                                    </div>
+
+                                </li>
+                                <li class="list-group-item" style="height: 100%;">
+                                    <div class="type">
+                                        Type :
+                                        <div class="form-control">
+                                            กระถางต้นไม้ POT
+                                        </div>
+                                    </div>
+                                    <div class="material">
+
+                                        Material :
+                                        <div>
+                                            <span class="btn btn-secondary" style="cursor: auto; border-radius: 1.5em;">Cement</span>
+                                            <span class="btn btn-secondary" style="cursor: auto; border-radius: 1.5em;">Wood</span>
+                                        </div>
+
+                                    </div>
+                                    <div class="payment">
+                                        Payment :
+                                        <div>
+                                            <span class="btn btn-info" style="cursor: auto; border-radius: 1.5em;">• ชำระก่อนสั่งซื้อ</span>
+                                            <span class="btn btn-info" style="cursor: auto; border-radius: 1.5em;">• ชำระเงินปลายทาง</span>
+                                        </div>
+                                    </div>
+                                    <div class="transpot">
+                                        Transpot :
+                                        <div>
+                                            <span class="btn btn-success" style="cursor: auto; border-radius: 1.5em;">• ปกติ</span>
+                                            <span class="btn btn-success" style="cursor: auto; border-radius: 1.5em;">• ลงทะเบียน</span>
+                                            <span class="btn btn-success" style="cursor: auto; border-radius: 1.5em;">• Ems</span>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="list-group-item mt-2" style="overflow-y: scroll; height:100%;">
+                                    Information :
+                                    <p>
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet velit consectetur optio veritatis, quis voluptates corrupti
+                                        rem delectus labore facilis odit similique nesciunt quia sed quos quasi porro aliquam?
+                                        Minus, eius. Enim blanditiis ullam excepturi, voluptates eum aliquam esse molestiae?
+                                        Explicabo quos qui placeat. Doloribus asperiores illum exercitationem! Vitae, expedita
+                                        nesciunt facere ratione rerum quam a, dicta, necessitatibus consequuntur repellendus
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Amet velit consectetur
+                                        optio veritatis, quis voluptates corrupti rem delectus labore facilis odit similique
+                                        nesciunt quia sed quos quasi porro aliquam? Minus, eius. Enim blanditiis ullam excepturi,
+                                        voluptates eum aliquam esse molestiae? Explicabo quos qui placeat. Doloribus asperiores
+                                        illum exercitationem! Vitae, expedita nesciunt facere ratione rerum quam a, dicta,
+                                        necessitatibus consequuntur repellendus
+
+                                    </p>
+                                </li>
+                            </ul>
                         </div>
-                      
+
+
                     </div>
                 </div>
 
+                <!-- Modal Delete Product -->
+                <div class=" w-100 h-100 position-fixed d-none" style="z-index:1050; top:0; background-color: rgba(0, 0, 0, 0.63);" id="">
+                    <div class="card shadow-material mb-4 position-fixed col-4" style="top: 50%;left: 50%;transform: translate(-50%, -50%);">
+                        <h5 class="card-header">Delete Product</h5>
+                        <div class="card-body d-flex flex-column justify-content-center">
+                            <h6 class="card-title m-0" id="">Are you sure to Delete ?</h6>
+
+                            <span class="mb-2" id="">id</span>
+                            <div class="input-group">
+                                <button class="btn btn-secondary mr-1 col btn-cancel" id="">Cancel</button>
+                                <button class="btn btn-danger col btn-save-delete" id=""> Delete </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Update Product -->
+
+                <div class="w-100 h-100 position-fixed d-none" style="z-index:1050; top:0; background-color: rgba(0, 0, 0, 0.63);" id="">
+                    <div class="card shadow-material mb-4 col-11 mx-auto p-0" id="" style="height:95%; top: 50%;transform: translateY(-50%); overflow-y: auto">
+                        <h5 class="card-header">Update Product
+                            <button type="button" class="close btn-close-modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </h5>
+                        <div class="card-body">
+                            <h6 class="card-title">ID:
+                                <span class="id-update"></span>
+                            </h6>
+
+
+                            <!-- ชื่อสินค้า -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend col-2 p-0">
+                                    <span class="input-group-text w-100" id="">ชื่อสินค้า</span>
+                                </div>
+                                <input type="text" class="form-control" id="inputNameThMaterial" placeholder="">
+                            </div>
+
+                            <!-- ราคา -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend col-2 p-0">
+                                    <span class="input-group-text w-100" id="">ราคา</span>
+                                </div>
+                                <input type="number" class="form-control" id="inputNameThMaterial" placeholder="">
+                            </div>
+
+                            <!-- preview image Avatar -->
+                            <div class="w-100 preview-image-avatar" style="background-color: rgba(0, 0, 0, 0.6)">
+                                <img class="img-card-top d-block mx-auto" src="" alt="preview image avatar"
+                                    style="max-width:100%; height:300px; object-fit: contain;">
+                            </div>
+
+                            <!-- input Image Avatar -->
+                            <label class="d-block" for="inputImgAvatarProduct">Choose file Avatar Product</label>
+                            <input type="file" class="form-control-file mb-3" id="inputImgAvatarProduct">
+
+
+                            <!-- Preview Image Gallery -->
+                            <div class="w-100 preview-image-gallery row mx-auto rounded" style="background-color: rgba(0, 0, 0, 0.6)">
+                                <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
+                                    style="max-height:150px; object-fit: contain;">
+                                <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
+                                    style="max-height:150px; object-fit: contain;">
+                                <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
+                                    style="max-height:150px; object-fit: contain;">
+                                <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
+                                    style="max-height:150px; object-fit: contain;">
+                            </div>
+
+                            <!-- Input Image Gallery -->
+                            <label class="d-block" for="inputImgAvatarProduct">Choose file image preview-image-gallery</label>
+                            <input type="file" class="form-control-file mb-3" id="inputImgAvatarProduct">
+
+
+                            <p class="h5">Detail.</p>
+
+                            <!-- ประเภทสินค้า -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend w-100">
+                                    <label class="input-group-text w-100 rounded-0" for="inputGroupSelect01">ประเภทสินค้า</label>
+                                </div>
+                                <select class="custom-select rounded-0" id="inputGroupSelect01">
+                                    <option selected>Choose...</option>
+                                    <option value="1">โคมไฟ (Lamp)</option>
+                                    <option value="2">แก้วน้ำ (Cup)</option>
+                                    <option value="3">กระถางต้นไม้ (Pot)</option>
+                                </select>
+                            </div>
+
+                            <!-- ชนิดวัสดุ -->
+                            <div class="input-group mb-2">
+                                <div class="input-group-prepend w-100 rounded-0">
+                                    <label class="input-group-text w-100 rounded-0" for="inputGroupSelect02">ชนิดวัสดุสินค้า</label>
+                                </div>
+                                <div class="btn-group d-flex justify-content-center w-100" role="group" aria-label="Basic example" id="inputGroupSelect02">
+                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">ไม้</button>
+                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">เหล็ก</button>
+                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">พลาสติก</button>
+                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">ปูน</button>
+                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">คาบอน</button>
+                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">อลูมิเนียม</button>
+                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">หินอ่อน</button>
+                                </div>
+                            </div>
+
+                            <!-- List วัสดุที่เลือก -->
+                            <div class="w-100 d-flex mt-1 border mb-3">
+                                <div class="alert btn-secondary p-1 mr-1 mb-0">
+                                    <span class="mx-3 align-middle">ไม้</span>
+                                    <button type="button" class="close pb-1" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="alert btn-secondary p-1 mr-1 mb-0">
+                                    <span class="mx-3 align-middle">ปูน</span>
+                                    <button type="button" class="close pb-1" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- รูปแบบการชำระเงิน / รูปแบบการจัดส่งสินค้า -->
+                            <div class="row">
+
+                                <!-- รูปแบบการชำระเงิน -->
+                                <div class="input-group mb-3 col-6">
+                                    <div class="input-group-prepend w-100">
+                                        <label class="input-group-text w-100  rounded-0" for="inputGroupSelect01">รูปแบบการชำระเงิน</label>
+                                    </div>
+                                    <ul class="list-group w-100">
+                                        <li class="list-group-item">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    ชำระก่อนสั่งซื้อ
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    ชำระเงินปลายทาง
+                                                </label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- รูปแบบการจัดส่งสินค้า -->
+                                <div class="input-group col-6 mb-3">
+                                    <div class="input-group-prepend w-100">
+                                        <label class="input-group-text w-100 rounded-0" for="inputGroupSelect01">รูปแบบการจัดส่งสินค้า</label>
+                                    </div>
+                                    <ul class="list-group w-100">
+                                        <li class="list-group-item">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    การส่งแบบพัสดุธรรมดา
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    การจัดส่งแบบลงทะเบียน
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                                <label class="form-check-label" for="defaultCheck1">
+                                                    การจัดส่งแบบ EMS
+                                                </label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+
+
+                            <!-- สถานะสินค้า -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend w-100">
+                                    <label class="input-group-text w-100 rounded-0" for="inputGroupSelect01">สถานะสินค้า</label>
+                                </div>
+                                <select class="custom-select rounded-0" id="inputGroupSelect01">
+                                    <option selected>Choose...</option>
+                                    <option value="1">ปกติ (Normal)</option>
+                                    <option value="2">ลดราคา (Sell)</option>
+                                    <option value="3">โปรโมชั่น (Promotion)</option>
+                                    <option value="3">ขายดี (Popular)</option>
+                                </select>
+                            </div>
+
+                            <!-- เปอร์เซ็นการลดราคา -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend col-4 p-0">
+                                    <span class="input-group-text w-100" id="">เปอร์เซ็นการลดราคา</span>
+                                </div>
+                                <input type="number" class="form-control" id="inputNameThMaterial" placeholder="" value="0">
+                            </div>
+
+                            <!-- จำนวนชิ้นสินค้า-->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend col-4 p-0">
+                                    <span class="input-group-text w-100" id="">จำนวนสินค้า</span>
+                                </div>
+                                <input type="number" class="form-control" id="inputNameThMaterial" placeholder="" value="0">
+                            </div>
+
+
+                            <!-- ข้อมูลสินค้า -->
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">ข้อมูลสินค้า</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                            
+                            <button class="btn btn-primary btn-save-update w-100" id="">Update Now</button>
+                            
+                            
+
+                            <!-- body update-->
+                        </div>
+                    </div>
+                </div>
 
 
             </div>
