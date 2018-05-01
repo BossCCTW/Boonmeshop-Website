@@ -1078,24 +1078,32 @@ let product = (()=>{
         let id = target.attr('data-id');
         let nameTh = target.attr('data-material-name-th');
         let nameEn = target.attr('data-material-name-en');
+        let checkRepeat = true;
         
-        listMaterialUpload.append(`<div class="alert btn-secondary p-1 mr-1 mb-1"
-                                        data-id="${id}" 
-                                        data-name-th="${nameTh}" 
-                                        data-name-en="${nameEn}"
-                                        >
-                                        <span class="mx-3 align-middle">${nameTh}(${nameEn})</span>
-                                        <button type="button" class="close pb-1" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>`);
+        
         
         // listMaterialUpload.children
         listMaterialUpload.children().each((index,value)=>{
-            // console.log(index,value);
-            console.log($(value).attr('data-id'));
+            
+            let Elinlist = $(value).attr('data-id');
+            if(Elinlist == id){
+                checkRepeat = false;
+            }
             
         });
+
+        if(checkRepeat){
+            listMaterialUpload.append(`<div class="alert btn-secondary p-1 mr-1 mb-1"
+                    data-id="${id}" 
+                    data-name-th="${nameTh}" 
+                    data-name-en="${nameEn}"
+                    >
+                    <span class="mx-3 align-middle">${nameTh}(${nameEn})</span>
+                    <button type="button" class="close pb-1" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>`);
+        }
        
         
         
