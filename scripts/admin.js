@@ -68,7 +68,7 @@ let menu = (() => {
             
             if(data.length > 0){
                 data.forEach(element => {
-                    output += `<div class="card col-1 p-0 text-center card-menu" data-id="${element._id}">
+                    output += `<div class="card col-2 p-0 text-center card-menu" data-id="${element._id}">
                     <img class="card-img-top img-fluid img-menu" src="${element.iconUri}" alt="Card image cap" >
                     <div class="card-body p-0">
                         <p class="card-text m-0 name-th text-truncate">${element.nameTh}</p>
@@ -1013,8 +1013,8 @@ let material = (()=>{
                                                 </button>
                                             </div>
                                             <div class="card-body p-2">
-                                            <p class="card-text mb-1 nameth">${value.nameTh}</p>
-                                            <p class="card-text nameen">${value.nameEn}</p>
+                                            <p class="card-text mb-1 nameth text-truncate">${value.nameTh}</p>
+                                            <p class="card-text nameen text-truncate">${value.nameEn}</p>
                                             </div>
                                             <div class="card-footer bg-white  p-2">
                                                 <a href="#" class="card-link btn-update-material">Update</a>                                         
@@ -1037,11 +1037,117 @@ let product = (()=>{
     const uri = '/product/'
     const container = $('#productContainer');
 
+    //Upload DOM
+    let uploadContainer = container.find('.product-upload');
+    let inputProductName = uploadContainer.find('#inputpProductName');
+    let inputPriceProduct = uploadContainer.find('#inputPriceProduct');
+    let inputImageAvatar = uploadContainer.find('#inputImgAvatarProduct');
+    let previewImageAvatarUpload = uploadContainer.find('#previewImageUploadAvatar')
+    let inputImageGallery = uploadContainer.find('#inputImgGalleryProduct');
+    let previewImageGalleyUpload = uploadContainer.find('#previewImageUploadGallery');
+    let selectorTypeProduct = uploadContainer.find('#inputTypeProduct');
+    let selectorMaterialProduct = uploadContainer.find('#inputSelectMaterialProduct');
+    let listMaterialUpload = uploadContainer.find('#listMaterialUpload');
+    let payBeforeCheckBox = uploadContainer.find('#checkBoxPayBefore');
+    let payAfterCheckBox = uploadContainer.find('#checkBoxPayAfter');
+    let normalTranspotCheckBox = uploadContainer.find('#checkboxNormalTranspot');
+    let registerTranspotCheckBox = uploadContainer.find('#checkboxRegisterTranspot');
+    let emsTranspotCheckBox = uploadContainer.find('#checkboxEmsTranspot');
+    let selectorStatusProduct = uploadContainer.find('#selectorStatusProduct');
+    let inputPercentProduct = uploadContainer.find('#inputPercentProduct');
+    let inputAmountProduct = uploadContainer.find('#inputAmountProduct');
+    let inputInformationProduct = uploadContainer.find('#inputInformationProduct');
+    let btnSaveUpload = uploadContainer.find('#btnSaveUploadProduct');
+
+    fetchType(); //get type list set to option selector
+    fetchMaterial();//get material list
+
+    //Upload Event
+    selectorTypeProduct.on('change',getValueType);
+    selectorMaterialProduct.on('click','button',addMaterialtoList);
+    
+
 
     //DOM List product
     let list = container.find('#listProduct');
-   
     fetchList();
+
+    function addMaterialtoList(event){
+        let target = $(event.target);
+
+        let id = target.attr('data-id');
+        let nameTh = target.attr('data-material-name-th');
+        let nameEn = target.attr('data-material-name-en');
+        
+        listMaterialUpload.append(`<div class="alert btn-secondary p-1 mr-1 mb-1"
+                                        data-id="${id}" 
+                                        data-name-th="${nameTh}" 
+                                        data-name-en="${nameEn}"
+                                        >
+                                        <span class="mx-3 align-middle">${nameTh}(${nameEn})</span>
+                                        <button type="button" class="close pb-1" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>`);
+        
+        // listMaterialUpload.children
+        listMaterialUpload.children().each((index,value)=>{
+            // console.log(index,value);
+            console.log($(value).attr('data-id'));
+            
+        });
+       
+        
+        
+    }
+
+    function fetchMaterial(){
+        let uri = '/material/'
+        fetch(uri)
+        .then(res=>res.json())
+        .then(data =>{
+            if(data.status == 200){
+                let output = '';
+                data.data.forEach((value)=>{
+                    output += `<button data-id ="${value._id}" data-material-name-en= "${value.nameEn}"
+                                 data-material-name-th= "${value.nameTh}" 
+                                 type="button" 
+                                 class="btn btn-light mb col rounded-0 border">${value.nameTh}(${value.nameEn})</button>`;
+                });
+                selectorMaterialProduct.html(output);
+            }else{
+                selectorMaterialProduct.html(data.data);
+            }
+        });
+    }
+    function getValueType(){
+        // $(this) คือ selectorTypeProduct
+        console.log(selectorTypeProduct.find(':selected').val());
+        console.log(selectorTypeProduct.find(':selected').attr('data-name-th'));
+        console.log(selectorTypeProduct.find(':selected').attr('data-name-en'));
+        
+    }
+
+    function fetchType(){
+        let uriType = '/menu/';
+        fetch(uriType)
+        .then((res)=>res.json())
+        .then((data)=>{
+            if(data.length > 0){
+                let option = '<option selected>Choose..</option>';
+                data.forEach((value)=>{
+                    value._id
+                    value.nameTh
+                    value.nameEn
+                    option += `<option data-name-th="${value.nameTh}" data-name-en="${value.nameEn}" value="${value._id}">${value.nameTh}(${value.nameEn})</option>`;
+                });
+                selectorTypeProduct.html(option);
+            }else{
+                selectorTypeProduct.html('<option selected>No Option selector!</option>');
+            }
+            
+        });
+    }
 
     function fetchList(){
         fetch(uri+'list')

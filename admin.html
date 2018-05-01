@@ -340,23 +340,25 @@
                     </h1>
 
                     <!-- ชื่อสินค้า -->
+                    <em style="color:rgba(255, 0, 0, 0.6);" id="notifyUploadNameProduct">กรุณากรอกชื่อสินค้า!</em>
                     <div class="input-group mb-3">
+         
                         <div class="input-group-prepend col-2 p-0">
-                            <span class="input-group-text w-100" id="">ชื่อสินค้า</span>
+                            <span class="input-group-text w-100">ชื่อสินค้า</span>
                         </div>
-                        <input type="text" class="form-control" id="inputNameThMaterial" placeholder="">
+                        <input type="text" class="form-control" id="inputpProductName" placeholder="">
                     </div>
 
                     <!-- ราคา -->
                     <div class="input-group mb-3">
                         <div class="input-group-prepend col-2 p-0">
-                            <span class="input-group-text w-100" id="">ราคา</span>
+                            <span class="input-group-text w-100" >ราคา</span>
                         </div>
-                        <input type="number" class="form-control" id="inputNameThMaterial" placeholder="">
+                        <input type="number" class="form-control" id="inputPriceProduct" placeholder="">
                     </div>
 
                     <!-- preview image Avatar -->
-                    <div class="w-100 preview-image-avatar" style="background-color: rgba(0, 0, 0, 0.6)">
+                    <div id="previewImageUploadAvatar" class="w-100 preview-image-avatar" style="background-color: rgba(0, 0, 0, 0.6)">
                         <img class="img-card-top d-block mx-auto" src="" alt="preview image avatar"
                             style="max-width:100%; height:300px; object-fit: contain;">
                     </div>
@@ -367,20 +369,14 @@
 
 
                     <!-- Preview Image Gallery -->
-                    <div class="w-100 preview-image-gallery row mx-auto rounded" style="background-color: rgba(0, 0, 0, 0.6)">
-                        <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
-                            style="max-height:150px; object-fit: contain;">
-                        <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
-                            style="max-height:150px; object-fit: contain;">
-                        <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
-                            style="max-height:150px; object-fit: contain;">
-                        <img class="col-3 p-1" src="https://i.pinimg.com/564x/b8/49/f8/b849f8678453679b5d1896b872e358c4.jpg" alt="preview image avatar"
-                            style="max-height:150px; object-fit: contain;">
+                    <div id="previewImageUploadGallery" class="w-100 preview-image-gallery row mx-auto rounded" style="background-color: rgba(0, 0, 0, 0.6)">
+                        <img class="col-3 p-1" src="" alt="preview image Gallery"
+                            style="max-height:150px; object-fit: contain;">       
                     </div>
 
                     <!-- Input Image Gallery -->
                     <label class="d-block" for="inputImgAvatarProduct">Choose file image preview-image-gallery</label>
-                    <input type="file" class="form-control-file mb-3" id="inputImgAvatarProduct">
+                    <input type="file" class="form-control-file mb-3" id="inputImgGalleryProduct">
 
 
                     <p class="h5">Detail.</p>
@@ -390,11 +386,8 @@
                         <div class="input-group-prepend w-100">
                             <label class="input-group-text w-100 rounded-0" for="inputGroupSelect01">ประเภทสินค้า</label>
                         </div>
-                        <select class="custom-select rounded-0" id="inputGroupSelect01">
-                            <option selected>Choose...</option>
-                            <option value="1">โคมไฟ (Lamp)</option>
-                            <option value="2">แก้วน้ำ (Cup)</option>
-                            <option value="3">กระถางต้นไม้ (Pot)</option>
+                        <select class="custom-select rounded-0" id="inputTypeProduct">
+                            <option selected>Loading data type...</option>
                         </select>
                     </div>
 
@@ -403,31 +396,15 @@
                         <div class="input-group-prepend w-100 rounded-0">
                             <label class="input-group-text w-100 rounded-0" for="inputGroupSelect02">ชนิดวัสดุสินค้า</label>
                         </div>
-                        <div class="btn-group d-flex justify-content-center w-100" role="group" aria-label="Basic example" id="inputGroupSelect02">
-                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">ไม้</button>
-                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">เหล็ก</button>
-                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">พลาสติก</button>
-                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">ปูน</button>
-                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">คาบอน</button>
-                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">อลูมิเนียม</button>
-                            <button type="button" class="btn btn-light mb-1 col rounded-0 border">หินอ่อน</button>
+                        <div class="d-flex justify-content-center w-100 flex-wrap" role="group" aria-label="" id="inputSelectMaterialProduct">
+                            
+      
                         </div>
                     </div>
 
                     <!-- List วัสดุที่เลือก -->
-                    <div class="w-100 d-flex mt-1 border mb-3">
-                        <div class="alert btn-secondary p-1 mr-1 mb-0">
-                            <span class="mx-3 align-middle">ไม้</span>
-                            <button type="button" class="close pb-1" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="alert btn-secondary p-1 mr-1 mb-0">
-                            <span class="mx-3 align-middle">ปูน</span>
-                            <button type="button" class="close pb-1" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                    <div class="w-100 d-flex mt-1 border mb-3 flex-wrap" id="listMaterialUpload">
+  
                     </div>
 
                     <!-- รูปแบบการชำระเงิน / รูปแบบการจัดส่งสินค้า -->
@@ -436,12 +413,12 @@
                         <!-- รูปแบบการชำระเงิน -->
                         <div class="input-group mb-3 col-6">
                             <div class="input-group-prepend w-100">
-                                <label class="input-group-text w-100  rounded-0" for="inputGroupSelect01">รูปแบบการชำระเงิน</label>
+                                <label class="input-group-text w-100  rounded-0" for="">รูปแบบการชำระเงิน</label>
                             </div>
                             <ul class="list-group w-100">
                                 <li class="list-group-item">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkBoxPayBefore">
                                         <label class="form-check-label" for="defaultCheck1">
                                             ชำระก่อนสั่งซื้อ
                                         </label>
@@ -449,7 +426,7 @@
                                 </li>
                                 <li class="list-group-item">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkBoxPayAfter">
                                         <label class="form-check-label" for="defaultCheck1">
                                             ชำระเงินปลายทาง
                                         </label>
@@ -466,7 +443,7 @@
                             <ul class="list-group w-100">
                                 <li class="list-group-item">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkboxNormalTranspot">
                                         <label class="form-check-label" for="defaultCheck1">
                                             การส่งแบบพัสดุธรรมดา
                                         </label>
@@ -474,7 +451,7 @@
                                 </li>
                                 <li class="list-group-item">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkboxRegisterTranspot">
                                         <label class="form-check-label" for="defaultCheck1">
                                             การจัดส่งแบบลงทะเบียน
                                         </label>
@@ -482,7 +459,7 @@
                                 </li>
                                 <li class="list-group-item">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkboxEmsTranspot">
                                         <label class="form-check-label" for="defaultCheck1">
                                             การจัดส่งแบบ EMS
                                         </label>
@@ -497,9 +474,9 @@
                     <!-- สถานะสินค้า -->
                     <div class="input-group mb-3">
                         <div class="input-group-prepend w-100">
-                            <label class="input-group-text w-100 rounded-0" for="inputGroupSelect01">สถานะสินค้า</label>
+                            <label class="input-group-text w-100 rounded-0" for="">สถานะสินค้า</label>
                         </div>
-                        <select class="custom-select rounded-0" id="inputGroupSelect01">
+                        <select class="custom-select rounded-0" id="selectorStatusProduct">
                             <option selected>Choose...</option>
                             <option value="1">ปกติ (Normal)</option>
                             <option value="2">ลดราคา (Sell)</option>
@@ -511,9 +488,9 @@
                     <!-- เปอร์เซ็นการลดราคา -->
                     <div class="input-group mb-3">
                         <div class="input-group-prepend col-4 p-0">
-                            <span class="input-group-text w-100" id="">เปอร์เซ็นการลดราคา</span>
+                            <span class="input-group-text w-100" >เปอร์เซ็นการลดราคา</span>
                         </div>
-                        <input type="number" class="form-control" id="inputNameThMaterial" placeholder="" value="0">
+                        <input type="number" class="form-control" id="inputPercentProduct" placeholder="" value="0">
                     </div>
 
                     <!-- จำนวนชิ้นสินค้า-->
@@ -521,14 +498,14 @@
                         <div class="input-group-prepend col-4 p-0">
                             <span class="input-group-text w-100" id="">จำนวนสินค้า</span>
                         </div>
-                        <input type="number" class="form-control" id="inputNameThMaterial" placeholder="" value="0">
+                        <input type="number" class="form-control" id="inputAmountProduct" placeholder="" value="0">
                     </div>
 
 
                     <!-- ข้อมูลสินค้า -->
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">ข้อมูลสินค้า</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" id="inputInformationProduct" rows="3"></textarea>
                     </div>
 
                     <!-- ปุ่มบันทึกสินค้า -->
@@ -688,6 +665,7 @@
 
                             <!-- ชื่อสินค้า -->
                             <div class="input-group mb-3">
+                                
                                 <div class="input-group-prepend col-2 p-0">
                                     <span class="input-group-text w-100" id="">ชื่อสินค้า</span>
                                 </div>
@@ -710,7 +688,7 @@
 
                             <!-- input Image Avatar -->
                             <label class="d-block" for="inputImgAvatarProduct">Choose file Avatar Product</label>
-                            <input type="file" class="form-control-file mb-3" id="inputImgAvatarProduct">
+                            <input type="file" class="form-control-file mb-3" id="">
 
 
                             <!-- Preview Image Gallery -->
@@ -752,12 +730,7 @@
                                 </div>
                                 <div class="btn-group d-flex justify-content-center w-100" role="group" aria-label="Basic example" id="inputGroupSelect02">
                                     <button type="button" class="btn btn-light mb-1 col rounded-0 border">ไม้</button>
-                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">เหล็ก</button>
-                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">พลาสติก</button>
-                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">ปูน</button>
-                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">คาบอน</button>
-                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">อลูมิเนียม</button>
-                                    <button type="button" class="btn btn-light mb-1 col rounded-0 border">หินอ่อน</button>
+                                    
                                 </div>
                             </div>
 
