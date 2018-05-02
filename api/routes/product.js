@@ -162,20 +162,38 @@ router.get('/:idProduct',(req,res)=>{
 
 //@POST FOR UPLOAD
 router.post('/',multiUpload,(req,res)=>{
+        // console.log(req.body);
+        // console.log(req.files['imageGallery']);
+        // console.log(req.files['imageAvatar'][0]);
+        
+        
+        
     if(req.files['imageAvatar'][0] && req.files['imageGallery']){
+        console.log('IN');
 
+        
         let name = req.body.nameProduct; //String
+        console.log(name);  
         let price = req.body.priceProduct; //Number
+        console.log(price);
+        
         let imageAvatar = req.files['imageAvatar'][0].path; //String
+        console.log(imageAvatar);
+        
         let pathGallery = [];
         req.files['imageGallery'].forEach((value)=>{
             pathGallery.push(value.path)
         });
         let imageGallery = pathGallery; // String Array
+        console.log(imageGallery);
+        
+
         let type = JSON.parse(req.body.typeProduct); //Json arrray
         // type.idType
         // type.nameTh
         // type.nameEn     
+        console.log(type);
+        
         let material = JSON.parse(req.body.materialProduct);
    
         // material.forEach((value,index)=>{
@@ -197,7 +215,10 @@ router.post('/',multiUpload,(req,res)=>{
         // let n = Number(amount);
         let information = req.body.informationProduct;
         // console.log(information);
-            
+
+      
+        
+        
         const productUpload = new Product_Model({
             _id: new mongoose.Types.ObjectId(),
             name:name,
@@ -233,6 +254,11 @@ router.post('/',multiUpload,(req,res)=>{
             res.status(500).json(err);
         })
      
+    }else{
+        res.status(400).json({
+            status:400,
+            message:'Bad Request!'
+        })
     }
 
 });

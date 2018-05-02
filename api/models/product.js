@@ -17,7 +17,7 @@ const productSchema = mongoose.Schema({
         ems:{type:Boolean,require:true}
     },
     status:{
-        name:{type:[String],require:true},
+        name:{type:String,require:true},
         detail:{type:String,require:true}
     },
     amount:{type:Number,require:true},

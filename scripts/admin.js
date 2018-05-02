@@ -1065,12 +1065,298 @@ let product = (()=>{
     //Upload Event
     selectorTypeProduct.on('change',getValueType);
     selectorMaterialProduct.on('click','button',addMaterialtoList);
+    inputImageAvatar.change(function(){ //set Preview image Avatar when select image
+        readFileAvatarToPreview(this)
+    });
+    inputImageGallery.change(function(){
+        readFileGalleryToPreview(this);
+    });
+    btnSaveUpload.on('click',saveUpload);
     
 
 
     //DOM List product
     let list = container.find('#listProduct');
     fetchList();
+
+    function saveUpload(){
+        let nameProduct = inputProductName.val();
+        let priceProduct = inputPriceProduct.val();
+        let imageAvatar = inputImageAvatar[0].files[0];  // console.log(imageAvatar.length);
+        let imageGallery = inputImageGallery[0].files; 
+        
+        
+
+        let typeProduct = {};
+            typeProduct.idType = selectorTypeProduct.find(':selected').val();
+            typeProduct.nameTh = selectorTypeProduct.find(':selected').attr('data-name-th');
+            typeProduct.nameEn = selectorTypeProduct.find(':selected').attr('data-name-en');
+       
+
+        let materialProduct = [];      
+            listMaterialUpload.children().each((index,value)=>{
+                let obj  ={};
+                obj.nameTh = $(value).attr('data-name-th');
+                obj.nameEn = $(value).attr('data-name-en');
+                materialProduct.push(obj); 
+            });
+
+        let paymentProduct ={}
+            paymentProduct.payOnBefore = payBeforeCheckBox.prop('checked');
+            paymentProduct.payOnDelivery = payAfterCheckBox .prop('checked');
+        
+        let transpotProduct = {};
+            transpotProduct.regular = normalTranspotCheckBox.prop('checked');
+            transpotProduct.register = registerTranspotCheckBox.prop('checked');
+            transpotProduct.ems = emsTranspotCheckBox.prop('checked');
+        
+        let statusProduct = {};
+            statusProduct.name = selectorStatusProduct.find(':selected').val();
+            statusProduct.detail = inputPercentProduct.val();
+            
+        let amountProduct = Number(inputAmountProduct.val());
+       
+        let informationProduct = inputInformationProduct.val();
+        
+      console.log(imageGallery);
+      
+           
+
+       
+        if(checkInput()){
+            //post product
+            console.log('CHeck input Upload Complete');
+            console.log(nameProduct);
+            console.log(priceProduct);
+            console.log(imageAvatar);
+            console.log(imageGallery);
+            console.log(typeProduct);
+            console.log(materialProduct);
+            console.log(paymentProduct);
+            console.log(transpotProduct);
+            console.log(statusProduct);
+            console.log(amountProduct);
+            console.log(informationProduct);
+
+           
+            let formData = new FormData();
+            formData.append('nameProduct',nameProduct);
+            formData.append('priceProduct',priceProduct);
+            formData.append('imageAvatar',imageAvatar);
+
+            Object.entries(imageGallery).forEach(value=>{             
+                formData.append('imageGallery',value[1]);
+                
+            });
+            
+            formData.append('typeProduct',JSON.stringify(typeProduct));
+            formData.append('materialProduct',JSON.stringify(materialProduct));
+            formData.append('paymentProduct',JSON.stringify(paymentProduct));
+            formData.append('deliveryProduct',JSON.stringify(transpotProduct));
+            formData.append('statusProduct',JSON.stringify(statusProduct));
+            formData.append('amountProduct',amountProduct);
+            formData.append('informationProduct',informationProduct);
+            fetch(uri,{
+                method:'POST',
+                body:formData
+            })
+            .then((res)=>res.json())
+            .then((data) => {
+                console.log(data);
+                
+                if(data.status == 200){
+                    fetchList();
+                }
+                
+            })
+            .catch((err=>{
+                console.log(JSON.stringify({
+                    "Error":err
+                }));
+                
+            }));
+                               
+        }
+
+        function checkInput(){
+            if((nameProduct) &&  
+            (priceProduct) && 
+            (imageAvatar) && 
+            (imageGallery.length > 0) &&
+            (typeProduct.idType && typeProduct.nameTh && typeProduct.nameEn) && 
+            (materialProduct.length > 0) && 
+            (paymentProduct.payOnBefore || paymentProduct.payOnDelivery) &&           
+            (transpotProduct.regular || transpotProduct.register || transpotProduct.ems) &&
+            (statusProduct.name) && 
+            (amountProduct > 0) && 
+            (informationProduct)
+            ){
+                return true;
+            }else{
+
+                if(!nameProduct){
+                        addInvalidAlert('INVALID PRODUCT NAME !!!',inputProductName);
+                }else{
+                        removeInvalidAlert(inputProductName);
+                }
+
+                if(!priceProduct){
+                    addInvalidAlert('INVALID PRODUCT PRICE !!!',inputPriceProduct);
+                }else{
+                    removeInvalidAlert(inputPriceProduct);
+                }
+
+                if(!imageAvatar){
+                    addInvalidAlert('PLEASE SELECT IMAGE OF AVATAR  !!!',inputImageAvatar);
+                }else{
+                    removeInvalidAlert(inputImageAvatar);
+                }
+
+                if(imageGallery.length < 1){
+                    addInvalidAlert('PLEASE SELECT IMAGES OF GALLERY !!!',inputImageGallery);
+                }else{
+                    removeInvalidAlert(inputImageGallery);
+                }
+
+                if(!typeProduct.idType || !typeProduct.nameTh || !typeProduct.nameEn){
+                    addInvalidAlert('PLEASE SELECT TYPE OF PRODUCT !!!',selectorTypeProduct);
+                }else{
+                    removeInvalidAlert(selectorTypeProduct);
+                }
+
+                if( materialProduct.length < 1){
+                    addInvalidAlert('INVALID MATERAIL PRODUCT !!!',selectorMaterialProduct);
+                }else{
+                    removeInvalidAlert(selectorMaterialProduct);
+                }
+
+                if(!paymentProduct.payOnBefore && !paymentProduct.payOnDelivery){
+                    addInvalidAlert('INVALID CHECKBOX PAYMENT !!!',payAfterCheckBox,5);
+                }else{
+                    removeInvalidAlert(payAfterCheckBox,5);
+                }
+                
+                if(!transpotProduct.regular && !transpotProduct.register && !transpotProduct.ems){
+                    addInvalidAlert('INVALID CHECKBOX TRANSPOT !!!',registerTranspotCheckBox,5);
+                }else{
+                    if(!paymentProduct.payOnBefore && !paymentProduct.payOnDelivery){
+                        
+                    }else{
+                        removeInvalidAlert(registerTranspotCheckBox,5);
+                    }
+                   
+                }
+
+                if(!statusProduct.name){
+                    addInvalidAlert('INVALID STATUS !!!',selectorStatusProduct);
+                }else{
+                    removeInvalidAlert(selectorStatusProduct);
+                }
+                
+                if(amountProduct < 1){
+                    addInvalidAlert('INVALID AMOUNT PRODUCT !!!',inputAmountProduct);
+                }else{
+                    removeInvalidAlert(inputAmountProduct);
+                }
+
+                if(!informationProduct){
+                    addInvalidAlert('INVALID INFORMATION PRODUCT !!!',inputInformationProduct);
+                }else{
+                    removeInvalidAlert(inputInformationProduct);
+                }
+                return false;
+            }
+
+            function addInvalidAlert(message,element,parent = 1){
+                let target = $(element).parent();
+                if(parent == 5){
+                    target =  $(element).parent().parent().parent().parent().parent();
+                }
+                
+                
+                if(target.prev('div.badge').length == 0){
+                    $(`<div class="badge badge-warning mb-1 p-2 px-4" role="alert"> ${message}</div>`)
+                    .insertBefore(target); 
+                }         
+            }
+            function removeInvalidAlert(element,parent = 1){
+                let target = $(element).parent();
+                if(parent == 5){
+                    target =  $(element).parent().parent().parent().parent().parent();
+                }
+                
+                target.prev('div.badge').remove();
+            }
+           
+        }
+
+
+            
+    }
+
+    function readFileGalleryToPreview(input){
+        if(input.files.length > 0){ 
+            previewImageGalleyUpload.html('');
+            if(input.files.length <= 8){
+                try{             
+                    Object.entries(input.files).forEach((value)=>{
+                        if(value[1].type != 'image/png' && value[1].type != 'image/jpeg'){
+                            previewImageGalleyUpload.html(`<div class="alert alert-danger mb-0 w-100" role="alert">Some Input files is <strong>Not an Image!</strong></div>`);
+                            inputImageGallery.val('');
+                            throw 'Error : Some Input files  is Not an Image';
+                        }else{
+                            let reader = new FileReader();
+                            reader.readAsDataURL(value[1]);
+                            //callback read data
+                            reader.onload = function(e){
+                                previewImageGalleyUpload.append(`<img class="col-3 p-1" src="${e.target.result}" alt="preview image Gallery"
+                                                            style="max-height:150px; object-fit: contain;">`);
+                            }
+                        }   
+                    });
+                    
+               }catch(e){
+                    console.log(e);    
+               }
+              
+              
+               
+            }else{          
+               previewImageGalleyUpload.html('<div class="alert alert-danger mb-0 w-100" role="alert">You can select <strong>Limit 8 files images!</strong></div>');
+               inputImageGallery.val('');
+            }
+        
+        
+           
+        
+        }else{
+            previewImageGalleyUpload.html('<em style="color:red;" class="notify-txt">Image Gallery Not found !</em>');
+        }
+     
+    }
+
+    function readFileAvatarToPreview(input){
+        if(input.files.length > 0){
+            //check image-type
+            if(input.files[0].type == 'image/png' || input.files[0].type == 'image/jpeg'){
+                let reader = new FileReader();
+                reader.readAsDataURL(input.files[0]);
+                //callback read data
+                reader.onload = function(e){
+                    previewImageAvatarUpload.html(`<img class="img-card-top d-block mx-auto" src="${e.target.result}" alt="preview image avatar"
+                                                    style="max-width:100%; height:300px; object-fit: contain;">`);
+                }
+
+            }else{
+                console.log('this file is not an image');
+                previewImageAvatarUpload.html(`<div class="alert alert-danger mb-0" role="alert">This File is <strong>not an Image!</strong></div>`);
+                inputImageAvatar.val('');
+            }
+            
+        }else{
+            previewImageAvatarUpload.html('<em style="color:red;" class="notify-txt">Image Avatar Not found !</em>');
+        }    
+    }
 
     function addMaterialtoList(event){
         let target = $(event.target);
@@ -1130,9 +1416,9 @@ let product = (()=>{
     }
     function getValueType(){
         // $(this) คือ selectorTypeProduct
-        console.log(selectorTypeProduct.find(':selected').val());
-        console.log(selectorTypeProduct.find(':selected').attr('data-name-th'));
-        console.log(selectorTypeProduct.find(':selected').attr('data-name-en'));
+        // console.log(selectorTypeProduct.find(':selected').val());
+        // console.log(selectorTypeProduct.find(':selected').attr('data-name-th'));
+        // console.log(selectorTypeProduct.find(':selected').attr('data-name-en'));
         
     }
 
@@ -1142,7 +1428,7 @@ let product = (()=>{
         .then((res)=>res.json())
         .then((data)=>{
             if(data.length > 0){
-                let option = '<option selected>Choose..</option>';
+                let option = '<option selected value="">Choose..</option>';
                 data.forEach((value)=>{
                     value._id
                     value.nameTh

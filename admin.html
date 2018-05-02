@@ -17,6 +17,22 @@
         .shadow-material-1{
             box-shadow: 0 3px 6px rgba(0, 0, 0, 0.671), 0 3px 6px rgbargba(0, 0, 0, 0.397)
         }
+
+        .red-placeholder::-webkit-input-placeholder {
+        color: red !important;
+        }
+
+        .red-placeholder:-moz-placeholder { /* Firefox 18- */
+            color: red  !important;
+        }
+
+        .red-placeholder::-moz-placeholder {  /* Firefox 19+ */
+        color: red !important;  
+        }
+
+        .red-placeholder:-ms-input-placeholder {  
+        color: red !important;  
+        }
     </style>
 
 </head>
@@ -340,7 +356,7 @@
                     </h1>
 
                     <!-- ชื่อสินค้า -->
-                    <em style="color:rgba(255, 0, 0, 0.6);" id="notifyUploadNameProduct">กรุณากรอกชื่อสินค้า!</em>
+                   
                     <div class="input-group mb-3">
          
                         <div class="input-group-prepend col-2 p-0">
@@ -358,25 +374,31 @@
                     </div>
 
                     <!-- preview image Avatar -->
-                    <div id="previewImageUploadAvatar" class="w-100 preview-image-avatar" style="background-color: rgba(0, 0, 0, 0.6)">
+                    <div id="previewImageUploadAvatar" class="w-100 preview-image-avatar p-1 mb-1" style="background-color: rgba(0, 0, 0, 0.6)">
                         <img class="img-card-top d-block mx-auto" src="" alt="preview image avatar"
                             style="max-width:100%; height:300px; object-fit: contain;">
                     </div>
 
                     <!-- input Image Avatar -->
-                    <label class="d-block" for="inputImgAvatarProduct">Choose file Avatar Product</label>
-                    <input type="file" class="form-control-file mb-3" id="inputImgAvatarProduct">
+                    <div class="input-group">
+                        <label class="d-block" for="inputImgAvatarProduct">Choose file Avatar Product</label>
+                        <input type="file" class="form-control-file mb-3" id="inputImgAvatarProduct">
+                    </div>
+                    
 
 
                     <!-- Preview Image Gallery -->
-                    <div id="previewImageUploadGallery" class="w-100 preview-image-gallery row mx-auto rounded" style="background-color: rgba(0, 0, 0, 0.6)">
+                    <div id="previewImageUploadGallery" class="w-100 preview-image-gallery row mx-auto rounded p-1 mb-1" style="background-color: rgba(0, 0, 0, 0.6)">
                         <img class="col-3 p-1" src="" alt="preview image Gallery"
                             style="max-height:150px; object-fit: contain;">       
                     </div>
 
                     <!-- Input Image Gallery -->
-                    <label class="d-block" for="inputImgAvatarProduct">Choose file image preview-image-gallery</label>
-                    <input type="file" class="form-control-file mb-3" id="inputImgGalleryProduct">
+                    <div class="input-group">
+                        <label class="d-block" for="inputImgAvatarProduct">Choose file image preview-image-gallery</label>
+                        <input type="file" class="form-control-file mb-3" id="inputImgGalleryProduct" multiple>
+                    </div>
+                    
 
 
                     <p class="h5">Detail.</p>
@@ -394,11 +416,11 @@
                     <!-- ชนิดวัสดุ -->
                     <div class="input-group mb-2">
                         <div class="input-group-prepend w-100 rounded-0">
-                            <label class="input-group-text w-100 rounded-0" for="inputGroupSelect02">ชนิดวัสดุสินค้า</label>
+                            <label class="input-group-text w-100 rounded-0" for="">ชนิดวัสดุสินค้า</label>
                         </div>
                         <div class="d-flex justify-content-center w-100 flex-wrap" role="group" aria-label="" id="inputSelectMaterialProduct">
                             
-      
+
                         </div>
                     </div>
 
@@ -477,14 +499,14 @@
                             <label class="input-group-text w-100 rounded-0" for="">สถานะสินค้า</label>
                         </div>
                         <select class="custom-select rounded-0" id="selectorStatusProduct">
-                            <option selected>Choose...</option>
-                            <option value="1">ปกติ (Normal)</option>
-                            <option value="2">ลดราคา (Sell)</option>
-                            <option value="3">โปรโมชั่น (Promotion)</option>
-                            <option value="3">ขายดี (Popular)</option>
+                            <option value="" selected>Choose...</option>
+                            <option value="normal">ปกติ (Normal)</option>
+                            <option value="sell">ลดราคา (Sell)</option>
+                            <option value="promotion">โปรโมชั่น (Promotion)</option>
+                            <option value="popular">ขายดี (Popular)</option>
                         </select>
                     </div>
-
+                   
                     <!-- เปอร์เซ็นการลดราคา -->
                     <div class="input-group mb-3">
                         <div class="input-group-prepend col-4 p-0">
