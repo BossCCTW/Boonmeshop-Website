@@ -1071,13 +1071,608 @@ let product = (()=>{
     inputImageGallery.change(function(){
         readFileGalleryToPreview(this);
     });
+    listMaterialUpload.on('click','div.alert>button.close',deleteMaterialItem); //delete item material [dynamic list]
     btnSaveUpload.on('click',saveUpload);
     
 
 
-    //DOM List product
+    //List product DOM 
     let list = container.find('#listProduct');
     fetchList();
+
+    //List Event
+    list.on('click','div>ul>li.link-detail',showDetail);
+    list.on('click','div>ul>li>button.update',showModalUpdate);
+    list.on('click','div>ul>li>button.delete',showModalDelete)
+    
+    //DOM DETAIL Product
+    let containerDetail = container.find('.product-detail');
+    let btnCloseDetail = containerDetail.find('button.close');
+    let imgAvatarDetail = containerDetail.find('#imgAvatarDetail>img');
+    
+    let listImgGalleyDetail = containerDetail.find('#listImgGalleryDetail');
+    let statusDetail = containerDetail.find('#stautusDetail');
+    let nameDetail = containerDetail.find('#nameDetail');
+    let idDetail = containerDetail.find('#idDetail');
+    let priceDetail = containerDetail.find('#priceDetail');
+    let typeDetail = containerDetail.find('#typeDetail');
+    let materailDetail = containerDetail.find('#materialDetail');
+    let paymentDetail = containerDetail.find('#paymentDetail');
+    let transpotDetail = containerDetail.find('#transpotDetail');
+    let informationDetail = containerDetail.find('#informationDetail');
+
+    //Event Detail Product
+    btnCloseDetail.click(()=>{
+        containerDetail.toggleClass('d-none');
+    });
+    listImgGalleyDetail.on('click','img',setImageOnTopDetail);
+
+    //Update DOM
+    let containerModalUpdate = container.find('#updateProductContainer');
+    let btnCloseUpdate =containerModalUpdate.find('button.close-modal-update');
+    let idUpdate = containerModalUpdate.find('#idUpdateProduct');
+    let nameUpdate = containerModalUpdate.find('#nameUpdateProduct');
+    let priceUpdate = containerModalUpdate.find('#priceUpdateProduct');
+    let containerPreviewAvatarUpdate = containerModalUpdate.find('#containerPreviewAvatarUpdate');
+    let previewAvatarUpdate = containerModalUpdate.find('#previewImageAvatarUpdate');
+    let inputAvatarUpdate = containerModalUpdate.find('#imageAvatarUpdate');
+    let previewGalleryUpdate = containerModalUpdate.find('#previewGalleryUpdate');
+    let inputGalleryUpdate = containerModalUpdate.find('#inputGalleryUpdate');
+    let selectionTypeUpdate = containerModalUpdate.find('#selectionTypeUpdate');
+    let selectionMaterialUpdate = containerModalUpdate.find('#materialUpdate');
+    let listMaterialUpdate = containerModalUpdate.find('#listMaterialUpdate');
+    let checkboxPayBeforeUpdate = containerModalUpdate.find('#checkboxPayBeforeUpdate');
+    let checkboxPayAfterUpdate = containerModalUpdate.find('#checkboxPayAfterUpdate');
+    let checkboxNormalTranspotUpdate = containerModalUpdate.find('#checkboxRegularTranspotUpdate');
+    let checkboxRegisterTranspotUpdate = containerModalUpdate.find('#checkboxRegisterTranspotUpdate');
+    let checkboxEmsTranspotUpdate = containerModalUpdate.find('#checkboxEmsTranspotUpdate');
+    let statusUpdateSelection = containerModalUpdate.find('#selectionStatusUpdate');
+    let statusDetailUpdate = containerModalUpdate.find('#statusDetailUpdate');
+    let amountUpdate = containerModalUpdate.find('#amountUpdate');
+    let informationUpdate = containerModalUpdate.find('#inforamtionUpdate');
+    let btnSaveUpdate = containerModalUpdate.find('#btnSaveUpdateProduct');
+
+    //Source Original html image Preview Update
+    let htmlPreviewAvatarUpdate = '';
+    let htmlPreviewGalleryUpdate = '';    
+    
+    
+    //Update Event
+    btnCloseUpdate.click(()=>{
+        //reset checkbox update     
+        checkboxPayBeforeUpdate.prop('checked',false);
+        checkboxPayAfterUpdate.prop('checked',false);    
+        checkboxNormalTranspotUpdate.prop('checked',false);
+        checkboxRegisterTranspotUpdate.prop('checked',false);   
+        checkboxEmsTranspotUpdate.prop('checked',false);
+      
+        containerModalUpdate.toggleClass('d-none'); //close modal Update
+
+    });
+    selectionMaterialUpdate.on('click','button',addItemTolistMaterialUpdate);
+    listMaterialUpdate.on('click','div>button',deleteMaterialItemUpdate);
+    inputAvatarUpdate.change(function(){
+        previewImgAvatarUpdate(this);
+    });
+    inputGalleryUpdate.change(function(){
+        previewImgGalleryUpdate(this);
+    });
+    btnSaveUpdate.on('click',saveUpdate);
+
+    //Delete DOM
+    let modalDelete = container.find('#modalDeleteProduct');
+
+
+    function saveUpdate(){
+    
+    // nameUpdate
+    // priceUpdate
+    // inputAvatarUpdate
+    // inputGalleryUpdate
+    // selectionTypeUpdate
+    // selectionMaterialUpdate
+    // listMaterialUpdate
+    // checkboxPayBeforeUpdate
+    // checkboxPayAfterUpdate
+    // checkboxNormalTranspotUpdate
+    // checkboxRegisterTranspotUpdate
+    // checkboxEmsTranspotUpdate
+    // statusUpdateSelection
+    // statusDetailUpdate
+    // amountUpdate
+    // informationUpdate
+
+
+        let id =idUpdate.text();
+        let nameProduct = nameUpdate.val();
+        let priceProduct = priceUpdate.val();
+
+
+        let imageAvatar = inputAvatarUpdate[0].files[0];  // console.log(imageAvatar.length);
+        let imageGallery = inputGalleryUpdate[0].files; 
+        
+        let typeProduct = {};
+            typeProduct.idType = selectionTypeUpdate.find(':selected').val();
+            typeProduct.nameTh = selectionTypeUpdate.find(':selected').attr('data-name-th');
+            typeProduct.nameEn = selectionTypeUpdate.find(':selected').attr('data-name-en');
+       
+        let materialProduct = [];      
+            listMaterialUpdate.children().each((index,value)=>{
+                let obj  ={};
+                obj.nameTh = $(value).attr('data-name-th');
+                obj.nameEn = $(value).attr('data-name-en');
+                materialProduct.push(obj); 
+            });
+
+        let paymentProduct ={}
+            paymentProduct.payOnBefore = checkboxPayBeforeUpdate.prop('checked');
+            paymentProduct.payOnDelivery = checkboxPayAfterUpdate.prop('checked');
+        
+        let transpotProduct = {};
+            transpotProduct.regular = checkboxNormalTranspotUpdate.prop('checked');
+            transpotProduct.register = checkboxRegisterTranspotUpdate.prop('checked');
+            transpotProduct.ems = checkboxEmsTranspotUpdate.prop('checked');
+        
+
+
+        let statusProduct = {};
+            statusProduct.name = statusUpdateSelection.find(':selected').val();
+            statusProduct.detail = statusDetailUpdate.val();
+            
+        let amountProduct = Number(amountUpdate.val());
+       
+        let informationProduct = informationUpdate.val();
+
+        if(checkInput()){
+            console.log('Check data Update Complete');
+
+            // console.log(id);     
+            // console.log(nameProduct);
+            // console.log(priceProduct);
+
+            // console.log(imageAvatar);
+            // console.log(imageGallery);
+
+            // console.log(typeProduct);
+            // console.log(materialProduct);
+            // console.log(paymentProduct);
+            // console.log(transpotProduct);
+            // console.log(statusProduct);
+            // console.log(amountProduct);
+            // console.log(informationProduct);
+
+            let formData = new FormData();
+            formData.append('nameProductUpdate',nameProduct);
+            formData.append('priceProductUpdate',priceProduct);
+
+            if(imageAvatar){
+                formData.append('imageAvatar',imageAvatar);
+            }
+            
+            if(imageGallery.length > 0){
+                Object.entries(imageGallery).forEach(value=>{             
+                    formData.append('imageGallery',value[1]);
+                });
+            }
+
+            formData.append('typeProductUpdate',JSON.stringify(typeProduct));
+            formData.append('materialProductUpdate',JSON.stringify(materialProduct));
+            formData.append('paymentProductUpdate',JSON.stringify(paymentProduct));
+            formData.append('deliveryProductUpdate',JSON.stringify(transpotProduct));
+            formData.append('statusProductUpdate',JSON.stringify(statusProduct));
+            formData.append('amountProductUpdate',amountProduct);
+            formData.append('informationProductUpdate',informationProduct);
+
+
+            fetch(uri+id,{
+                method:'PATCH',
+                body:formData
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+                if(data.status == 200){                  
+                    if(data.result.nModified == 1){
+                        fetchList();         
+                    }
+                    
+                    inputAvatarUpdate.val('');
+                    inputGalleryUpdate.val('');
+                    containerModalUpdate.toggleClass('d-none'); 
+                    container.append(`<div class="show-success-update w-100 h-100 position-fixed" style="top:0; left:0; background-color:rgba(0, 0, 0, 0.43);">
+                                            <div class="alert alert-success mx-5" role="alert" style="position: relative; top:50%; transform: translateY(-50%);">
+                                                <h4 class="alert-heading">Update Complete!</h4>
+                                                <p>New Content Updated in List of Products</p>
+                                                <hr>
+                                            
+                                            </div>
+                                        </div>`);
+                    setTimeout(()=>{
+                        container.find('.show-success-update').remove();
+                    },2000);   
+                }
+                
+            });
+            
+        }
+        
+
+        function checkInput(){
+            if((nameProduct) &&  
+            (priceProduct) && 
+            (typeProduct.idType && typeProduct.nameTh && typeProduct.nameEn) && 
+            (materialProduct.length > 0) && 
+            (paymentProduct.payOnBefore || paymentProduct.payOnDelivery) &&           
+            (transpotProduct.regular || transpotProduct.register || transpotProduct.ems) &&
+            (statusProduct.name) && 
+            (amountProduct > 0) && 
+            (informationProduct)
+            ){
+                return true;
+            }else{
+
+                if(!nameProduct){
+                        addInvalidAlert('INVALID PRODUCT NAME !!!',nameUpdate);
+                }else{
+                        removeInvalidAlert(nameUpdate);
+                }
+
+                if(!priceProduct){
+                    addInvalidAlert('INVALID PRODUCT PRICE !!!',priceUpdate);
+                }else{
+                    removeInvalidAlert(priceUpdate);
+                }
+
+                if(!typeProduct.idType || !typeProduct.nameTh || !typeProduct.nameEn){
+                    addInvalidAlert('PLEASE SELECT TYPE OF PRODUCT !!!',selectionTypeUpdate);
+                }else{
+                    removeInvalidAlert(selectionTypeUpdate);
+                }
+
+                if( materialProduct.length < 1){
+                    addInvalidAlert('INVALID MATERAIL PRODUCT !!!',selectionMaterialUpdate);
+                }else{
+                    removeInvalidAlert(selectionMaterialUpdate);
+                }
+
+                if(!paymentProduct.payOnBefore && !paymentProduct.payOnDelivery){
+                    addInvalidAlert('INVALID CHECKBOX PAYMENT !!!',checkboxPayAfterUpdate,5);
+                }else{
+                    removeInvalidAlert(checkboxPayAfterUpdate,5);
+                }
+
+                if(!transpotProduct.regular && !transpotProduct.register && !transpotProduct.ems){
+                    addInvalidAlert('INVALID CHECKBOX TRANSPOT !!!',checkboxRegisterTranspotUpdate,5);
+                }else{
+                    if(!paymentProduct.payOnBefore && !paymentProduct.payOnDelivery){
+                        
+                    }else{
+                        removeInvalidAlert(checkboxRegisterTranspotUpdate,5);
+                    } 
+                }
+
+                if(!statusProduct.name){
+                    addInvalidAlert('INVALID STATUS !!!',statusUpdateSelection);
+                }else{
+                    removeInvalidAlert(statusUpdateSelection);
+                }
+  
+                if(amountProduct < 1){
+                    addInvalidAlert('INVALID AMOUNT PRODUCT !!!',amountUpdate);
+                }else{
+                    removeInvalidAlert(amountUpdate);
+                }
+
+                if(!informationProduct){
+                    addInvalidAlert('INVALID INFORMATION PRODUCT !!!',informationUpdate);
+                }else{
+                    removeInvalidAlert(informationUpdate);
+                }
+                return false;
+            }
+
+            function addInvalidAlert(message,element,parent = 1){
+                let target = $(element).parent();
+                if(parent == 5){
+                    target =  $(element).parent().parent().parent().parent().parent();
+                }
+                
+                
+                if(target.prev('div.badge').length == 0){
+                    $(`<div class="badge badge-warning mb-1 p-2 px-4" role="alert"> ${message}</div>`)
+                    .insertBefore(target); 
+                }         
+            }
+            function removeInvalidAlert(element,parent = 1){
+                let target = $(element).parent();
+                if(parent == 5){
+                    target =  $(element).parent().parent().parent().parent().parent();
+                }
+                
+                target.prev('div.badge').remove();
+            }
+           
+        }    
+
+    }//Save update
+
+
+    function previewImgGalleryUpdate(input){
+        previewGalleryUpdate.html('');
+        if(input.files.length > 0){
+            if(input.files.length <= 8){   
+                
+                try{             
+                    Object.entries(input.files).forEach(value=>{
+                        
+                        if(value[1].type != 'image/png' && value[1].type != 'image/jpeg'){
+                            previewGalleryUpdate.html(`<div class="alert alert-danger mb-0 w-100" role="alert">Invalid files! <strong>Some file  Not an Image</strong></div>`);
+                            setTimeout(()=>{
+                                previewGalleryUpdate.html(htmlPreviewGalleryUpdate);
+                            },2000);
+                            inputGalleryUpdate.val('');
+                            throw 'Error INVALID FILE';
+                        }else{
+                           
+                            let reader = new FileReader(); 
+                            reader.readAsDataURL(value[1]);
+                            reader.onload = function(e){
+                                previewGalleryUpdate.append(`<img class="col-3 p-1" src="${e.target.result}" alt="preview image gallery update" style="max-height:150px; object-fit: contain;">`);
+                            }
+                            
+                        }
+                    });
+                 
+                }catch(e){
+                    console.log(e);
+                }       
+                
+            }else{
+
+                previewGalleryUpdate.html(`<div class="alert alert-danger mb-0 w-100" role="alert">Invalid files! <strong>limit 8 files image</strong></div>`);
+                setTimeout(()=>{
+                    previewGalleryUpdate.html(htmlPreviewGalleryUpdate);
+                },2000);
+                inputGalleryUpdate.val('');
+            }
+            
+        }else{
+            previewGalleryUpdate.html(htmlPreviewGalleryUpdate);
+        }
+    }
+
+    function previewImgAvatarUpdate(input){
+        
+        if(input.files.length>0){
+            let reader = new FileReader();
+            console.log(input.files[0]);
+            if(input.files[0].type == 'image/jpeg' || input.files[0].type == 'image/png'){
+                //set read file from file selected
+                reader.readAsDataURL(input.files[0]);
+                //callback reader file when read data complete
+                reader.onload = function(e){
+                    previewAvatarUpdate.attr('src',e.target.result);
+                }
+            }else{
+                
+                containerPreviewAvatarUpdate.append(`<div class="alert alert-danger mb-0" role="alert">This File is <strong>not an Image!</strong></div>`);
+                setTimeout(()=>{
+                    containerPreviewAvatarUpdate.find('div.alert').remove();
+                },2000);
+                inputAvatarUpdate.val('');
+            }
+           
+        }else{
+            previewAvatarUpdate.attr('src',htmlPreviewAvatarUpdate);
+            
+        } 
+    }
+
+    function deleteMaterialItemUpdate(event){
+        $(event.target).parents('.alert').remove();         
+    }
+
+    function addItemTolistMaterialUpdate(event){
+        let target = $(event.target);
+
+        let id = target.attr('data-id');
+        let nameTh = target.attr('data-material-name-th');
+        let nameEn = target.attr('data-material-name-en');
+        let checkRepeat = true;
+        
+        // listMaterialUpload.children
+        listMaterialUpdate.children().each((index,value)=>{
+            
+            let Elementinlist = $(value).attr('data-name-th');
+            if(Elementinlist == nameTh){
+                checkRepeat = false;
+            }
+            
+        });
+
+        if(checkRepeat){
+            listMaterialUpdate.append(`<div class="alert btn-secondary p-1 mr-1 mb-1"
+                    data-id="${id}" 
+                    data-name-th="${nameTh}" 
+                    data-name-en="${nameEn}"
+                    >
+                    <span class="mx-3 align-middle">${nameTh}(${nameEn})</span>
+                    <button type="button" class="close pb-1" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>`);
+        }
+
+        
+    }
+    function showModalDelete(event){
+        let id = getIdProduct(event);
+        console.log(id);
+        modalDelete.toggleClass('d-none');
+    }
+    function showModalUpdate(event){ //show modal when click btn update product
+        let id = getIdProduct(event);
+        console.log('Update '+id);
+        loadTypeAndMaterial();
+        fetch(uri+id)
+        .then(res => res.json())
+        .then(data =>{
+            if(data.status == 200){
+                setOriginalDatatoModalUpdate(data.data);
+                containerModalUpdate.toggleClass('d-none');
+            }else{
+               console.log(data);      
+            }
+            
+        });
+        
+    }
+    function setOriginalDatatoModalUpdate(data){
+        idUpdate.text(data._id)
+        nameUpdate.val(data.name);
+        priceUpdate.val(data.price);
+        previewAvatarUpdate.attr('src',data.imageAvatar);
+        
+        let imgGallery = '';
+        data.imageGallery.forEach(value=>{
+            imgGallery += `<img class="col-3 p-1" src="${value}" alt="preview image gallery update"
+            style="max-height:150px; object-fit: contain;">`;
+        });
+        previewGalleryUpdate.html(imgGallery);
+
+        //backUp original templat image Preview
+        htmlPreviewAvatarUpdate = previewAvatarUpdate.attr('src');
+        htmlPreviewGalleryUpdate = previewGalleryUpdate.html();  
+        
+
+        selectionTypeUpdate.val(data.type.idType);
+        // selectionMaterialUpdate
+        let outputMaterial = '';
+        data.material.forEach(value =>{
+            outputMaterial += `<div class="alert btn-secondary p-1 mr-1 mb-1" data-id="" data-name-th="${value.nameTh}" data-name-en="${value.nameEn}">
+                                    <span class="mx-3 align-middle">${value.nameTh}(${value.nameEn})</span>
+                                    <button type="button" class="close pb-1" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>`;
+        });
+        listMaterialUpdate.html(outputMaterial);
+
+        if(data.payment.payOnBefore){
+            checkboxPayBeforeUpdate.prop('checked',true);
+        }
+        if(data.payment.payOnDelivery){
+            checkboxPayAfterUpdate.prop('checked',true);
+        }
+  
+        if(data.delivery.regular){
+            checkboxNormalTranspotUpdate.prop('checked',true);
+        }
+        if(data.delivery.register){
+            checkboxRegisterTranspotUpdate.prop('checked',true);
+        }
+        if(data.delivery.ems){
+            checkboxEmsTranspotUpdate.prop('checked',true);
+        }
+       
+        statusUpdateSelection.val(data.status.name);
+        statusDetailUpdate.val(data.status.detail);
+        amountUpdate.val(data.amount);
+        informationUpdate.val(data.information);
+    }
+
+    function loadTypeAndMaterial(){
+        selectionTypeUpdate.html(selectorTypeProduct.html());
+        selectionMaterialUpdate.html(selectorMaterialProduct.html());
+    }
+
+    function setImageOnTopDetail(event){
+        let target = $(event.target);
+        let srcSelect = target.attr('src');
+        imgAvatarDetail.attr('src',srcSelect);  
+    }
+
+    function showDetail(event){
+        let id = getIdProduct(event);
+        fetch(uri+id)
+        .then((res)=>res.json())
+        .then((data)=>{
+            if (data.status == 200) {
+                console.log(data);
+                setDataToModalDetail(data.data);
+                containerDetail.toggleClass('d-none');
+                
+            }else if(data.status == 404){
+                console.log(data);     
+            }
+            
+        });
+        
+    }
+    function setDataToModalDetail(data){
+       
+        imgAvatarDetail.attr('src',data.imageAvatar);
+
+        let htmlGallery = ''
+        data.imageGallery.forEach(value=>{
+            htmlGallery += `<img class="h-100 mr-1" src="${value}" style="cursor:pointer;"
+            alt="">`;
+        });
+        listImgGalleyDetail.html(htmlGallery);
+
+        statusDetail.html(data.status.name.toUpperCase()+data.status.detail);
+
+        nameDetail.text(data.name);
+
+        idDetail.text(data._id);
+        priceDetail.text(data.price);
+        typeDetail.text(data.type.nameTh+'('+data.type.nameEn+')');
+
+        let htmlMaterial = '';
+        data.material.forEach(value=>{
+            htmlMaterial += `<span class="btn btn-secondary mr-1" style="cursor: auto; border-radius: 1.5em;">${value.nameTh}(${value.nameEn})</span>`;
+        });
+        materailDetail.html(htmlMaterial);
+
+        let htmlPayment = '';
+        let payOnBefore = data.payment.payOnBefore;
+        let patOnAfter = data.payment.payOnDelivery;
+        if(payOnBefore){
+            htmlPayment+=`<span class="btn btn-info mr-1" style="cursor: auto; border-radius: 1.5em;">• ชำระก่อนสั่งซื้อ</span>`;
+        }
+        if(patOnAfter){
+            htmlPayment+=`<span class="btn btn-info mr-1" style="cursor: auto; border-radius: 1.5em;">• ชำระเงินปลายทาง</span>`;
+        }
+        paymentDetail.html(htmlPayment);
+       
+
+        let htmlTranspot = '';
+        let regularTranspot = data.delivery.regular;
+        let registerTranspot = data.delivery.register;
+        let emsTranspot = data.delivery.ems;
+        if(regularTranspot){
+            htmlTranspot+=`<span class="btn btn-success mr-1" style="cursor: auto; border-radius: 1.5em;">• ปกติ</span>`;
+        }
+        if(registerTranspot){
+            htmlTranspot+=`<span class="btn btn-success mr-1" style="cursor: auto; border-radius: 1.5em;">• ลงทะเบียน</span>`;
+        }
+        if(emsTranspot){
+            htmlTranspot+=`<span class="btn btn-success mr-1" style="cursor: auto; border-radius: 1.5em;">• Ems</span>`;
+        }
+        transpotDetail.html(htmlTranspot);
+
+        informationDetail.text(data.information);
+    }
+
+    function getIdProduct(event){
+        let target = $(event.target).parents('ul.list-group'); 
+        let id = target.find('li.link-id-product').attr('data-id');
+        return id;
+    }
+
+
+    function deleteMaterialItem(event){
+       $(event.target).parent().parent().remove();
+    }
 
     function saveUpload(){
         let nameProduct = inputProductName.val();
@@ -1086,7 +1681,6 @@ let product = (()=>{
         let imageGallery = inputImageGallery[0].files; 
         
         
-
         let typeProduct = {};
             typeProduct.idType = selectorTypeProduct.find(':selected').val();
             typeProduct.nameTh = selectorTypeProduct.find(':selected').attr('data-name-th');
@@ -1118,27 +1712,24 @@ let product = (()=>{
        
         let informationProduct = inputInformationProduct.val();
         
-      console.log(imageGallery);
       
-           
-
+        
        
         if(checkInput()){
             //post product
             console.log('CHeck input Upload Complete');
-            console.log(nameProduct);
-            console.log(priceProduct);
-            console.log(imageAvatar);
-            console.log(imageGallery);
-            console.log(typeProduct);
-            console.log(materialProduct);
-            console.log(paymentProduct);
-            console.log(transpotProduct);
-            console.log(statusProduct);
-            console.log(amountProduct);
-            console.log(informationProduct);
+            // console.log(nameProduct);
+            // console.log(priceProduct);
+            // console.log(imageAvatar);
+            // console.log(imageGallery);
+            // console.log(typeProduct);
+            // console.log(materialProduct);
+            // console.log(paymentProduct);
+            // console.log(transpotProduct);
+            // console.log(statusProduct);
+            // console.log(amountProduct);
+            // console.log(informationProduct);
 
-           
             let formData = new FormData();
             formData.append('nameProduct',nameProduct);
             formData.append('priceProduct',priceProduct);
@@ -1160,21 +1751,48 @@ let product = (()=>{
                 method:'POST',
                 body:formData
             })
-            .then((res)=>res.json())
+            .then((res)=>{
+                if(res.status == 500){
+                    uploadContainer.append(`
+                    <div class="alert-response-500 position-fixed fixed-top w-100 h-100" style="background-color: rgba(0, 0, 0, 0.43);">
+                        <div class="alert alert-danger position-relative shadow-material-1 mx-auto w-75" style="position:relative; top:50%;  transform: translateY(-50%);">
+                            <h4 class="alert-heading">Response status Error ${res.status}!</h4>
+                            <p>${res.statusText}</p>
+                            <hr>
+                            <p class="mb-0">Invalid Sever Response.</p>
+                        </div>
+                    </div>`);
+
+                    setTimeout(()=>{
+                        uploadContainer.find('.alert-response-500').remove();
+                    },2500);
+                }
+
+                return res.json();
+            })
             .then((data) => {
                 console.log(data);
                 
                 if(data.status == 200){
+                    clearInputUpload();                
                     fetchList();
+                }else if(data.status == 400 ){
+                    uploadContainer.append(`
+                    <div class="alert-response-400 position-fixed fixed-top w-100 h-100" style="background-color: rgba(0, 0, 0, 0.43);">
+                        <div class="alert alert-danger position-fixed shadow-material-1 mx-auto" style="position:relative; top:50%;  transform: translateY(-50%);">
+                            <h4 class="alert-heading">Response status 400!</h4>
+                            <p>Bad Request.</p>
+                            <hr>
+                            <p class="mb-0">Invalid Some Input.</p>
+                        </div>
+                    </div>`);
+
+                    setTimeout(()=>{
+                        uploadContainer.find('.alert-response-400').remove();
+                    },2000);
                 }
                 
-            })
-            .catch((err=>{
-                console.log(JSON.stringify({
-                    "Error":err
-                }));
-                
-            }));
+            });
                                
         }
 
@@ -1288,10 +1906,30 @@ let product = (()=>{
                 target.prev('div.badge').remove();
             }
            
-        }
+        }          
+    }
 
 
-            
+    
+
+    function clearInputUpload(){
+        inputProductName.val('');
+        inputPriceProduct.val('');
+        inputImageAvatar.val(''); 
+        previewImageAvatarUpload.html(''); 
+        inputImageGallery.val('');
+        previewImageGalleyUpload.html(''); 
+        selectorTypeProduct.val('0');  
+        listMaterialUpload.html(''); 
+        payBeforeCheckBox.prop('checked',false); 
+        payAfterCheckBox.prop('checked',false);  
+        normalTranspotCheckBox.prop('checked',false);  
+        registerTranspotCheckBox.prop('checked',false);  
+        emsTranspotCheckBox.prop('checked',false);  
+        selectorStatusProduct.val('0'); 
+        inputPercentProduct.val(0); 
+        inputAmountProduct.val(0); 
+        inputInformationProduct.val(''); 
     }
 
     function readFileGalleryToPreview(input){
@@ -1326,8 +1964,7 @@ let product = (()=>{
                inputImageGallery.val('');
             }
         
-        
-           
+          
         
         }else{
             previewImageGalleyUpload.html('<em style="color:red;" class="notify-txt">Image Gallery Not found !</em>');
@@ -1367,7 +2004,6 @@ let product = (()=>{
         let checkRepeat = true;
         
         
-        
         // listMaterialUpload.children
         listMaterialUpload.children().each((index,value)=>{
             
@@ -1390,9 +2026,7 @@ let product = (()=>{
                     </button>
                 </div>`);
         }
-       
-        
-        
+
     }
 
     function fetchMaterial(){
@@ -1414,12 +2048,12 @@ let product = (()=>{
             }
         });
     }
+
     function getValueType(){
         // $(this) คือ selectorTypeProduct
         // console.log(selectorTypeProduct.find(':selected').val());
         // console.log(selectorTypeProduct.find(':selected').attr('data-name-th'));
-        // console.log(selectorTypeProduct.find(':selected').attr('data-name-en'));
-        
+        // console.log(selectorTypeProduct.find(':selected').attr('data-name-en'));      
     }
 
     function fetchType(){
@@ -1428,7 +2062,7 @@ let product = (()=>{
         .then((res)=>res.json())
         .then((data)=>{
             if(data.length > 0){
-                let option = '<option selected value="">Choose..</option>';
+                let option = '<option selected value="0">Choose..</option>';
                 data.forEach((value)=>{
                     value._id
                     value.nameTh
@@ -1452,11 +2086,11 @@ let product = (()=>{
                 data.data.forEach((value)=>{
                     output += `<div class="col-sm-6 col-md-4 col-lg-3 p-1 ">
                                     <ul class="list-group rounded-0">
-                                        <li class="list-group-item p-0" style="cursor: pointer;">
+                                        <li class="list-group-item p-0 link-detail" style="cursor: pointer;">
                                             <img class="w-100" src="${value.imageAvatar}"
                                                 alt="" style="width:100%; height:200px; overflow-y:hidden;">
                                         </li>
-                                        <li class="list-group-item text-truncate p-1">
+                                        <li class="list-group-item text-truncate p-1 link-id-product" data-id="${value._id}">
                                             ${value._id}
                                         </li>
                                         <li class="list-group-item p-1 text-truncate">
@@ -1469,13 +2103,14 @@ let product = (()=>{
                                             ${value.type.nameTh}+' - '+${value.type.nameEn}
                                         </li>
                                         <li class="list-group-item d-flex p-0">
-                                            <button class="btn btn-secondary rounded-0 col" type="submit">Delete</button>
-                                            <button class="btn btn-primary w-100 rounded-0" type="submit">Update</button>
+                                            <button class="btn btn-secondary rounded-0 col delete" type="submit">Delete</button>
+                                            <button class="btn btn-primary w-100 rounded-0 update" type="submit">Update</button>
                                         </li>
                                     </ul>
                                 </div>`;
                 });
                 list.html(output);
+              
             }else{
                 list.html(`<h5>${data.data}</h5>`);
             } 
