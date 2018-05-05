@@ -1161,6 +1161,56 @@ let product = (()=>{
 
     //Delete DOM
     let modalDelete = container.find('#modalDeleteProduct');
+    let btnCancelDelete = modalDelete.find('#btnCancelDeleteProduct');
+    let btnSaveDelete = modalDelete.find('#btnSaveDeleteProduct');
+    let idDelete = modalDelete.find('#idDeleteProduct');
+    
+    //Delete Event
+    btnCancelDelete.click(()=>{
+        modalDelete.toggleClass('d-none');
+    })
+    btnSaveDelete.on('click',saveDelete);
+
+    function saveDelete(event){
+        let id = idDelete.text();
+        console.log(id);
+
+        fetch(uri+id,{
+            method:'DELETE'
+        })
+        .then((res)=>res.json())
+        .then((result) =>{
+            if(result.status == 200){
+                modalDelete.toggleClass('d-none');
+                container.append(`<div class="show-success-delete w-100 h-100 position-fixed" style="top:0; left:0; background-color:rgba(0, 0, 0, 0.43);">
+                                    <div class="alert alert-success mx-5" role="alert" style="position: relative; top:50%; transform: translateY(-50%);">
+                                        <h4 class="alert-heading">Delete Complete!</h4>
+                                        <p>Delete Content in List of Products</p>
+                                        <hr>   
+                                        <p>${JSON.stringify(result.message)}</p>
+                                    </div>
+                                </div>`);
+                    setTimeout(()=>{
+                    container.find('.show-success-delete').remove();
+                    },2000);   
+                    fetchList();
+            }else{
+                modalDelete.toggleClass('d-none');
+                container.append(`<div class="show-something-wrong w-100 h-100 position-fixed" style="top:0; left:0; background-color:rgba(0, 0, 0, 0.43);">
+                                <div class="alert alert-danger mx-5" role="alert" style="position: relative; top:50%; transform: translateY(-50%);">
+                                    <h4 class="alert-heading">Delete Invalid data!</h4>
+                                    <p>Something Wrong Repeat Process Again</p>
+                                    <hr>   
+                                </div>
+                            </div>`);
+                setTimeout(()=>{
+                container.find('.show-something-wrong').remove();
+                },2000);   
+            }
+            
+        });
+        
+    }
 
 
     function saveUpdate(){
@@ -1507,7 +1557,11 @@ let product = (()=>{
     function showModalDelete(event){
         let id = getIdProduct(event);
         console.log(id);
-        modalDelete.toggleClass('d-none');
+
+        if(id){
+            idDelete.text(id);
+            modalDelete.toggleClass('d-none');
+        }      
     }
     function showModalUpdate(event){ //show modal when click btn update product
         let id = getIdProduct(event);
