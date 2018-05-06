@@ -1171,6 +1171,15 @@ let product = (()=>{
     })
     btnSaveDelete.on('click',saveDelete);
 
+    //filer DOM
+    let filterContainer = container.find('#productFilterContainer');
+    let selectTypeFilter = filterContainer.find('#selectTypeFilter');
+    let inputMinPriceFilter = filterContainer.find('#inputMinPriceFilter');
+    let inputMaxPriceFilter = filterContainer.find('#inputMaxPriceFilter');
+    let checkBoxAllMaterialFilter = filterContainer.find('#checkboxAllMaterialFilter');
+    let listCheckboxMaterial = filterContainer.find('#listCheckboxMaterial');
+    
+    
     function saveDelete(event){
         let id = idDelete.text();
         console.log(id);
@@ -2124,8 +2133,10 @@ let product = (()=>{
                     option += `<option data-name-th="${value.nameTh}" data-name-en="${value.nameEn}" value="${value._id}">${value.nameTh}(${value.nameEn})</option>`;
                 });
                 selectorTypeProduct.html(option);
+                selectTypeFilter.html(option);
             }else{
                 selectorTypeProduct.html('<option selected>No Option selector!</option>');
+                selectTypeFilter.html('<option selected>No Option selector!</option>');
             }
             
         });

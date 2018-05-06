@@ -534,10 +534,169 @@
                     <button type="button" id="btnSaveUploadProduct" class="btn btn-primary btn-block mb-4">Save Upload Product</button>
                 </div>
 
+                 <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+                <!-- Product filter -->
+                <div class="col-10 mb-2" id="productFilterContainer">
+                    <div class="row mx-auto border">
+                        
+                        <div class="col-3 p-1">
+                              <!-- filter ประเภทสินค้า -->
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend w-100">
+                                    <label class="w-100 rounded-top bg-secondary text-white px-3 py-2 mb-0">
+                                        Type
+                                    </label>
+                                </div>
+                                <select class="custom-select rounded-0" id="selectTypeFilter">
+                                    <option value ="" selected>ทั้งหมด...</option>
+                                    <option value="1">โคมไฟ</option>
+                                    <option value="2">แก้วน้ำ</option>
+                                    
+                                </select>
+                            </div>
+
+                            <!-- filter ราคา -->
+                            <div class="input-group mb-1">
+                                    <div class="input-group-prepend w-100">
+                                        <label class="w-100 rounded-top bg-secondary text-white px-3 py-2 mb-0">
+                                            Price length
+                                        </label>
+                                    </div>
+                                    <input type="number" class="form-control text-center mr-1" placeholder="Min" id="inputMinPriceFilter">
+                                      <span> _ </span>
+                                    <input type="number" class="form-control text-center ml-1 rounded-0" placeholder="Max" id="inputMaxPriceFilter">
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-3 p-1">
+                            <!-- filter Material -->
+                            <ul class="list-group">
+                                <li class="list-group-item px-3 py-2 bg-secondary text-white">Material</li>
+                                <li class="list-group-item"> 
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkboxAllMaterialFilter" checked>
+                                        <label class="form-check-label text-truncate w-100" for="defaultCheck1">
+                                            ทั้งหมด
+                                        </label>
+                                    </div>
+                                </li>
+                                <li class="list-group-item px-3 py-2" id="listCheckboxMaterial">
+                                    <div class="form-check" data-name-th="" data-name-en="">
+                                        <input class="form-check-input" type="checkbox" value="">
+                                        <label class="form-check-label text-truncate w-100">
+                                            โลหะ(Iron)
+                                        </label>
+                                    </div>
+                                                                   
+                                </li>
+                               
+                            </ul>
+                        </div>
+
+                        <div class="col-3 p-1">
+                             <div class="input-group mb-3">
+                                <div class="input-group-prepend w-100">
+                                    <label class="w-100 rounded-top bg-secondary text-white px-3 py-2 mb-0">
+                                        Payment
+                                    </label>
+                                </div>
+                                <select class="custom-select rounded-0" id="inputGroupSelect01">
+                                    <option selected>ทั้งหมด...</option>
+                                    <option value="1">ชำระเงินก่อน</option>
+                                    <option value="2">ชำระเงินปลายทาง</option>
+                                    
+                                </select>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                    <div class="input-group-prepend w-100">
+                                        <label class="w-100 rounded-top bg-secondary text-white px-3 py-2 mb-0">
+                                            Transpot
+                                        </label>
+                                    </div>
+                                    <select class="custom-select rounded-0" id="inputGroupSelect01">
+                                        <option selected>ทั้งหมด...</option>
+                                        <option value="1">ส่งแบบปกติ</option>
+                                        <option value="2">ส่งแบบลงทะเบียน</option>
+                                        <option value="2">ส่งแบบ EMS</option>
+                                        
+                                    </select>
+                            </div>
+
+                        </div>
+  
+                        <div class="col-3 p-1">
+                            <div class="input-group mb-3">
+                                        <div class="input-group-prepend w-100">
+                                            <label class="w-100 rounded-top bg-secondary text-white px-3 py-2 mb-0">
+                                                Status
+                                            </label>
+                                        </div>
+                                        <select class="custom-select rounded-0" id="inputGroupSelect01">
+                                            <option selected>ทั้งหมด...</option>
+                                            <option value="normal">ปกติ (Normal)</option>
+                                            <option value="sell">ลดราคา (Sell)</option>
+                                            <option value="promotion">โปรโมชั่น (Promotion)</option>
+                                            <option value="popular">ขายดี (Popular)</option>
+                                        </select>
+                            </div>
+                        <div class="input-group mb-3">
+                                    <div class="input-group-prepend w-100">
+                                        <label class="w-100 rounded-top bg-secondary text-white px-3 py-2 mb-0">
+                                            Search Name
+                                        </label>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="ProductName...">
+                                   
+                        </div>
+
+                        </div>
+                        <div class="col-12 d-flex justify-content-end p-0">
+                            <span class="btn btn-secondary m-1 px-3">Reset</span>
+                            <span class="btn btn-primary m-1 px-5">Filter</span>             
+                        </div>
+                    </div>
+                </div>
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
                 <!-- Product-List -->
-                <div class="col-10 row mb-5" id ="listProduct">
+                <div class="col-10 row mb-1" id ="listProduct">
                 
                 </div>
+
+                <div class="col-10 row mb-5"  id="paginationContainer">
+                    <ul class="pagination mx-auto">
+
+                        <li class="page-item disabled">
+                          <span class="page-link">Previous</span>
+                        </li>
+
+                        <li class="page-item active">
+                            <span class="page-link">
+                                1
+                            </span>
+                        </li>
+                        <li class="page-item">
+                                <span class="page-link">
+                                    2
+                                </span>
+                        </li>
+                       
+                      </ul>
+                </div>
+
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+
                 <!-- Product detail -->
                 <div class="product-detail w-100 h-100 position-fixed fixed-top d-none" style="background-color: rgba(0, 0, 0, 0.43);">
                     <button class="close p-2" type="button" aria-label="Close" style="position: absolute; right:0; top:0; ">
@@ -653,7 +812,7 @@
                 <!-- Modal Update Product -->
 
                 <div class="w-100 h-100 position-fixed d-none" style="z-index:1050; top:0; background-color: rgba(0, 0, 0, 0.63);" id="updateProductContainer">
-                    <div class="card shadow-material mb-4 col-11 mx-auto p-0" id="" style="height:95%; top: 50%;transform: translateY(-50%); overflow-y: auto">
+                    <div class="card shadow-material mb-4 col-9 mx-auto p-0" id="" style="height:95%; top: 50%;transform: translateY(-50%); overflow-y: auto">
                         <h5 class="card-header">Update Product
                             <button type="button" class="close close-modal-update btn-close-modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
