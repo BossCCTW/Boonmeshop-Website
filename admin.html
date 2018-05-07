@@ -541,6 +541,27 @@
                 <!-- Product filter -->
                 <div class="col-10 mb-2" id="productFilterContainer">
                     <div class="row mx-auto border">
+
+                            <div class="col-3 p-1">
+                                    <!-- filter Material -->
+                                    <ul class="list-group">
+                                        <li class="list-group-item px-3 py-2 bg-secondary text-white">Material</li>
+                                        <li class="list-group-item"> 
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="checkboxAllMaterialFilter" checked>
+                                                <label class="form-check-label text-truncate w-100" for="defaultCheck1">
+                                                    ทั้งหมด
+                                                </label>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item px-3 py-2" id="listCheckboxMaterial">
+                                          
+                                                                           
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+
                         
                         <div class="col-3 p-1">
                               <!-- filter ประเภทสินค้า -->
@@ -551,7 +572,7 @@
                                     </label>
                                 </div>
                                 <select class="custom-select rounded-0" id="selectTypeFilter">
-                                    <option value ="" selected>ทั้งหมด...</option>
+                                    <option value ="0" selected>ทั้งหมด...</option>
                                     <option value="1">โคมไฟ</option>
                                     <option value="2">แก้วน้ำ</option>
                                     
@@ -574,39 +595,14 @@
 
 
                         <div class="col-3 p-1">
-                            <!-- filter Material -->
-                            <ul class="list-group">
-                                <li class="list-group-item px-3 py-2 bg-secondary text-white">Material</li>
-                                <li class="list-group-item"> 
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="checkboxAllMaterialFilter" checked>
-                                        <label class="form-check-label text-truncate w-100" for="defaultCheck1">
-                                            ทั้งหมด
-                                        </label>
-                                    </div>
-                                </li>
-                                <li class="list-group-item px-3 py-2" id="listCheckboxMaterial">
-                                    <div class="form-check" data-name-th="" data-name-en="">
-                                        <input class="form-check-input" type="checkbox" value="">
-                                        <label class="form-check-label text-truncate w-100">
-                                            โลหะ(Iron)
-                                        </label>
-                                    </div>
-                                                                   
-                                </li>
-                               
-                            </ul>
-                        </div>
-
-                        <div class="col-3 p-1">
                              <div class="input-group mb-3">
                                 <div class="input-group-prepend w-100">
                                     <label class="w-100 rounded-top bg-secondary text-white px-3 py-2 mb-0">
                                         Payment
                                     </label>
                                 </div>
-                                <select class="custom-select rounded-0" id="inputGroupSelect01">
-                                    <option selected>ทั้งหมด...</option>
+                                <select class="custom-select rounded-0" id="selectPaymentFilter">
+                                    <option value="0" selected>ทั้งหมด...</option>
                                     <option value="1">ชำระเงินก่อน</option>
                                     <option value="2">ชำระเงินปลายทาง</option>
                                     
@@ -619,11 +615,11 @@
                                             Transpot
                                         </label>
                                     </div>
-                                    <select class="custom-select rounded-0" id="inputGroupSelect01">
-                                        <option selected>ทั้งหมด...</option>
+                                    <select class="custom-select rounded-0" id="selectTranspotFilter">
+                                        <option value="0" selected>ทั้งหมด...</option>
                                         <option value="1">ส่งแบบปกติ</option>
                                         <option value="2">ส่งแบบลงทะเบียน</option>
-                                        <option value="2">ส่งแบบ EMS</option>
+                                        <option value="3">ส่งแบบ EMS</option>
                                         
                                     </select>
                             </div>
@@ -637,8 +633,8 @@
                                                 Status
                                             </label>
                                         </div>
-                                        <select class="custom-select rounded-0" id="inputGroupSelect01">
-                                            <option selected>ทั้งหมด...</option>
+                                        <select class="custom-select rounded-0" id="selectStatusFilter">
+                                            <option value="0" selected>ทั้งหมด...</option>
                                             <option value="normal">ปกติ (Normal)</option>
                                             <option value="sell">ลดราคา (Sell)</option>
                                             <option value="promotion">โปรโมชั่น (Promotion)</option>
@@ -651,14 +647,14 @@
                                             Search Name
                                         </label>
                                     </div>
-                                    <input type="text" class="form-control" placeholder="ProductName...">
+                                    <input type="text" class="form-control" placeholder="ProductName..." id="inputSearchNameFilter">
                                    
                         </div>
 
                         </div>
                         <div class="col-12 d-flex justify-content-end p-0">
-                            <span class="btn btn-secondary m-1 px-3">Reset</span>
-                            <span class="btn btn-primary m-1 px-5">Filter</span>             
+                            <span class="btn btn-secondary m-1 px-3" id="btnResetFilter">Reset</span>
+                            <span class="btn btn-primary m-1 px-5" id="btnSaveFilter">Filter</span>             
                         </div>
                     </div>
                 </div>
@@ -674,7 +670,7 @@
                 <div class="col-10 row mb-5"  id="paginationContainer">
                     <ul class="pagination mx-auto">
 
-                        <li class="page-item disabled">
+                        <li class="page-item disabled page-previos">
                           <span class="page-link">Previous</span>
                         </li>
 
@@ -684,9 +680,12 @@
                             </span>
                         </li>
                         <li class="page-item">
-                                <span class="page-link">
+                            <span class="page-link">
                                     2
-                                </span>
+                            </span>
+                        </li>
+                        <li class="page-item page-next">
+                                <span class="page-link">Next</span>
                         </li>
                        
                       </ul>
@@ -702,7 +701,7 @@
                     <button class="close p-2" type="button" aria-label="Close" style="position: absolute; right:0; top:0; ">
                         <span aria-hidden="false">&times;</span>
                     </button>
-                    <div class="product-detail_content col-11 col-md-10 bg-white mx-auto m-1 p-1 mb-3 row rounded" style="height:90%;top:50%; transform: translateY(-50%); overflow-y: auto;">
+                    <div class="product-detail_content col-11 col-md-11 bg-white mx-auto m-1 p-1 mb-3 row rounded" style="height:95%;top:50%; transform: translateY(-50%); overflow-y: auto;">
 
                         <div class="product-detail_image col-12 col-md-6 p-0 h-100 rounded-0" style="height: 100%; overflow: hidden;">
                             <ul class="list-group rounded-0">
@@ -720,7 +719,7 @@
                         <div class="col-12 col-md-6 p-0 pl-1" style="height: 100%; overflow: hidden;">
                             <ul class="list-group h-100">
                                 <li class="list-group-item">
-                                    <div class="px-1">
+                                    <div class="px-1 mb-1">
                                         <span class="badge badge-primary" id="stautusDetail">Status</span>
                                     </div>
 
@@ -740,14 +739,15 @@
                                         <small class="text-muted">90-150</small>
                                     </div>
 
-                                    <div class="price ">
-                                        <h4 class="alert-warning d-inline px-2" id="priceDetail">
+                                    <div class="price px-1">
+                                        PRICE : 
+                                        <h4 class="alert-success px-2" id="priceDetail">
                                             899-
                                         </h4>
                                     </div>
 
                                 </li>
-                                <li class="list-group-item" style="height: 100%;">
+                                <li class="list-group-item" style="height: 100%; overflow: auto;">
                                     <div class="type">
                                         Type :
                                         <div class="form-control" id="typeDetail">

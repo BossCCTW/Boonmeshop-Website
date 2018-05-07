@@ -46,32 +46,107 @@ const multiUpload = upload.fields([{name:'imageAvatar',maxCount:1},{name:'imageG
 
 //@GET BY FILTER
 router.get('/filter',(req,res)=>{
-    let name = 'cut';
-    Product_Model.find({
+    let name = 'dk';
 
-        // name: new RegExp(name, 'i') // ค้นหาจากชื่อที่มีคำ นั้นอยู่
-        // price:{$gt:1000,$lt:1500} $gt มากกว่า และ $lt น้อยกว่า
-        // 'delivery.regular':false     ค้นหา delivery ที่ค่า regular = false
-        // material:{nameTh:'ไม้',nameEn:'Wood'} ค้นหาแบบ เปะๆ nameTh และ nameEn ต้องตรงตามนี้
-        // material:{$elemMatch:{nameEn:'Wood'}} ค้นหา วัสดุที่ มีชื่อ En ตรงกับ Wood ทั้งหมด
-        // material:{$elemMatch:{nameEn:{$in:['Plastic','Carbon']}}} ค้นหา วัสดุที่มี nameEn = Plastic หรือ Carbon ก็ได้
+    let filterRequest = JSON.parse(req.query.filter);
+    let filter = new Object();
+
+    console.log(filterRequest);
+    
+    if(filterRequest.searchName){
+        filter.name = new RegExp(filterRequest.searchName,'i');
+    }
+    if(filterRequest.priceMin || filterRequest.priceMax){
+        if(filterRequest.priceMax < filterRequest.priceMin){
+            filter.price = {$gt:filterRequest.priceMin-1};
+        }else{
+            if(filterRequest.priceMin == 0){
+                filterRequest.priceMin = 1;
+            }
+            filter.price ={$gt:filterRequest.priceMin-1,$lt:filterRequest.priceMax+1};
+        }
+    }
+    if(filterRequest.type){
+        filter['type.idType'] = filterRequest.type;
+    }
+
+    if(filterRequest.payment){
+        let payment  = filterRequest.payment;
+        if(payment.before){
+            filter['payment.payOnBefore'] = true;
+        }
+        if(payment.after){
+            filter['payment.payOnDelivery'] = true;
+        }
+    }
+    if(filterRequest.delivery){
+        let delivery = filterRequest.delivery;
+        if(delivery.regular){
+            filter['delivery.regular'] = true;
+        }else if(delivery.register){
+            filter['delivery.register'] = true;
+        }else if(delivery.ems){
+            filter['delivery.ems'] = true;
+        }
+    }
+
+    if(filterRequest.status){
         // 'status.name':{$in:['Normal']}
-        // 'type.nameEn': 'Lamp'
-        
-    })
+        let statusName = filterRequest.status
+        filter['status.name']=statusName;
+    }
+
+    if(filterRequest.material){
+        // material:{$elemMatch:{nameEn:{$in:['Plastic','Carbon']}}} 
+        let arrMaterial = [];
+        filterRequest.material.forEach(value=>{
+            console.log(value.nameTh);
+            arrMaterial.push(value.nameTh);
+        });
+        filter.material = {$elemMatch:{nameTh:{$in:arrMaterial}}};
+    }
+    // console.log(filter);
+    
+    Product_Model.find(filter)
     // .limit(5) กำหนดจำนวน doc ที่ค้นหาเจอ เอาแค่ 5 อัน
     .select({
         _id:1,
         name:1,
         price:1,
-        type:1
+        type:1,
+        imageAvatar:1
     })
     .exec()
     .then(doc=>{
-        res.status(200).json({
-            result:doc
-        });
+        if(doc.length > 0){
+            res.status(200).json({
+                status:200,
+                    data:doc
+            });
+        }else{
+            res.status(400).json({
+                status:400,
+                data:'No Product item on filter.'
+            });
+        }
+        
+       
     });
+
+
+    // {
+
+    //     // name: new RegExp(name, 'i'), // ค้นหาจากชื่อที่มีคำ นั้นอยู่
+    //     //  price:{$gt:190 ,$lt:1000} //$gt มากกว่า และ $lt น้อยกว่า
+    //     // 'payment.payOnBefore': false
+    //     // 'delivery.regular':false     ค้นหา delivery ที่ค่า regular = false
+    //     // material:{nameTh:'ไม้',nameEn:'Wood'} ค้นหาแบบ เปะๆ nameTh และ nameEn ต้องตรงตามนี้
+    //     // material:{$elemMatch:{nameEn:'Wood'}} ค้นหา วัสดุที่ มีชื่อ En ตรงกับ Wood ทั้งหมด
+    //     // material:{$elemMatch:{nameEn:{$in:['Plastic','Carbon']}}} ค้นหา วัสดุที่มี nameEn = Plastic หรือ Carbon ก็ได้
+    //     // 'status.name':{$in:['Normal']}
+    //     // 'type.nameEn': 'Lamp'
+        
+    // }
 
 });
 

@@ -1177,7 +1177,149 @@ let product = (()=>{
     let inputMinPriceFilter = filterContainer.find('#inputMinPriceFilter');
     let inputMaxPriceFilter = filterContainer.find('#inputMaxPriceFilter');
     let checkBoxAllMaterialFilter = filterContainer.find('#checkboxAllMaterialFilter');
-    let listCheckboxMaterial = filterContainer.find('#listCheckboxMaterial');
+    let listCheckboxMaterialFilter = filterContainer.find('#listCheckboxMaterial');
+    let selectPaymentFilter = filterContainer.find('#selectPaymentFilter');
+    let selectTranspotFilter = filterContainer.find('#selectTranspotFilter');
+    let selectStatusFilter = filterContainer.find('#selectStatusFilter');
+    let inputSearchNameFilter = filterContainer.find('#inputSearchNameFilter');
+    let btnResetFilter = filterContainer.find('#btnResetFilter');
+    let btnSaveFilter = filterContainer.find('#btnSaveFilter');
+    //filter Event
+    listCheckboxMaterialFilter.on('click','div>input',toggleCheckboxMaterialFilter);
+    checkBoxAllMaterialFilter.click(checkListMaterialNull);
+    btnResetFilter.click(resetFilter);
+    btnSaveFilter.click(saveFilter);
+
+    
+
+    function saveFilter(){
+        let filter = {};
+        if(selectTypeFilter.val()!= '0'){           
+            filter.type = selectTypeFilter.val();
+        }
+
+        if(checkBoxAllMaterialFilter.prop('checked') != true){
+            let arrMaterial = [];   
+            let childs = listCheckboxMaterialFilter.children();
+            childs.each((index,value)=>{
+                if($(value).find('input').prop('checked') == true){
+                   let obj ={};
+                   obj.id = $(value).attr('data-id');
+                   obj.nameTh = $(value).attr('data-name-th');
+                   obj.nameEn = $(value).attr('data-name-en');
+                   arrMaterial.push(obj);
+                }
+            });
+            if(arrMaterial.length > 0){
+                filter.material = arrMaterial;
+            }
+        }
+
+        if(inputMinPriceFilter.val() || inputMaxPriceFilter.val()){
+                   
+            let min = (inputMinPriceFilter.val() ? ((inputMinPriceFilter.val() < 0) ? 0 : Number(inputMinPriceFilter.val())) : 0);
+            let max = (inputMaxPriceFilter.val() ? ((inputMaxPriceFilter.val() < 0) ? 0 : Number(inputMaxPriceFilter.val())) : 0);
+            console.log(min,max);
+            if(min > max){
+                max = 0;
+                inputMaxPriceFilter.val(0);
+            }
+            
+            if(min !== 0 || max !== 0){
+                filter.priceMin = min;
+                filter.priceMax = max;
+            }
+        }
+
+        if(selectPaymentFilter.val() != 0){
+           let payment = selectPaymentFilter.val();
+           if(payment == 1){
+                filter.payment = {before:true};
+               
+           }else{
+                filter.payment = {after:true};
+           }
+        }
+
+        if(selectTranspotFilter.val() != 0){
+            let delivery = selectTranspotFilter.val();
+            if(delivery == 1){
+                filter.delivery = {regular:true};
+            }else if(delivery == 2){
+                filter.delivery = {register:true};
+            }else if(delivery == 3){
+                filter.delivery = {ems:true};
+            }
+        }
+        if(selectStatusFilter.val()!= 0){
+            filter.status = selectStatusFilter.val();
+        }
+
+        if(inputSearchNameFilter.val()){
+            filter.searchName = inputSearchNameFilter.val();
+        }
+
+        console.log(filter);
+       
+        fetchList(filter);
+ 
+        // get length obj key filter
+        // Object.keys(filter).length
+    }
+
+    function resetFilter(){
+        selectTypeFilter.val('0');
+        inputMinPriceFilter.val('');
+        inputMaxPriceFilter.val('');
+        checkBoxAllMaterialFilter.prop('checked',true);
+        let childsofListMaterialChecbox = listCheckboxMaterialFilter.children();
+        childsofListMaterialChecbox.each((index,value)=>{
+           $(value).find('input').prop('checked',false) ;
+       });
+       selectPaymentFilter.val('0');
+       selectTranspotFilter.val('0');
+       selectStatusFilter.val('0');
+       inputSearchNameFilter.val('');
+    }
+
+    function checkListMaterialNull(){
+        if(checkBoxAllMaterialFilter.prop('checked') == true){
+            let childsofListMaterialChecbox = listCheckboxMaterialFilter.children();
+            childsofListMaterialChecbox.each((index,value)=>{
+           $(value).find('input').prop('checked',false) ;
+        });
+        }else{
+            let check = true;
+            let childsofListMaterialChecbox = listCheckboxMaterialFilter.children();
+            childsofListMaterialChecbox.each((index,value)=>{
+                if($(value).find('input').prop('checked') == true){
+                    check = false;
+                }
+               
+            });
+            if(check){
+                checkBoxAllMaterialFilter.prop('checked',true);
+            }
+        }
+    }
+
+    function toggleCheckboxMaterialFilter(event){
+        let check = false;
+        let childs = listCheckboxMaterialFilter.children();
+
+       childs.each((index,value)=>{
+           if($(value).find('input').prop('checked') == true){
+               check = true;      
+           }
+       });
+
+       if(check){
+            checkBoxAllMaterialFilter.prop('checked',false);
+       }else{
+            checkBoxAllMaterialFilter.prop('checked',true);
+       }
+        
+    }
     
     
     function saveDelete(event){
@@ -1675,15 +1817,22 @@ let product = (()=>{
        
         imgAvatarDetail.attr('src',data.imageAvatar);
 
-        let htmlGallery = ''
+        let htmlGallery = `<img class="h-100 mr-1" src="${data.imageAvatar}" style="cursor:pointer;"
+        alt="">`;
         data.imageGallery.forEach(value=>{
             htmlGallery += `<img class="h-100 mr-1" src="${value}" style="cursor:pointer;"
             alt="">`;
         });
         listImgGalleyDetail.html(htmlGallery);
 
-        statusDetail.html(data.status.name.toUpperCase()+data.status.detail);
+        if(data.status.detail == 0){
+            statusDetail.html(data.status.name.toUpperCase());
 
+        }else{
+            statusDetail.html(data.status.name.toUpperCase()+"__"+data.status.detail);
+
+        }
+       
         nameDetail.text(data.name);
 
         idDetail.text(data._id);
@@ -1692,7 +1841,7 @@ let product = (()=>{
 
         let htmlMaterial = '';
         data.material.forEach(value=>{
-            htmlMaterial += `<span class="btn btn-secondary mr-1" style="cursor: auto; border-radius: 1.5em;">${value.nameTh}(${value.nameEn})</span>`;
+            htmlMaterial += `<span class="btn btn-secondary mr-1 mb-1 p-1 px-3" style="cursor: auto; border-radius: 1.5em;">${value.nameTh}(${value.nameEn})</span>`;
         });
         materailDetail.html(htmlMaterial);
 
@@ -2099,15 +2248,25 @@ let product = (()=>{
         .then(data =>{
             if(data.status == 200){
                 let output = '';
+                let ouputFilter = '';
+
                 data.data.forEach((value)=>{
                     output += `<button data-id ="${value._id}" data-material-name-en= "${value.nameEn}"
                                  data-material-name-th= "${value.nameTh}" 
                                  type="button" 
                                  class="btn btn-light mb col rounded-0 border">${value.nameTh}(${value.nameEn})</button>`;
+                    ouputFilter += ` <div class="form-check" data-name-th="${value.nameTh}" data-name-en="${value.nameEn}" data-id="${value._id}">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label text-truncate w-100">
+                                            ${value.nameTh}(${value.nameEn})
+                                        </label>
+                                    </div>`;
                 });
                 selectorMaterialProduct.html(output);
+                listCheckboxMaterialFilter.html(ouputFilter);
             }else{
                 selectorMaterialProduct.html(data.data);
+                listCheckboxMaterialFilter.html(data.data);
             }
         });
     }
@@ -2126,14 +2285,17 @@ let product = (()=>{
         .then((data)=>{
             if(data.length > 0){
                 let option = '<option selected value="0">Choose..</option>';
+                let optionFilter = '<option selected value="0">ทั้งหมด</option>';
+  
                 data.forEach((value)=>{
                     value._id
                     value.nameTh
                     value.nameEn
                     option += `<option data-name-th="${value.nameTh}" data-name-en="${value.nameEn}" value="${value._id}">${value.nameTh}(${value.nameEn})</option>`;
+                    optionFilter += `<option data-name-th="${value.nameTh}" data-name-en="${value.nameEn}" value="${value._id}">${value.nameTh}(${value.nameEn})</option>`;
                 });
                 selectorTypeProduct.html(option);
-                selectTypeFilter.html(option);
+                selectTypeFilter.html(optionFilter);
             }else{
                 selectorTypeProduct.html('<option selected>No Option selector!</option>');
                 selectTypeFilter.html('<option selected>No Option selector!</option>');
@@ -2142,8 +2304,12 @@ let product = (()=>{
         });
     }
 
-    function fetchList(){
-        fetch(uri+'list')
+    function fetchList(filter = ''){
+        let dest = 'list';
+        if(filter){
+            dest = 'filter?filter='+encodeURIComponent(JSON.stringify(filter));
+        }
+        fetch(uri+dest)
         .then((res)=> res.json())
         .then((data)=>{
             if(data.status == 200){
@@ -2153,19 +2319,19 @@ let product = (()=>{
                                     <ul class="list-group rounded-0">
                                         <li class="list-group-item p-0 link-detail" style="cursor: pointer;">
                                             <img class="w-100" src="${value.imageAvatar}"
-                                                alt="" style="width:100%; height:200px; overflow-y:hidden;">
+                                                alt="" style="width:100%; height:250px; overflow-y:hidden;">
                                         </li>
                                         <li class="list-group-item text-truncate p-1 link-id-product" data-id="${value._id}">
-                                            ${value._id}
+                                           ID :  ${value._id}
                                         </li>
                                         <li class="list-group-item p-1 text-truncate">
-                                            ${value.name}
+                                            NAME : ${value.name}
                                         </li>
                                         <li class="list-group-item p-1">
-                                         ${value.price}
+                                         PRICE : ${value.price}
                                         </li>
                                         <li class="list-group-item p-1">
-                                            ${value.type.nameTh}+' - '+${value.type.nameEn}
+                                            ${value.type.nameTh}${value.type.nameEn}
                                         </li>
                                         <li class="list-group-item d-flex p-0">
                                             <button class="btn btn-secondary rounded-0 col delete" type="submit">Delete</button>
