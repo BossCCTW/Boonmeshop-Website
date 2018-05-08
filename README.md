@@ -8,8 +8,11 @@
      <p align="center"> 
    <img src="header01.jpg" align="center" width="80%" height="auto"/>
       </p>
-      ![](header01.jpg)
-      ![](header02.png)
+      
+          <p align="center"> 
+   <img src="header02.png" align="center" width="80%" height="auto"/>
+      </p>
+ 
      
 ## FrontEnd(Programming)
 ได้เลือกใช้เครื่องมือดังนี้ :
