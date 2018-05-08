@@ -37,7 +37,7 @@
   * Flexbox
 * Step Respon
   * Desktop
-<p align="center"> <img src="deskwork.gif" align="center" width="80%" height="auto"/></p>
+<p align="center"> <img src="" align="center" width="80%" height="auto"/></p>
   * tablet
   * Big Mobile
   * Small Mobile
