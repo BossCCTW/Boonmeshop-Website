@@ -37,7 +37,7 @@
   * Flexbox
 * Step Respon
   * Desktop
-[![asciicast](https://asciinema.org/a/42383.png)](https://www.useloom.com/embed/0d2a59fac6a945e48440c88c38df6f8a)
+[![Working on Desktop](https://www.useloom.com/embed/0d2a59fac6a945e48440c88c38df6f8a)](https://www.useloom.com/embed/0d2a59fac6a945e48440c88c38df6f8a)
   * tablet
   * Big Mobile
   * Small Mobile
