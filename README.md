@@ -37,7 +37,8 @@
   * Flexbox
 * Step Respon
   * Desktop
-            [![Working on Desktop](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
+  
+           <p align="center"> <img src="deskwork.gif" align="center" width="80%" height="auto"/></p>
   * tablet
   * Big Mobile
   * Small Mobile
