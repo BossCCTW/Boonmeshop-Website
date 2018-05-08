@@ -16,9 +16,20 @@
 ### language
 * HTML5
 * CSS3 
+  * Layout (Grid ,Flexbox)
   * SCSS 
       * Tool [prepos](https://prepros.io/).
 * JAVASCRIPT (Vanilla javascript).
 ### Framework
 * [Bootstrap](https://getbootstrap.com/).
 * [Jquery](https://jquery.com/).
+
+## BackEnd
+* NodeJS
+      * Express
+      * Mongoose
+      * body-parser
+      * Multer
+* MongoDB
+
+##License
