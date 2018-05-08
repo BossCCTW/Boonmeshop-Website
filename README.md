@@ -37,19 +37,14 @@
   * Flexbox
 * Step Respon
   * Desktop
-
-<video src="https://www.useloom.com/embed/0d2a59fac6a945e48440c88c38df6f8a" width="320" height="200" controls preload></video>
-
+[![asciicast](https://asciinema.org/a/42383.png)](https://www.useloom.com/embed/0d2a59fac6a945e48440c88c38df6f8a)
   * tablet
   * Big Mobile
   * Small Mobile
   
 ## Video
 
-<video width="400" controls>
-  <source src="https://www.useloom.com/share/0d2a59fac6a945e48440c88c38df6f8a" type="video/mp4">
-  Your browser does not support HTML5 video.
-</video>
+
 
 ## License
  Public
