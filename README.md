@@ -36,8 +36,9 @@
   * Grid System
   * Flexbox
 * Step Respon
-  * Desktop
-<p align="center"> <img src="" align="center" width="80%" height="auto"/></p>
+  * Desktop 
+    * working on desktop
+      <p align="center"> <img src="workingondesktop.gif" align="center" width="80%" height="auto"/></p>
   * tablet
   * Big Mobile
   * Small Mobile
