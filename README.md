@@ -42,11 +42,13 @@
   * Small Mobile
   
 ## Video
-<video width="320" height="200" controls preload> 
-    <source src="desk-working.mp4"></source>   
+
+<video width="400" controls>
+  <source src="desk-working.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
 </video>
+
 ## License
  Public
- 
-<
+
 
