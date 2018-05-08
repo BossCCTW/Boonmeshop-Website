@@ -6,5 +6,6 @@
    ### language
 * HTML5
 * CSS3 
-  * SCSS
-* JAVASCRIPT
+  * SCSS [Prepos](https://prepros.io/)
+* JAVASCRIPT (Vanilla javascript)
+   ### Framework
