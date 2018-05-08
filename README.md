@@ -37,7 +37,7 @@
   * Flexbox
 * Step Respon
   * Desktop
-[![Working on Desktop](https://www.useloom.com/embed/0d2a59fac6a945e48440c88c38df6f8a)]
+[![Working on Desktop](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
   * tablet
   * Big Mobile
   * Small Mobile
