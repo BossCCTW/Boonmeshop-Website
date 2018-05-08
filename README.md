@@ -42,7 +42,7 @@
   * Small Mobile
   
 ## Video
-<video src="desk-working.mp4" width="320" height="200" controls>
+<video src="desk-working.mp4" width="320px" height="200px" controls preload>
 </video>
 
 ## License
