@@ -22,3 +22,4 @@
 * JAVASCRIPT (Vanilla javascript).
 ### Framework
 * [Bootstrap](https://getbootstrap.com/).
+* [Jquery](https://jquery.com/).
