@@ -38,10 +38,10 @@
 * Step Respon
   * Desktop 
     * working on desktop-Mode
-     <p align="center"> <img src="workingondesktop.gif" align="center" width="80%" height="auto"/></p>
+     <p align="center"> <img src="workingondesktop.gif" align="center" width="90%" height="auto"/></p>
   * tablet
     * working on Tablet-Mode
-     <p align="center"> <img src="workingondesktop.gif" align="center" width="80%" height="auto"/></p>
+     <p align="center"> <img src="workingontablet.gif" align="center" width="90%" height="auto"/></p>
   * Mobile
   
   
