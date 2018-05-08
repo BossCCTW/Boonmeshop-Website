@@ -31,6 +31,15 @@
   * body-parser
   * Multer
 * MongoDB
+## Design/Responsive
+* Manage Layout 
+  * Grid System
+  * Flexbox
+* Step Respon
+  * Desktop
+  * tablet
+  * Big Mobile
+  * Small Mobile
 
 ## License
  Public
