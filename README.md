@@ -37,8 +37,8 @@
   * Flexbox
 * Step Respon
   * Desktop
-  
-<iframe width="630" height="394" src="https://www.useloom.com/embed/0d2a59fac6a945e48440c88c38df6f8a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<video src="https://www.useloom.com/embed/0d2a59fac6a945e48440c88c38df6f8a" width="320" height="200" controls preload></video>
 
   * tablet
   * Big Mobile
