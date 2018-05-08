@@ -9,7 +9,7 @@
       • <a href="/.github/ISSUE_TEMPLATE.md">ISSUE TEMPLATE</a> • 
       <a href="/.github/CONTRIBUTORS.md">CONTRIBUTORS</a>
 </p>
-<br>
+<br>.
 
       ![](header01.jpg)
       ![](header02.png)
