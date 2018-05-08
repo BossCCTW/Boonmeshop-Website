@@ -41,9 +41,10 @@
   * Big Mobile
   * Small Mobile
   
-<p align="center"> 
-<video src="desk-working.mp4" width="320" height="200" controls preload></video>
-</p>
+
 
 ## License
  Public
+ 
+<video src="desk-working.mp4" width="320" height="200" controls preload></video>
+
