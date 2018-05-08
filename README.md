@@ -30,6 +30,7 @@
   * Mongoose
   * body-parser
   * Multer
-  * MongoDB
+* MongoDB
 
-##License
+## License
+ Public
