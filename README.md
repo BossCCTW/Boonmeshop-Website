@@ -26,10 +26,10 @@
 
 ## BackEnd
 * NodeJS
-      * Express
-      * Mongoose
-      * body-parser
-      * Multer
-* MongoDB
+  * Express
+  * Mongoose
+  * body-parser
+  * Multer
+  * MongoDB
 
 ##License
