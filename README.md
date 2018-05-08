@@ -6,7 +6,7 @@
 <a href="https://jquery.com/">JQUERY</a> 
       • <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/New_in_JavaScript/ECMAScript_Next_support_in_Mozilla">ECMAScript (JAVASCRIPT) </a> • <a href="https://nodejs.org/en/">NodeJS</a> • <a href="https://www.mongodb.com/">MongoDB</a> </p>
       
-   <img src="header01.jpg" align="left" width="80%" height="230px"/>
+   <img src="header01.jpg" align="left" width="80%" height="auto" style=""/>
       ![](header01.jpg)
       ![](header02.png)
      
