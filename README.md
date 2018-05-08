@@ -37,9 +37,11 @@
   * Flexbox
 * Step Respon
   * Desktop 
-    * working on desktop
-      <p align="center"> <img src="workingondesktop.gif" align="center" width="80%" height="auto"/></p>
+    * working on desktop-Mode
+     <p align="center"> <img src="workingondesktop.gif" align="center" width="80%" height="auto"/></p>
   * tablet
+    * working on Tablet-Mode
+     <p align="center"> <img src="workingondesktop.gif" align="center" width="80%" height="auto"/></p>
   * Mobile
   
   
