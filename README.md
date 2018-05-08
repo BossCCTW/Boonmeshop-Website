@@ -42,11 +42,11 @@
   * Small Mobile
   
 ## Video
-<video src="desk-working.mp4" width="320px" height="200px" controls preload>
+<video width="320" height="200" controls preload> 
+    <source src="desk-working.mp4"></source>   
 </video>
-
 ## License
  Public
  
-<video src="desk-working.mp4" width="320" height="200" controls preload></video>
+<
 
