@@ -37,7 +37,9 @@
   * Flexbox
 * Step Respon
   * Desktop
-    <video src="desk-working.mp4" width="320" height="200" controls preload></video>
+<p align="center"> 
+<video src="desk-working.mp4" width="320" height="200" controls preload></video>
+</p>
   * tablet
   * Big Mobile
   * Small Mobile
