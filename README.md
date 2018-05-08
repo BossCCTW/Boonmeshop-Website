@@ -40,8 +40,8 @@
     * working on desktop
       <p align="center"> <img src="workingondesktop.gif" align="center" width="80%" height="auto"/></p>
   * tablet
-  * Big Mobile
-  * Small Mobile
+  * Mobile
+  
   
 ## Video
 
