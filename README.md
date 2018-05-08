@@ -37,8 +37,9 @@
   * Flexbox
 * Step Respon
   * Desktop
-      
-      <p align="center"> <img src="desk-working.gif" align="center" width="80%" height="auto"/></p>
+  
+<iframe width="630" height="394" src="https://www.useloom.com/embed/0d2a59fac6a945e48440c88c38df6f8a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
   * tablet
   * Big Mobile
   * Small Mobile
