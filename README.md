@@ -9,9 +9,7 @@
    <img src="header01.jpg" align="center" width="80%" height="auto"/>
       </p>
       
-          <p align="center"> 
-   <img src="header02.png" align="center" width="80%" height="auto"/>
-      </p>
+   <p align="center"> <img src="header02.png" align="center" width="80%" height="auto"/></p>
  
      
 ## FrontEnd(Programming)
