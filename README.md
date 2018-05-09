@@ -47,6 +47,12 @@
      <p align="center"> <img src="workingonmobile.gif" align="center" width="90%" height="auto"/></p>
      
 ## Shopping Cart System
+      ในส่วนของระบบตะก้าสินค้า หรือ ระบบเพิ่มข้อมูลของเว็บไซด์จะส่งและรับข้อมูลผ่าน restful API ที่เขียนด้วย Nodejs และใช้ express
+      จะมีสถานะต่างๆ คือ GET POST PATH และ DELETE สามารถดู Code ได้จาก
+```sh
+/api/routers
+/api/models
+```
   > `Handle-Data` (Add,View,Update,Delete)
  * MENU-TYPE PRODUCT
 ## Video
