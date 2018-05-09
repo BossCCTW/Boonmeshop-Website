@@ -58,7 +58,9 @@
       /api/routers/product.js => get('/filter')
       ```
   
-* MENU-TYPE PRODUCT
+* Full height Admin Page (Shopping Cart)
+
+
 
 ## FrontEnd
 ### language
