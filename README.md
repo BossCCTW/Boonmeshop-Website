@@ -40,6 +40,12 @@
 
 > `Preview-Image-Upload` (select images for upload[image_avatar,images_gallery])
   <p align="center"> <img src="product-upload.png" align="center" width="80%" height="auto"/></p>
+  
+> `Filter-Product` 
+* Select by 
+  * •Price(Max-Min) 
+  * •Type
+  * •Material
 * MENU-TYPE PRODUCT
 
 ## FrontEnd
