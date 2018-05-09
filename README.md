@@ -36,6 +36,7 @@
 <p align="center"> <img src="productfilter.png" align="center" width="80%" height="auto"/></p>
 
 > `Handle-Data` (Add,View,Update,Delete)
+  preview image when user select imag for upload
   <p align="center"> <img src="product-upload.png" align="center" width="80%" height="auto"/></p>
 * MENU-TYPE PRODUCT
 
