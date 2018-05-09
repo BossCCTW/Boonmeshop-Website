@@ -10,27 +10,7 @@
       </p>
       
    <p align="center"> <img src="header02.png" align="center" width="80%" height="auto"/></p>
- 
      
-## FrontEnd
-### language
-* HTML5
-* CSS3 
-  * Layout (Grid ,Flexbox)
-  * SCSS 
-      * Tool [prepos](https://prepros.io/).
-* JAVASCRIPT (Vanilla javascript).
-### Framework
-* [Bootstrap](https://getbootstrap.com/).
-* [Jquery](https://jquery.com/).
-
-## BackEnd
-* NodeJS
-  * Express
-  * Mongoose
-  * body-parser
-  * Multer
-* MongoDB
 ## Design/Responsive
 * Manage Layout 
   * Grid System
@@ -58,10 +38,26 @@
 > `Handle-Data` (Add,View,Update,Delete)
   <p align="center"> <img src="product-upload.png" align="center" width="80%" height="auto"/></p>
 * MENU-TYPE PRODUCT
- 
-## Video
 
+## FrontEnd
+### language
+* HTML5
+* CSS3 
+  * Layout (Grid ,Flexbox)
+  * SCSS 
+      * Tool [prepos](https://prepros.io/).
+* JAVASCRIPT (Vanilla javascript).
+### Framework
+* [Bootstrap](https://getbootstrap.com/).
+* [Jquery](https://jquery.com/).
 
+## BackEnd
+* NodeJS
+  * Express
+  * Mongoose
+  * body-parser
+  * Multer
+* MongoDB
 
 ## License
  Public
