@@ -658,6 +658,10 @@
                         </div>
                     </div>
                 </div>
+                <!-- product amount -->
+                <div class="col-10 mb-1 text-center text-muted" id="amountProduct">                       
+                                สินค้าจำนวน <span> </span> รายการ                   
+                </div>
                 <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
                 <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
                 <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
@@ -667,26 +671,13 @@
                 
                 </div>
 
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+                <!-- ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| -->
+
+                <!-- Product PAGEIMATION -->
                 <div class="col-10 row mb-5"  id="paginationContainer">
-                    <ul class="pagination mx-auto">
-
-                        <li class="page-item disabled page-previos">
-                          <span class="page-link">Previous</span>
-                        </li>
-
-                        <li class="page-item active">
-                            <span class="page-link">
-                                1
-                            </span>
-                        </li>
-                        <li class="page-item">
-                            <span class="page-link">
-                                    2
-                            </span>
-                        </li>
-                        <li class="page-item page-next">
-                                <span class="page-link">Next</span>
-                        </li>
+                    <ul class="pagination mx-auto" id="paginationTab">
                        
                       </ul>
                 </div>
@@ -697,15 +688,15 @@
 
 
                 <!-- Product detail -->
-                <div class="product-detail w-100 h-100 position-fixed fixed-top d-none" style="background-color: rgba(0, 0, 0, 0.43);">
+                <div class="product-detail w-100 h-100 position-fixed fixed-top d-none" style="background-color: rgba(0, 0, 0, 0.65);">
                     <button class="close p-2" type="button" aria-label="Close" style="position: absolute; right:0; top:0; ">
                         <span aria-hidden="false">&times;</span>
                     </button>
-                    <div class="product-detail_content col-11 col-md-11 bg-white mx-auto m-1 p-1 mb-3 row rounded" style="height:95%;top:50%; transform: translateY(-50%); overflow-y: auto;">
+                    <div class="product-detail_content col-11 col-md-11 bg-white mx-auto m-1 p-0 mb-3 row rounded shadow-material" style="height:95%;top:50%; transform: translateY(-50%); overflow-y: auto;">
 
                         <div class="product-detail_image col-12 col-md-6 p-0 h-100 rounded-0" style="height: 100%; overflow: hidden;">
                             <ul class="list-group rounded-0">
-                                <li class="list-group-item h-75 p-0 bg-dark rounded-0" id="imgAvatarDetail">
+                                <li class="list-group-item h-75 p-0 bg-dark rounded-0 border-0" id="imgAvatarDetail">
                                     <img class="h-100 mx-auto d-block" style="max-width:100%; object-fit: contain;" src=""
                                         alt="">
                                 </li>
@@ -716,7 +707,7 @@
                         </div>
 
 
-                        <div class="col-12 col-md-6 p-0 pl-1" style="height: 100%; overflow: hidden;">
+                        <div class="col-12 col-md-6 p-0" style="height: 100%; overflow: hidden;">
                             <ul class="list-group h-100">
                                 <li class="list-group-item">
                                     <div class="px-1 mb-1">
@@ -750,7 +741,7 @@
                                 <li class="list-group-item" style="height: 100%; overflow: auto;">
                                     <div class="type">
                                         Type :
-                                        <div class="form-control" id="typeDetail">
+                                        <div class="py-2" id="typeDetail">
                                             
                                         </div>
                                     </div>
@@ -810,7 +801,6 @@
                 </div>
 
                 <!-- Modal Update Product -->
-
                 <div class="w-100 h-100 position-fixed d-none" style="z-index:1050; top:0; background-color: rgba(0, 0, 0, 0.63);" id="updateProductContainer">
                     <div class="card shadow-material mb-4 col-9 mx-auto p-0" id="" style="height:95%; top: 50%;transform: translateY(-50%); overflow-y: auto">
                         <h5 class="card-header">Update Product

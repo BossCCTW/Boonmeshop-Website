@@ -1,3 +1,5 @@
+
+
 "use strict";
 let menu = (() => {
     const uri = '/menu/';
@@ -816,7 +818,7 @@ let promotion = (()=>{
 let material = (()=>{
     const uri = '/material/'
     let container = $('.material-container');
-
+    
     //DOM Upload
     let uploadContainer = container.find('.material-upload');
     let inputNameTh = uploadContainer.find('#inputNameThMaterial');
@@ -1036,6 +1038,7 @@ let material = (()=>{
 let product = (()=>{
     const uri = '/product/'
     const container = $('#productContainer');
+    
 
     //Upload DOM
     let uploadContainer = container.find('.product-upload');
@@ -1189,6 +1192,57 @@ let product = (()=>{
     checkBoxAllMaterialFilter.click(checkListMaterialNull);
     btnResetFilter.click(resetFilter);
     btnSaveFilter.click(saveFilter);
+
+    //Pagination DOM
+    let paginationContainer = $('#paginationContainer');
+    let tabPagination = paginationContainer.find('#paginationTab');
+    let checkFirstPagination = true;
+    let backUpFilter ='';
+    tabPagination.on('click','li',setLinkPage);
+
+    //Amount Product DOM
+    let amountProduct = container.find('#amountProduct>span');
+
+    function setLinkPage(event){
+        // $(event.target) == span
+        let target = $(event.target).parent(); // parent for go up to li
+        let link = target.attr('data-link');
+        let filterSecondary = undefined;
+        if(backUpFilter){
+            filterSecondary  = backUpFilter;
+        }
+        if(link){
+            if(link == 'pre' || link == 'next'){
+                let position = Number(tabPagination.find('li.active').attr('data-link'));
+                
+                console.log(position);
+                
+                if(link == 'pre'){
+                    console.log('previos <');
+                    fetchList(filterSecondary,position-1);  
+                   
+                }else{
+                    console.log('Next >');
+                    fetchList(filterSecondary,position+1);  
+                }
+            }else{
+                console.log('number-link');
+                console.log(link);       
+                if(!target.hasClass('active')){
+                   
+                    
+                    fetchList(filterSecondary,Number(link));   
+
+                    tabPagination.find('li').removeClass('active');
+                    target.addClass('active');
+                }                   
+                               
+            }
+        }
+
+
+        
+    }
 
     
 
@@ -1837,7 +1891,8 @@ let product = (()=>{
 
         idDetail.text(data._id);
         priceDetail.text(data.price);
-        typeDetail.text(data.type.nameTh+'('+data.type.nameEn+')');
+        // typeDetail.text(data.type.nameTh+'('+data.type.nameEn+')');
+        typeDetail.html(`<span class="alert alert-primary mr-1 mb-1 p-1 px-3" style="cursor: auto; border-radius: 1.5em;">${data.type.nameTh} (${data.type.nameEn})</span>`);
 
         let htmlMaterial = '';
         data.material.forEach(value=>{
@@ -1887,6 +1942,7 @@ let product = (()=>{
     }
 
     function saveUpload(){
+   
         let nameProduct = inputProductName.val();
         let priceProduct = inputPriceProduct.val();
         let imageAvatar = inputImageAvatar[0].files[0];  // console.log(imageAvatar.length);
@@ -1988,6 +2044,9 @@ let product = (()=>{
                 if(data.status == 200){
                     clearInputUpload();                
                     fetchList();
+                    scrollToBottomPage();    
+                    
+
                 }else if(data.status == 400 ){
                     uploadContainer.append(`
                     <div class="alert-response-400 position-fixed fixed-top w-100 h-100" style="background-color: rgba(0, 0, 0, 0.43);">
@@ -2122,7 +2181,21 @@ let product = (()=>{
     }
 
 
+    function scrollToBottomPage(){
+        let body = document.querySelector('body');
+        let start = body.scrollTop; //position now
+        let end = $(document).height(); // height of page
+
+        loopScrollPage();
     
+        function loopScrollPage(){
+            if(start <= end){
+                start +=40;
+                window.scrollTo(0,start);
+                setTimeout(loopScrollPage, 5);
+            }
+        }
+    }
 
     function clearInputUpload(){
         inputProductName.val('');
@@ -2304,15 +2377,30 @@ let product = (()=>{
         });
     }
 
-    function fetchList(filter = ''){
-        let dest = 'list';
+    function fetchList(filter = '' ,skip=0){
+        let limits = 4;
+        let active = 1;
+        if(skip>=1){
+            active = skip;
+            skip = skip-1;
+            skip = skip*limits;
+            console.log('skip: '+skip);
+            
+        }
+        let modified = {limits,skip};
+        let dest = 'list?modified='+encodeURIComponent(JSON.stringify(modified));
         if(filter){
+            backUpFilter = filter;
+            filter.modified = modified;
             dest = 'filter?filter='+encodeURIComponent(JSON.stringify(filter));
         }
         fetch(uri+dest)
         .then((res)=> res.json())
         .then((data)=>{
             if(data.status == 200){
+                // console.log(data.count); count of collection from server
+                setPagination(data.count,limits,active);
+                amountProduct.text(data.count);
                 let output = '';
                 data.data.forEach((value)=>{
                     output += `<div class="col-sm-6 col-md-4 col-lg-3 p-1 ">
@@ -2340,15 +2428,68 @@ let product = (()=>{
                                     </ul>
                                 </div>`;
                 });
+
                 list.html(output);
-              
+    
             }else{
+                setPagination(data.count,limits,active);
+                amountProduct.text(data.count);
                 list.html(`<h5>${data.data}</h5>`);
             } 
         })
         .catch((err=>{
             console.log(err);   
         }))
+    }
+
+    function setPagination(count = 0,limits = 0,active = 1){
+        let templatTabPage ='';
+        console.log('Pagination count : '+count);
+        console.log('Pagination Limit : '+limits);
+        if(count >=  limits){
+            if(count && limits){
+                let countLink = count / limits;
+                 countLink = Math.ceil(countLink);
+                    if(countLink == 1){
+                        tabPagination.html('');
+                    }else{
+                        templatTabPage +=`<li class="page-item page-previous" data-link="pre">
+                                                <span class="page-link">Previous</span>
+                                          </li>`
+                        for(let i = 1 ;i<=countLink;i++){                        
+                            templatTabPage +=`<li class="page-item" data-link="${i}">
+                                                    <span class="page-link">${i}</span>
+                                              </li>`;
+                         }
+                            templatTabPage += `<li class="page-item page-next" data-link="next">
+                                                    <span class="page-link">Next</span>
+                                             </li>`;
+
+                        tabPagination.html(templatTabPage);              
+                        tabPagination.find(`li[data-link = ${active}]`).addClass('active');
+                        if(active == 1){
+                            tabPagination.find('li.page-previous').addClass('disabled')
+                        }else{
+                            tabPagination.find('li.page-previous').removeClass('disabled');
+                        }
+                        if(active == countLink){
+                            tabPagination.find('li.page-next').addClass('disabled');
+                        }else{
+                            tabPagination.find('li.page-next').removeClass('disabled');
+                        }
+            
+                    }
+    
+            }else{
+                tabPagination.html('');
+            }         
+        }else{
+            tabPagination.html('');
+        }
+           
+        console.log('Pagination count : '+count);
+        console.log('Pagination Limit : '+limits);
+        
     }
   
 })();

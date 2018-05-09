@@ -46,9 +46,16 @@ const multiUpload = upload.fields([{name:'imageAvatar',maxCount:1},{name:'imageG
 
 //@GET BY FILTER
 router.get('/filter',(req,res)=>{
-    let name = 'dk';
 
     let filterRequest = JSON.parse(req.query.filter);
+    let modified = filterRequest.modified;
+    let limits = 0;
+    let skip = 0;
+    if(modified){
+        limits = modified.limits;
+        skip = modified.skip;
+    }
+
     let filter = new Object();
 
     console.log(filterRequest);
@@ -105,10 +112,10 @@ router.get('/filter',(req,res)=>{
         });
         filter.material = {$elemMatch:{nameTh:{$in:arrMaterial}}};
     }
-    // console.log(filter);
-    
+   
     Product_Model.find(filter)
-    // .limit(5) กำหนดจำนวน doc ที่ค้นหาเจอ เอาแค่ 5 อัน
+    .skip(skip)
+    .limit(limits)
     .select({
         _id:1,
         name:1,
@@ -119,14 +126,27 @@ router.get('/filter',(req,res)=>{
     .exec()
     .then(doc=>{
         if(doc.length > 0){
-            res.status(200).json({
-                status:200,
-                    data:doc
+            Product_Model.count(filter,(err,count)=>{
+                console.log('count in filter : '+ count );
+                
+                if(err){
+                    res.status(500).json({
+                        Error:err
+                    });
+                }
+
+                res.status(200).json({
+                    status:200,
+                        data:doc,
+                        count:count
+                });
             });
+           
         }else{
             res.status(400).json({
                 status:400,
-                data:'No Product item on filter.'
+                data:'No Product item on filter.',
+                count:doc.length
             });
         }
         
@@ -152,7 +172,22 @@ router.get('/filter',(req,res)=>{
 
 //@GET FOR LIST
 router.get('/list',(req,res)=>{
+    
+    let modified = JSON.parse(req.query.modified);
+    let limit = modified.limits;
+    let skip = modified.skip;
+    if(!skip){
+        skip = 0;
+    }
+    console.log(skip);
+    
+    
+    let countOfCollection = 0;
+    
+   
     Product_Model.find()
+    .skip(skip)
+    .limit(limit)
     .select({
         _id:1,
         name:1,
@@ -163,10 +198,20 @@ router.get('/list',(req,res)=>{
     .exec()
     .then(doc =>{
         if(doc.length > 0){
-            res.status(200).json({
-                status:200,
-                data:doc
+
+            Product_Model.count({},(err,count)=>{
+                if(err) return;
+                
+                countOfCollection = count;
+
+                res.status(200).json({
+                    status:200,
+                    data:doc,
+                    count:countOfCollection
+                });
             });
+
+           
         }else{
             res.status(500).json({
                 status: 500,
