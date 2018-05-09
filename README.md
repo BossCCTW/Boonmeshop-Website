@@ -12,7 +12,7 @@
    <p align="center"> <img src="header02.png" align="center" width="80%" height="auto"/></p>
  
      
-## FrontEnd(Programming)
+## FrontEnd
 ### language
 * HTML5
 * CSS3 
