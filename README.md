@@ -1,5 +1,9 @@
 # Boonmeshop-Website
->Hi! this Project เป็นเว็บไซด์ที่พัฒนาขึ้นเพื่อฝึกทักษะด้านการโปรแกรมมิ่งของผม การออกแบบหน้าตาโปรแกรมและการทำงานทั้งหมดได้คิดอนุมารขึ้นมาเองเพื่อใช้ไปความต้องการเบื้องต้นสำหรับโปรเจ็ก เว็บไซต์ที่สร้างขึ้นนี้สมมุติให้เป็นเว็บขายของออนไลน์ที่มีสินค้าจำนวนหนึ่ง ซึ่งต้องเป็น responsive web และมีระบบต่างๆในการจัดการกับสินค้า เช่น การเพิ่ม การแก้ไข และกาลบ เป็นต้น รวมไปถึงระบบที่ร้านขายของออนไลน์ควรจะมีนั่นคือระบบกรองสินค้นเพื่อให้ผู้ใช้ค้นหาสินค้าจากความต้องการได้ ผมได้ทำการพัฒนาเว็บไซด์ทั้งทางฝั่ง frontend และ backend ทั้งหมด ให้เชื่อมโยงเข้าหากันได้โดยการส่งข้อมูลผ่าน http protocal ซึ่งแน่นอนว่า โปรเจ็กนี้อาจมีข้อผิดพาดจำนวนมากหากเข้าไปตรวจสอบในเชิงลึกจริงๆ ต้องขออภัยนะที่นี้ด้วย ขอบคุณที่รับชม.
+>Hi! This Project is website which developed for practice my programming skills About How to design program and operate it ;all of these idea created for Initial requirements of this project 
+Assume that this website is online store has some of product which is responsive web and has systems to manage product such as ADD, MODIFY,and REMOVE etc. including systems on online store should have is filter system for customer to search for product by requirements
+I have completely developed  website of frontend and backend by link them together to Send information through http protocal.
+Of course that this project may have many errors if examine closely;may apologize
+Thanks for reading.
 
 <p align="center">
 <strong>Built With :</strong>
@@ -27,8 +31,7 @@
      <p align="center"> <img src="workingonmobile.gif" align="center" width="90%" height="auto"/></p>
      
 ## Shopping Cart System
-      ในส่วนของระบบตะก้าสินค้า หรือ ระบบเพิ่มข้อมูลของเว็บไซด์จะส่งและรับข้อมูลผ่าน restful API ที่เขียนด้วย Nodejs และใช้ express
-      จะมีสถานะต่างๆ คือ GET POST PATH และ DELETE สามารถดู Code ได้จาก
+      In the part of shopping cart system or the system that add information of website will send and receive information by restful API that programmed with Nodejs and use express that have many status such as GET POST PATH and Delete; can inspect Code from
 ```sh
 /api/routers
 /api/models
