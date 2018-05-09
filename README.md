@@ -57,6 +57,7 @@
       - code api filter
       /api/routers/product.js => get('/filter')
       ```
+      <p align="center"> <img src="productfilter.gif" align="center" width="90%" height="auto"/></p>
   
 ## Full height Admin Page (Shopping Cart)
 <p align="center"> <img src="FullHeight.png" align="center" width="85%" height="auto"/></p>
