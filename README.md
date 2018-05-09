@@ -43,9 +43,14 @@
   
 > `Filter-Product` 
 * Select by 
-  * •Price(Max-Min) 
-  * •Type
-  * •Material
+  • Price(Max-Min) 
+  • Type
+  • Material
+  • Payment
+  • transport
+  • status
+  • Search by Name Product
+  
 * MENU-TYPE PRODUCT
 
 ## FrontEnd
