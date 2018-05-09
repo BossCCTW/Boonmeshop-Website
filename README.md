@@ -54,6 +54,7 @@
 /api/models
 ```
   > `Handle-Data` (Add,View,Update,Delete)
+  <p align="center"> <img src="product-upload.png" align="center" width="80%" height="auto"/></p>
  * MENU-TYPE PRODUCT
 ## Video
 
