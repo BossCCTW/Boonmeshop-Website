@@ -50,6 +50,13 @@
     * transport
     * status
     * Search by Name Product
+      ```sh
+      Can Mix All filter
+      - code frontend filter
+      /scripts/admin.js => product
+      - code api filter
+      /api/routers/product.js => get('/filter')
+      ```
   
 * MENU-TYPE PRODUCT
 
