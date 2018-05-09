@@ -59,7 +59,7 @@
       ```
   
 * Full height Admin Page (Shopping Cart)
-<p align="center"> <img src="fullheightAdminpage.png" align="center" width="100%" height="auto"/></p>
+<p align="center"> <img src="fullheightAdminpage.png" align="center" width="85%" height="auto"/></p>
 
 
 ## FrontEnd
