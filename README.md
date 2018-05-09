@@ -35,7 +35,8 @@
 ```
 <p align="center"> <img src="productfilter.png" align="center" width="80%" height="auto"/></p>
 
-> `Handle-Data` (Add,View,Update,Delete)
+> `Handle-Data-Upload` (Add,View,Update,Delete)
+<p align="center"> <img src="uploadProductgif.gif" align="center" width="80%" height="auto"/></p>
 
 > `Preview-Image-Upload` (select images for upload[image_avatar,images_gallery])
   <p align="center"> <img src="product-upload.png" align="center" width="80%" height="auto"/></p>
