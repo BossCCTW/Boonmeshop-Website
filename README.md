@@ -42,14 +42,14 @@
   <p align="center"> <img src="product-upload.png" align="center" width="80%" height="auto"/></p>
   
 > `Filter-Product` 
-* Select by 
-  • Price(Max-Min) 
-  • Type
-  • Material
-  • Payment
-  • transport
-  • status
-  • Search by Name Product
+* Select by =>
+    • Price(Max-Min) 
+    • Type
+    • Material
+    • Payment
+    • transport
+    • status
+    • Search by Name Product
   
 * MENU-TYPE PRODUCT
 
