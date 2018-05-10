@@ -2190,9 +2190,9 @@ let product = (()=>{
     
         function loopScrollPage(){
             if(start <= end){
-                start +=40;
+                start +=30;
                 window.scrollTo(0,start);
-                setTimeout(loopScrollPage, 5);
+                setTimeout(loopScrollPage, 1);
             }
         }
     }
@@ -2405,9 +2405,9 @@ let product = (()=>{
                 data.data.forEach((value)=>{
                     output += `<div class="col-sm-6 col-md-4 col-lg-3 p-1 ">
                                     <ul class="list-group rounded-0">
-                                        <li class="list-group-item p-0 link-detail" style="cursor: pointer;">
+                                        <li class="list-group-item p-0 link-detail" style="cursor: pointer; max-height:220px">
                                             <img class="w-100" src="${value.imageAvatar}"
-                                                alt="" style="width:100%; height:250px; overflow-y:hidden;">
+                                                alt="" style="height:100%; max-width:100%; overflow-y:hidden;">
                                         </li>
                                         <li class="list-group-item text-truncate p-1 link-id-product" data-id="${value._id}">
                                            ID :  ${value._id}
