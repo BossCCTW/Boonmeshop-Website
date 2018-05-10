@@ -2419,7 +2419,7 @@ let product = (()=>{
                                          PRICE : ${value.price}
                                         </li>
                                         <li class="list-group-item p-1">
-                                            ${value.type.nameTh}${value.type.nameEn}
+                                            ${value.type.nameTh}(${value.type.nameEn})
                                         </li>
                                         <li class="list-group-item d-flex p-0">
                                             <button class="btn btn-secondary rounded-0 col delete" type="submit">Delete</button>
