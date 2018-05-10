@@ -200,6 +200,8 @@ let Promotion = (() => {
   let $btnBack = $promotionContainer.children('#btnBack');
   let $btnNext = $promotionContainer.children('#btnNext');
 
+  fetchPromotion();
+
   let widthItem = $slideItem.width() + 5;
   let count = 0;
   let lengthOfItem = $slideShowImagesContainer.find('>*').length;
@@ -207,38 +209,50 @@ let Promotion = (() => {
 
 
   //Bind event
-  $btnBack.on('click', scrollBack);
-  $btnNext.on('click', scrollNext);
+  $btnBack.on('click', {run : 0},slideList);
+  $btnNext.on('click', {run : 1},slideList);
 
-
-  function scrollBack() {
-    // $slideShowImagesContainer.scrollLeft(setScaleScroll(--count))
-    console.log('back scroll');
-
-    $slideShowImagesContainer.animate({
-      scrollLeft: setScaleScroll(--count)
-    });
-  }
-
-  function scrollNext() {
-    // $slideShowImagesContainer.scrollLeft(setScaleScroll(++count)); 
-    console.log('next scroll');
-
-    $slideShowImagesContainer.animate({
-      scrollLeft: setScaleScroll(++count)
-    });
-  }
-
-  function setScaleScroll(c) {
-    if (c < 0) {
-      c = 0;
-      count = 0;
-    } else if (c > lengthOfItem - 1) {
-      c = lengthOfItem - 1;
-      count = lengthOfItem - 1;
+  function slideList(event){
+    let run = event.data.run;
+    console.log(run);
+    
+    let widthItem = $slideShowImagesContainer.find('div').width()+5;
+    let scollStart = $slideShowImagesContainer.scrollLeft();
+    if(run){
+      $slideShowImagesContainer.animate({
+        scrollLeft:scollStart+widthItem
+      });
+    }else{
+      $slideShowImagesContainer.animate({
+        scrollLeft:scollStart-widthItem
+      });
     }
-    return widthItem * c;
+    
   }
+
+  function fetchPromotion(){
+    let path = 'assets/imgs/promotion/'
+    let output ='';
+    fetch('/promotion/list/image')
+    .then(res => res.json())
+    .then(data =>{
+      if(data.status == 200){
+        
+        data.data.forEach(value =>{
+          console.log(value);
+          output += ` <div class="promotion-item">
+                        <img src="${path}${value}" style="max-height:100%; height:100%;"
+                          alt="">
+                      </div>`;
+        });
+        $slideShowImagesContainer.html(output);
+      }else{
+        $slideShowImagesContainer.html(data.data);
+      }
+    })
+
+  }
+
 })();
 
 let Filter = (() => {

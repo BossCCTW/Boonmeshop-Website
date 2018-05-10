@@ -243,5 +243,25 @@ router.delete('/:idPromotion',(req,res)=>{
    
 });
 
+//get list of name image promotion index.html page
+const pathFileImagePromotion ='./assets/imgs/promotion';
+router.get('/list/image', (req, res) => {
+    fs.readdir(pathFileImagePromotion, (err, files) => {
+        if(err){
+            res.status(404).json({
+                status:404,
+                data:err
+            });
+        }
+        // res.setHeader('Content-Type', 'application/json');
+        // res.send(JSON.stringify(files));
+
+        res.status(200).json({
+            status:200,
+            data:files
+        })
+    });
+});
+
 
 module.exports = router;
